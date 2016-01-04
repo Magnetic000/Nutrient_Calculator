@@ -19,7 +19,25 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final Button button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(
+            new Button.OnClickListener(){
+                public void onClick (View v){
+                    button.setText("Clicked");
+                }
+            }
+        );
+
+        button.setOnLongClickListener(
+                new Button.OnLongClickListener() {
+                    public boolean onLongClick(View v) {
+                        button.setText("long");
+                        return false;
+                    }
+                }
+        );
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,29 +54,4 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void buttonOnClick(View v) {
-        Button button=(Button) v;
-        button.setText("I've Been Clicked!");
-        Button button2 =(Button) findViewById(R.id.btn2);
-        button2.setText("Ok");
-    }
-    public void btn2OnClick(View v){
-        Button button = (Button) v;
-        button.setText("Reset");
-    }
 }
