@@ -3,6 +3,8 @@
  */
 package ics4u.ics4u_final_project;
 
+import android.content.Context;
+
 import java.util.*;
 
 /**
@@ -16,14 +18,16 @@ public class Reader {
     private Scanner sc;
     private final String fileurl;
     private int fields = 1;
+    private Context c;
     //the delimiter used in the files ("#" doesn't appear but "'", ";", ":" and "." all appear
     private final String delimiter = "#";
 
     /**
      * @param s the file path
      */
-    public Reader(String s) {
+    public Reader(String s, Context context) {
         fileurl = s;
+        c = context;
         reset();//init the reader
     }
 
@@ -64,7 +68,7 @@ public class Reader {
     private void reset() {
         //initialize the reader
         System.out.println(fileurl);
-        sc = new Scanner(Reader.class.getResourceAsStream(fileurl));
+        sc = new Scanner(c.getResources().openRawResource(R.raw.CONV_FAC));
         //count the number of fields
         //read the next line
         String s = sc.nextLine();
