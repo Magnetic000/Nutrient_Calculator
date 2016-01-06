@@ -1,0 +1,52 @@
+0
+
+Main Window/Output Window
+The main output windows allows you to access the main recipe creation screen by clicking the create recipe.
+You can also learn more about the program by clicking the about button.
+This screen will display the ingredients, directions and nutrient values after you have made your recipe.
+
+1
+
+Main Recipe Entry Window
+This window shows the ingredients currently in your recipe.
+To add another ingredient click the "Add Food Item" button. This will bring up the ingredient entry window.
+To remove an item select it in the list and click the remove item button. Only one item can be removed at once.
+When you are finished adding items to your recipe click the calculate nutrients button.
+
+Calculating Nutrients:
+A dialog will come up asking if you want to add directions to your recipe click yes and add the directions in the
+    window that comes up. When you are done click OK.
+Next the program will calculate the nutrient values for your recipe. Please be patient as this can take a few minutes
+    for a large recipe.
+You will then be asked to name your recipe.
+Next a dialog will appear asking if you wish to print your recipe to a file. If you click yes a plain text file will be
+    printed to the directory which you have run the program out of called "Recipe.txt"
+The name, ingredients and nutrients will now appear on the output window.
+The program ignores any nutrients that have a value of 0
+
+2
+
+Ingredient Entry Window
+Begin by searching for your ingredient in the search bar.
+You can have up to 5 search keywords separated by "," or ", "
+The search is not case sensitive.
+Example search for 1% Chocolate milk:
+milk, chocolate, 1%
+If no results appear try changing your keywords to be less specific or split them up with commas
+
+Once your desired food item has been found select it and click "Use Selected Item"
+It will now appear in the search bar.
+Use the drop-boxes, slider and custom quantity entry box to enter your desired amount of ingredient.
+Not all measurements are available for all ingredients.
+When you have your desired ingredient and quantity click OK.
+You will be taken back to the main recipe window.
+You can close this window at any time to cancel.
+
+3
+
+Save/Open recipes:
+The recipes can be saved by using the save button. From the main recipe window the recipe can
+    be save so that it can be opened and edited later.
+Once the nutrients have been calculated the recipes can still be saved, but so can the output
+    (the label with the directions). This can be done by clicking the save menu and clicking 
+    "Save Output". The output is saved as a plain text file. It can be opened in any text editor on any platform.

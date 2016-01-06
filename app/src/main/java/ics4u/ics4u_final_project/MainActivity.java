@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         System.out.println("HI THERE");
+        Database.importData();
     }
 
     @Override
