@@ -1,5 +1,6 @@
 package ics4u.ics4u_final_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        System.out.println("check");
+        /*final Button button = (Button)findViewById(R.id.button);
 
-        final Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(
             new Button.OnClickListener(){
                 public void onClick (View v){
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                         return false;
                     }
                 }
-        );
+        );*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public void loadRecipe(View view){
+        Intent intent = new Intent(this, RecipeCreator.class);
+        startActivity(intent);
     }
 
 }
