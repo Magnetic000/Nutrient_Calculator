@@ -15,40 +15,33 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private String myDataset[] = {"bob","sally"};
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class MainActivity extends Activity {
+
+    TextView personName;
+    TextView personAge;
+    ImageView personPhoto;
+    TextView personName1;
+    TextView personAge1;
+    ImageView personPhoto1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycer_view);
+        setContentView(R.layout.cardview_activity);
+        personName = (TextView)findViewById(R.id.person_name);
+        personAge = (TextView)findViewById(R.id.person_age);
+        personPhoto = (ImageView)findViewById(R.id.person_photo);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(myDataset);
-        mRecyclerView.setAdapter(mAdapter);
-
-
-
+        personName.setText("Emma Wilson");
+        personAge.setText("23 years old");
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
     public void loadRecipe(View view){
         Intent intent = new Intent(this, RecipeCreator.class);
