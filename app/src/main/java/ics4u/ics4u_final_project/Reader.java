@@ -3,7 +3,10 @@
  */
 package ics4u.ics4u_final_project;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 /**
@@ -14,9 +17,10 @@ public class Reader {
     //private BufferedReader br;
     //private InputStreamReader isr;
     // private InputStream in;
-    private Scanner sc;
     private final InputStream filePath;
     private int fields = 1;
+    private BufferedReader br;
+    private InputStreamReader isr;
     //the delimiter used in the files ("#" doesn't appear but "'", ";", ":" and "." all appear
     private final String delimiter = "#";
 
@@ -25,16 +29,25 @@ public class Reader {
      */
     public Reader(InputStream input) {
         filePath = input;
-        reset();//init the reader
+        isr = new InputStreamReader(input);
+        br = new BufferedReader(isr);
+        countFields();//init the reader
     }
 
     /**
      * @return an object with each index containing one field
      */
     public String[] getNextLine() {
-        String s;
+        String s = "";
         //read the next line
-        s = sc.nextLine();
+        //System.out.println("READ");
+
+        try {
+            s = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(s);
         //create an array with as many indexes as there are fields
         String[] line = new String[fields];
         //put the information into the fields
@@ -52,36 +65,49 @@ public class Reader {
     public int getLength() {
         System.out.println("Get Length");
         //put the buffered reader back to the top of the file
-        reset();
-        int c = 0;
-        //count the number of lines in the file
-        while (sc.hasNextLine()) {
-            c++;
-            sc.nextLine();
+        try {
+            br = new BufferedReader(isr);
+            int c = 0;
+            //count the number of lines in the file
+            String l = "";
+            l = br.readLine();
+            while (l != null) {
+                c++;
+                l = br.readLine();
+            }
+            System.out.println(c);
+            br = new BufferedReader(isr);
+            return c;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        System.out.println(c);
-        reset();
-        return c;
+        return -1;
     }
 
-    private void reset() {
+    private void countFields() {
         //initialize the reader
         System.out.println("Path: " + filePath);
-        sc = new Scanner(filePath);
-        //count the number of fields
-        //read the next line
-        String s = sc.nextLine();
-        System.out.println("Line: " + s);
-        fields = 1;
-        //minimum of one field
-        //count the number of additional fields
-        for (int i = 0; i < s.length(); i++) {
-            if (s.substring(i, i + 1).equals(delimiter)) {
-                fields++;
+        try {
+            br = new BufferedReader(isr);
+            //count the number of fields
+            //read the next line
+            String s = "";
+            s = br.readLine();
+            System.out.println("Line: " + s);
+            fields = 1;
+            //minimum of one field
+            //count the number of additional fields
+            for (int i = 0; i < s.length(); i++) {
+                if (s.substring(i, i + 1).equals(delimiter)) {
+                    fields++;
+                }
             }
+            //reinitialize the reader
+            br = new BufferedReader(isr);
+            System.out.println(fields);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        //reinitialize the reader
-        sc = new Scanner(filePath);
     }
 
 }

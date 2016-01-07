@@ -50,8 +50,10 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        System.out.println("HI THERE");
         Database.importData(this);
+        for (int i = 0; i < Database.fdName.size(); i++){
+            System.out.println(Database.fdName.get(i)[1]);
+        }
     }
 
     @Override
