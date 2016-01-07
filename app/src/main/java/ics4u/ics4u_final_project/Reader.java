@@ -7,16 +7,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.*;
 
 /**
  * @author isaac
  */
 public class Reader {
 
-    //private BufferedReader br;
-    //private InputStreamReader isr;
-    // private InputStream in;
+
     private final InputStream filePath;
     private int fields = 1;
     private BufferedReader br;
