@@ -3,6 +3,8 @@
  */
 package ics4u.ics4u_final_project;
 
+import android.content.Context;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -37,27 +39,18 @@ public class Database {
     }
 
     /**
-     * method to test exporting to PDF
-     */
-    public static void exportTester() {
-        importData();
-        Recipe r = importRecipes().get(0);
-        r.export(new File("doc.pdf"));
-    }
-
-    /**
      * Imports the data stored in files to arraylists to faster searching
      */
-    public static void importData() {
+    public static void importData(Context c) {
 
-        Reader r = new Reader("/ics4u/ics4u_final_project/data/FOOD_NM.txt");
+        Reader r = new Reader(c.getResources().openRawResource(R.raw.food_nm));
         int length = r.getLength();
         for (int i = 0; i < length; i++) {
             String[] line = r.getNextLine();
             Object[] temp = {Integer.parseInt(line[0]), line[1]};
             fdName.add(temp);
         }
-        r = new Reader("/ics4u/ics4u_final_project/data/CONV_FAC.txt");
+        r = new Reader(c.getResources().openRawResource(R.raw.conv_fac));
         length = r.getLength();
         for (int i = 0; i < length; i++) {
             String[] line = r.getNextLine();
@@ -67,7 +60,7 @@ public class Database {
             Object[] temp = {Integer.parseInt(line[0]), Integer.parseInt(line[1]), Double.parseDouble(line[2])};
             convFact.add(temp);
         }
-        r = new Reader("/ics4u/ics4u_final_project/data/NT_AMT.txt");
+        r = new Reader(c.getResources().openRawResource(R.raw.nt_amt));
         length = r.getLength();
         for (int i = 0; i < length; i++) {
             String[] line = r.getNextLine();
@@ -77,14 +70,14 @@ public class Database {
             Object[] temp = {Integer.parseInt(line[0]), Integer.parseInt(line[1]), Double.parseDouble(line[2])};
             ntAmt.add(temp);
         }
-        r = new Reader("/ics4u/ics4u_final_project/data/MEASURE.txt");
+        r = new Reader(c.getResources().openRawResource(R.raw.measure));
         length = r.getLength();
         for (int i = 0; i < length; i++) {
             String[] line = r.getNextLine();
             Object[] temp = {Integer.parseInt(line[0]), line[1]};
             msName.add(temp);
         }
-        r = new Reader("/ics4u/ics4u_final_project/data/NT_NM.txt");
+        r = new Reader(c.getResources().openRawResource(R.raw.nt_nm));
         length = r.getLength();
         for (int i = 0; i < length; i++) {
             String[] line = r.getNextLine();

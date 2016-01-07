@@ -3,8 +3,7 @@
  */
 package ics4u.ics4u_final_project;
 
-import android.content.Context;
-
+import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -16,18 +15,16 @@ public class Reader {
     //private InputStreamReader isr;
     // private InputStream in;
     private Scanner sc;
-    private final String fileurl;
+    private final InputStream filePath;
     private int fields = 1;
-    private Context c;
     //the delimiter used in the files ("#" doesn't appear but "'", ";", ":" and "." all appear
     private final String delimiter = "#";
 
     /**
-     * @param s the file path
+     * @param
      */
-    public Reader(String s, Context context) {
-        fileurl = s;
-        c = context;
+    public Reader(InputStream input) {
+        filePath = input;
         reset();//init the reader
     }
 
@@ -53,6 +50,7 @@ public class Reader {
      * @return the number of lines in the file
      */
     public int getLength() {
+        System.out.println("Get Length");
         //put the buffered reader back to the top of the file
         reset();
         int c = 0;
@@ -61,18 +59,19 @@ public class Reader {
             c++;
             sc.nextLine();
         }
+        System.out.println(c);
         reset();
         return c;
     }
 
     private void reset() {
         //initialize the reader
-        System.out.println(fileurl);
-        sc = new Scanner(c.getResources().openRawResource(R.raw.CONV_FAC));
+        System.out.println("Path: " + filePath);
+        sc = new Scanner(filePath);
         //count the number of fields
         //read the next line
         String s = sc.nextLine();
-        //System.out.println(s);
+        System.out.println("Line: " + s);
         fields = 1;
         //minimum of one field
         //count the number of additional fields
@@ -82,7 +81,7 @@ public class Reader {
             }
         }
         //reinitialize the reader
-        sc = new Scanner(Reader.class.getResourceAsStream(fileurl));
+        sc = new Scanner(filePath);
     }
 
 }

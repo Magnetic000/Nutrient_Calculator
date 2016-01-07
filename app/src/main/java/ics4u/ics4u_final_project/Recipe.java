@@ -40,14 +40,6 @@ public class Recipe {
 
     /**
      *
-     * @param args
-     */
-    public static void main(String[] args) {
-        Database.exportTester();
-    }
-
-    /**
-     *
      * @param title the Title of the recipe
      * @param instructions the instructions for the recipe
      */
