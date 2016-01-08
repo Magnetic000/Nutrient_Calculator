@@ -5,10 +5,13 @@ package ics4u.ics4u_final_project;
 
 import android.content.Context;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -29,10 +32,10 @@ import org.xml.sax.SAXException;
  */
 public class Database {
 
-    static DecimalFormat oneDecimal = new DecimalFormat("#,##0.0");
+    static final DecimalFormat oneDecimal = new DecimalFormat("#,##0.0");
     static ArrayList<Object[]> fdName = new ArrayList<>(), msName = new ArrayList<>(), ntName = new ArrayList<>(), convFact = new ArrayList<>(), ntAmt = new ArrayList<>();
     static Recipe recipe = new Recipe();
-    static String delimiter = "#";
+    static final String delimiter = "#";
     //main method for bug testing
 
     /**
@@ -139,11 +142,16 @@ public class Database {
     }
 
     public static ArrayList<String> readFile(InputStream filePath) {
-
-        Scanner sc = new Scanner(filePath);
+        BufferedReader br = new BufferedReader(new InputStreamReader(filePath));
         ArrayList<String> a = new ArrayList<>();
-        while (sc.hasNextLine()) {
-            a.add(sc.nextLine());
+        try {
+            String s = br.readLine();
+            while (s != null) {
+                a.add(s);
+                s = br.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         System.out.println("finish read");
         return a;
