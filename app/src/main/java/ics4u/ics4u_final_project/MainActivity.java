@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
@@ -40,6 +41,8 @@ public class MainActivity extends Activity {
 
         personName.setText("Emma Wilson");
         personAge.setText("23 years old");
+        personPhoto.setImageResource(R.drawable.bread);
+
     }
 
 
