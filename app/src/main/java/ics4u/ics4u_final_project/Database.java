@@ -47,40 +47,45 @@ public class Database {
     public static void importData(Context c) {
         System.out.println("food Name");
         String[][] file = readFile(c.getResources().openRawResource(R.raw.food_nm));
-        for (int i = 0; i < file.length; i++) {
+        int l = file.length;
+        for (int i = 0; i < l; i++) {
             Object[] temp = {Integer.parseInt(file[i][0]), file[i][1]};
             fdName.add(temp);
         }
         System.out.println("Conv Fac");
         file = readFile(c.getResources().openRawResource(R.raw.conv_fac));
-        for (int i = 0; i < file.length; i++) {
+        l = file.length;
+        for (int i = 0; i < l; i++) {
             if (file[i][2].equals("")) {
                 continue;
             }
             Object[] temp = {Integer.parseInt(file[i][0]), Integer.parseInt(file[i][1]), Double.parseDouble(file[i][2])};
             convFact.add(temp);
         }
-//        System.out.println("Nt amount");
-//        file = readFile(c.getResources().openRawResource(R.raw.nt_amt));
-//        for (int i = 0; i < file.length; i++) {
-//            if (file[i][2].equals("")) {
-//                continue;
-//            }
-//            Object[] temp = {Integer.parseInt(file[i][0]), Integer.parseInt(file[i][1]), Double.parseDouble(file[i][2])};
-//            ntAmt.add(temp);
-//        }
-//        System.out.println("measures");
-//        file = readFile(c.getResources().openRawResource(R.raw.measure));
-//        for (int i = 0; i < file.length; i++) {
-//            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1]};
-//            msName.add(temp);
-//        }
-//        System.out.println("Nt name");
-//        file = readFile(c.getResources().openRawResource(R.raw.nt_nm));
-//        for (int i = 0; i < file.length; i++) {
-//            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1], file[i][2]};
-//            ntName.add(temp);
-//        }
+        System.out.println("Nt amount");
+        file = readFile(c.getResources().openRawResource(R.raw.nt_amt));
+        l = file.length;
+        for (int i = 0; i < l; i++) {
+            if (file[i][2].equals("")) {
+                continue;
+            }
+            Object[] temp = {Integer.parseInt(file[i][0]), Integer.parseInt(file[i][1]), Double.parseDouble(file[i][2])};
+            ntAmt.add(temp);
+        }
+        System.out.println("measures");
+        file = readFile(c.getResources().openRawResource(R.raw.measure));
+        l = file.length;
+        for (int i = 0; i < l; i++) {
+            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1]};
+            msName.add(temp);
+        }
+        System.out.println("Nt name");
+        file = readFile(c.getResources().openRawResource(R.raw.nt_nm));
+        l = file.length;
+        for (int i = 0; i < l; i++) {
+            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1], file[i][2]};
+            ntName.add(temp);
+        }
     }
 
     public static String[][] readFile(InputStream filePath){
