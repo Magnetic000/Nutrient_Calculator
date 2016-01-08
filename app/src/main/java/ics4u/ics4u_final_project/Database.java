@@ -11,19 +11,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
 import javax.xml.transform.stream.*;
-
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -36,15 +31,6 @@ public class Database {
     static ArrayList<Object[]> fdName = new ArrayList<>(), msName = new ArrayList<>(), ntName = new ArrayList<>(), convFact = new ArrayList<>(), ntAmt = new ArrayList<>();
     static Recipe recipe = new Recipe();
     static final String delimiter = "#";
-    //main method for bug testing
-
-    /**
-     * @param args
-     */
-    public static void main(String args[]) {
-        importRecipes();
-        importRecipes().get(1).export(new File("doc.pdf"));
-    }
 
     /**
      * Imports the data stored in files to arraylists to faster searching
@@ -218,6 +204,121 @@ public class Database {
      * @param file The file path
      * @throws FileNotFoundException
      */
+    public static void save(File file) throws FileNotFoundException {
+        //PrintWriter p = new PrintWriter(file + ".txt");
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            // root elements
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("recipe");
+            doc.appendChild(rootElement);
+
+//             title element
+            Element title = doc.createElement("title");
+            title.appendChild(doc.createTextNode(recipe.getTitle()));
+//            p.println(GUI.recipe.getTitle());
+            rootElement.appendChild(title);
+//             title element
+            Element instructions = doc.createElement("instructions");
+            instructions.appendChild(doc.createTextNode(recipe.getInstructions()));
+//            p.println(GUI.recipe.getInstructions());
+            rootElement.appendChild(instructions);
+
+            Element servings = doc.createElement("servings");
+            instructions.appendChild(doc.createTextNode(recipe.getServings() + ""));
+//            p.println(GUI.recipe.getInstructions());
+            rootElement.appendChild(servings);
+
+            Element servingName = doc.createElement("servingName");
+            instructions.appendChild(doc.createTextNode(recipe.getServingName()));
+//            p.println(GUI.recipe.getInstructions());
+            rootElement.appendChild(servingName);
+
+            for (int i = 0; i < recipe.getIngredients().size(); i++) {
+                Element ingredients = doc.createElement("ingredients");
+                rootElement.appendChild(ingredients);
+                Ingredient ing = recipe.getSingleIngredientIndex(i);
+
+                Element id = doc.createElement("ID");
+                id.appendChild(doc.createTextNode(ing.getID() + ""));
+                ingredients.appendChild(id);
+//                p.println(ing.getID());
+
+                Element name = doc.createElement("name");
+                name.appendChild(doc.createTextNode(ing.getName()));
+                ingredients.appendChild(name);
+//                p.println(ing.getName());
+
+                Element formattedName = doc.createElement("formattedName");
+                formattedName.appendChild(doc.createTextNode(ing.getFormattedName()));
+                ingredients.appendChild(formattedName);
+//                p.println(ing.getFormattedName());
+
+                Element unitName = doc.createElement("unitName");
+                unitName.appendChild(doc.createTextNode(ing.getUnit()));
+                ingredients.appendChild(unitName);
+//                p.println(ing.getUnit());
+
+                Element unitNum = doc.createElement("unitNum");
+                unitNum.appendChild(doc.createTextNode(ing.getUnitNum() + ""));
+                ingredients.appendChild(unitNum);
+//                p.println(ing.getUnitNum());
+
+                Element fractionName = doc.createElement("fractionName");
+                fractionName.appendChild(doc.createTextNode(ing.getFractionName()));
+                ingredients.appendChild(fractionName);
+//                p.println(ing.getFractionName());
+
+                Element fractionNum = doc.createElement("fractionNum");
+                fractionNum.appendChild(doc.createTextNode(ing.getFractionNum() + ""));
+                ingredients.appendChild(fractionNum);
+//                p.println(ing.getFractionNum());
+
+                Element quantity = doc.createElement("quantity");
+                quantity.appendChild(doc.createTextNode(ing.getQuantity() + ""));
+                ingredients.appendChild(quantity);
+//                p.println(ing.getQuantity());
+
+                for (int j = 0; j < ing.getMeasures().size(); j++) {
+                    Element measures = doc.createElement("measures");
+                    ingredients.appendChild(measures);
+                    Measures m = ing.getSingleMeasureIndex(j);
+
+                    Element measureID = doc.createElement("id");
+                    measureID.appendChild(doc.createTextNode(m.getID() + ""));
+                    measures.appendChild(measureID);
+//                    p.println(m.getID());
+
+                    Element conversion = doc.createElement("conversion");
+                    conversion.appendChild(doc.createTextNode(m.getConversion() + ""));
+                    measures.appendChild(conversion);
+//                    p.println(m.getConversion());
+
+                    Element measureName = doc.createElement("measureName");
+                    measureName.appendChild(doc.createTextNode(m.getName()));
+                    measures.appendChild(measureName);
+//                    p.println(m.getName());
+                }
+            }
+            // write the content into xml file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result;
+            if (!file.toString().substring(file.toString().length() - 4, file.toString().length()).equals(".xml")) {
+                result = new StreamResult(file + ".xml");
+            } else {
+                result = new StreamResult(file);
+            }
+            transformer.transform(source, result);
+            System.out.println("File saved!");
+//            p.close();
+        } catch (ParserConfigurationException | TransformerException ex) {
+            System.out.println("XML Error: " + ex.toString());
+        }
+    }//End save()
 
     /**
      * This method opens a saved recipe and re-assings the variable with the new

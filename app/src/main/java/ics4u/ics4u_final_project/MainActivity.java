@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import java.lang.reflect.Field;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -51,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Database.importData(this);
+        Field[] fields =R.raw.class.getFields();
+        for (int i = 0; i < fields.length; i++){
+            System.out.println(fields[i].toString());
+        }
+
     }
 
     @Override
