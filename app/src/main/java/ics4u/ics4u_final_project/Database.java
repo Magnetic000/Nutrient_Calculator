@@ -8,8 +8,11 @@ import android.content.Context;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -42,48 +45,70 @@ public class Database {
      * Imports the data stored in files to arraylists to faster searching
      */
     public static void importData(Context c) {
-
-        Reader r = new Reader(c.getResources().openRawResource(R.raw.food_nm));
-        int length = r.getLength();
-        for (int i = 0; i < length; i++) {
-            String[] line = r.getNextLine();
-            Object[] temp = {Integer.parseInt(line[0]), line[1]};
+        System.out.println("food Name");
+        String[][] file = readFile(c.getResources().openRawResource(R.raw.food_nm));
+        for (int i = 0; i < file.length; i++) {
+            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1]};
             fdName.add(temp);
         }
-        r = new Reader(c.getResources().openRawResource(R.raw.conv_fac));
-        length = r.getLength();
-        for (int i = 0; i < length; i++) {
-            String[] line = r.getNextLine();
-            if (line[2].equals("")) {
+        System.out.println("Conv Fac");
+        file = readFile(c.getResources().openRawResource(R.raw.conv_fac));
+        for (int i = 0; i < file.length; i++) {
+            if (file[i][2].equals("")) {
                 continue;
             }
-            Object[] temp = {Integer.parseInt(line[0]), Integer.parseInt(line[1]), Double.parseDouble(line[2])};
+            Object[] temp = {Integer.parseInt(file[i][0]), Integer.parseInt(file[i][1]), Double.parseDouble(file[i][2])};
             convFact.add(temp);
         }
-        r = new Reader(c.getResources().openRawResource(R.raw.nt_amt));
-        length = r.getLength();
-        for (int i = 0; i < length; i++) {
-            String[] line = r.getNextLine();
-            if (line[2].equals("")) {
-                continue;
+//        System.out.println("Nt amount");
+//        file = readFile(c.getResources().openRawResource(R.raw.nt_amt));
+//        for (int i = 0; i < file.length; i++) {
+//            if (file[i][2].equals("")) {
+//                continue;
+//            }
+//            Object[] temp = {Integer.parseInt(file[i][0]), Integer.parseInt(file[i][1]), Double.parseDouble(file[i][2])};
+//            ntAmt.add(temp);
+//        }
+//        System.out.println("measures");
+//        file = readFile(c.getResources().openRawResource(R.raw.measure));
+//        for (int i = 0; i < file.length; i++) {
+//            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1]};
+//            msName.add(temp);
+//        }
+//        System.out.println("Nt name");
+//        file = readFile(c.getResources().openRawResource(R.raw.nt_nm));
+//        for (int i = 0; i < file.length; i++) {
+//            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1], file[i][2]};
+//            ntName.add(temp);
+//        }
+    }
+
+    public static String[][] readFile(InputStream filePath){
+        String delimiter = "#";
+        Scanner sc = new Scanner(filePath);
+        ArrayList<String> a = new ArrayList<>();
+        while(sc.hasNextLine()){
+            a.add(sc.nextLine());
+        }
+        String s = a.get(0);
+        int fields = 1;
+        //minimum of one field
+        //count the number of additional fields
+        for (int i = 0; i < s.length(); i++) {
+            if (s.substring(i, i + 1).equals(delimiter)) {
+                fields++;
             }
-            Object[] temp = {Integer.parseInt(line[0]), Integer.parseInt(line[1]), Double.parseDouble(line[2])};
-            ntAmt.add(temp);
         }
-        r = new Reader(c.getResources().openRawResource(R.raw.measure));
-        length = r.getLength();
-        for (int i = 0; i < length; i++) {
-            String[] line = r.getNextLine();
-            Object[] temp = {Integer.parseInt(line[0]), line[1]};
-            msName.add(temp);
+        String[][] file = new String[a.size()][fields];
+        for(int i = 0; i < a.size(); i++){
+            s = a.get(i);
+            for (int j = 0; j < fields - 1; j++) {//go through each of the fields in the line
+                file[i][j] = s.substring(0, s.indexOf(delimiter));//add the field
+                s = s.substring(s.indexOf(delimiter) + 1);//remove it from the string
+            }
+            file[i][fields - 1] = s;
         }
-        r = new Reader(c.getResources().openRawResource(R.raw.nt_nm));
-        length = r.getLength();
-        for (int i = 0; i < length; i++) {
-            String[] line = r.getNextLine();
-            Object[] temp = {Integer.parseInt(line[0]), line[1], line[2]};
-            ntName.add(temp);
-        }
+        return file;
     }
 
     /**
