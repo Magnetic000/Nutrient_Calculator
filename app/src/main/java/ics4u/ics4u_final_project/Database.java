@@ -145,6 +145,7 @@ public class Database {
         while (sc.hasNextLine()) {
             a.add(sc.nextLine());
         }
+        System.out.println("finish read");
         return a;
     }
 
