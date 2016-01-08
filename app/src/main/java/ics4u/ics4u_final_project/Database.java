@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -19,11 +20,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
 import javax.xml.transform.stream.*;
+
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 /**
- *
  * @author isaac
  */
 public class Database {
@@ -31,9 +32,10 @@ public class Database {
     static DecimalFormat oneDecimal = new DecimalFormat("#,##0.0");
     static ArrayList<Object[]> fdName = new ArrayList<>(), msName = new ArrayList<>(), ntName = new ArrayList<>(), convFact = new ArrayList<>(), ntAmt = new ArrayList<>();
     static Recipe recipe = new Recipe();
+    static String delimiter = "#";
     //main method for bug testing
+
     /**
-     *
      * @param args
      */
     public static void main(String args[]) {
@@ -46,56 +48,107 @@ public class Database {
      */
     public static void importData(Context c) {
         System.out.println("food Name");
-        String[][] file = readFile(c.getResources().openRawResource(R.raw.food_nm));
-        int l = file.length;
-        for (int i = 0; i < l; i++) {
-            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1]};
+        ArrayList<String> file = readFile(c.getResources().openRawResource(R.raw.food_nm));
+        int fields = getFields(file.get(0));
+        String[] line = new String[fields];
+        Object[] temp = new Object[fields];
+        for (int i = 0; i < file.size(); i++) {
+            String s = file.get(i);
+            for (int j = 0; j < fields - 1; j++) {//go through each of the fields in the line
+                line[j] = s.substring(0, s.indexOf(delimiter));//add the field
+                s = s.substring(s.indexOf(delimiter) + 1);//remove it from the string
+            }
+            line[fields - 1] = s;
+            temp[0] = Integer.parseInt(line[0]);
+            temp[1] = line[1];
             fdName.add(temp);
         }
         System.out.println("Conv Fac");
         file = readFile(c.getResources().openRawResource(R.raw.conv_fac));
-        l = file.length;
-        for (int i = 0; i < l; i++) {
-            if (file[i][2].equals("")) {
+        fields = getFields(file.get(0));
+        line = new String[fields];
+        temp = new Object[fields];
+        for (int i = 0; i < file.size(); i++) {
+            String s = file.get(i);
+            for (int j = 0; j < fields - 1; j++) {//go through each of the fields in the line
+                line[j] = s.substring(0, s.indexOf(delimiter));//add the field
+                s = s.substring(s.indexOf(delimiter) + 1);//remove it from the string
+            }
+            line[fields - 1] = s;
+            if (line[2].equals("")) {
                 continue;
             }
-            Object[] temp = {Integer.parseInt(file[i][0]), Integer.parseInt(file[i][1]), Double.parseDouble(file[i][2])};
+            temp[0] = Integer.parseInt(line[0]);
+            temp[1] = Integer.parseInt(line[1]);
+            temp[2] = Double.parseDouble(line[2]);
             convFact.add(temp);
         }
         System.out.println("Nt amount");
         file = readFile(c.getResources().openRawResource(R.raw.nt_amt));
-        l = file.length;
-        for (int i = 0; i < l; i++) {
-            if (file[i][2].equals("")) {
+        fields = getFields(file.get(0));
+        line = new String[fields];
+        temp = new Object[fields];
+        for (int i = 0; i < file.size(); i++) {
+            String s = file.get(i);
+            for (int j = 0; j < fields - 1; j++) {//go through each of the fields in the line
+                line[j] = s.substring(0, s.indexOf(delimiter));//add the field
+                s = s.substring(s.indexOf(delimiter) + 1);//remove it from the string
+            }
+            line[fields - 1] = s;
+            if (line[2].equals("")) {
                 continue;
             }
-            Object[] temp = {Integer.parseInt(file[i][0]), Integer.parseInt(file[i][1]), Double.parseDouble(file[i][2])};
+            temp[0] = Integer.parseInt(line[0]);
+            temp[1] = Integer.parseInt(line[1]);
+            temp[2] = Double.parseDouble(line[2]);
             ntAmt.add(temp);
         }
         System.out.println("measures");
         file = readFile(c.getResources().openRawResource(R.raw.measure));
-        l = file.length;
-        for (int i = 0; i < l; i++) {
-            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1]};
+        fields = getFields(file.get(0));
+        line = new String[fields];
+        temp = new Object[fields];
+        for (int i = 0; i < file.size(); i++) {
+            String s = file.get(i);
+            for (int j = 0; j < fields - 1; j++) {//go through each of the fields in the line
+                line[j] = s.substring(0, s.indexOf(delimiter));//add the field
+                s = s.substring(s.indexOf(delimiter) + 1);//remove it from the string
+            }
+            line[fields - 1] = s;
+            temp[0] = Integer.parseInt(line[0]);
+            temp[1] = line[1];
             msName.add(temp);
         }
         System.out.println("Nt name");
         file = readFile(c.getResources().openRawResource(R.raw.nt_nm));
-        l = file.length;
-        for (int i = 0; i < l; i++) {
-            Object[] temp = {Integer.parseInt(file[i][0]), file[i][1], file[i][2]};
+        fields = getFields(file.get(0));
+        line = new String[fields];
+        temp = new Object[fields];
+        for (int i = 0; i < file.size(); i++) {
+            String s = file.get(i);
+            for (int j = 0; j < fields - 1; j++) {//go through each of the fields in the line
+                line[j] = s.substring(0, s.indexOf(delimiter));//add the field
+                s = s.substring(s.indexOf(delimiter) + 1);//remove it from the string
+            }
+            line[fields - 1] = s;
+            temp[0] = Integer.parseInt(line[0]);
+            temp[1] = line[1];
+            temp[2] = line[2];
             ntName.add(temp);
         }
     }
 
-    public static String[][] readFile(InputStream filePath){
-        String delimiter = "#";
+    public static ArrayList<String> readFile(InputStream filePath) {
+
         Scanner sc = new Scanner(filePath);
         ArrayList<String> a = new ArrayList<>();
-        while(sc.hasNextLine()){
+        while (sc.hasNextLine()) {
             a.add(sc.nextLine());
         }
-        String s = a.get(0);
+        return a;
+    }
+
+    public static int getFields(String s) {
         int fields = 1;
         //minimum of one field
         //count the number of additional fields
@@ -104,16 +157,7 @@ public class Database {
                 fields++;
             }
         }
-        String[][] file = new String[a.size()][fields];
-        for(int i = 0; i < a.size(); i++){
-            s = a.get(i);
-            for (int j = 0; j < fields - 1; j++) {//go through each of the fields in the line
-                file[i][j] = s.substring(0, s.indexOf(delimiter));//add the field
-                s = s.substring(s.indexOf(delimiter) + 1);//remove it from the string
-            }
-            file[i][fields - 1] = s;
-        }
-        return file;
+        return fields;
     }
 
     /**
@@ -251,10 +295,10 @@ public class Database {
     /**
      * This method creates the output that will be displayed for the user
      *
-     * @param recipe The entire recipe with all ingredient and measure
-     * information
+     * @param recipe          The entire recipe with all ingredient and measure
+     *                        information
      * @param recipeNutrients
-     * @param label whether or not to print the information as a label
+     * @param label           whether or not to print the information as a label
      * @return a string with the formatted output
      */
     public static String createOutput(Recipe recipe, Double[] recipeNutrients, boolean label) {
@@ -370,7 +414,6 @@ public class Database {
     }//End createOutput()
 
     /**
-     *
      * @param ID the ID of the measure
      * @return whether or not it can be measured in mL
      */
@@ -489,9 +532,9 @@ public class Database {
      * label/output
      *
      * @param recipe The complete recipe with all the ingredient and measure
-     * info
-     * @param label a boolean stating whether or not to print as a label
-     * @param pdf Whether or not the output is being used to print a pdf
+     *               info
+     * @param label  a boolean stating whether or not to print as a label
+     * @param pdf    Whether or not the output is being used to print a pdf
      * @return a string with the output
      */
     public static String recipe(Recipe recipe, boolean label, boolean pdf) {
@@ -681,10 +724,10 @@ public class Database {
     /**
      * binary searches an array list for the specified ID
      *
-     * @param list the list to search
-     * @param id the ID to look for
+     * @param list   the list to search
+     * @param id     the ID to look for
      * @param bottom the bottom index of the search area
-     * @param top the top index of the search area
+     * @param top    the top index of the search area
      * @return the index where the ID can be found
      */
     public static int binarySearch(ArrayList<Object[]> list, int id, int bottom, int top) {
