@@ -28,7 +28,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
 
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
-        holder.recipeName.setText(itemList.get(position).getName());
+        holder.recipeName.setText(itemList.get(position).getTitle());
         holder.recipeIcon.setImageResource(itemList.get(position).getPhoto());
     }
 
