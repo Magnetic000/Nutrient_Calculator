@@ -1,0 +1,1173 @@
+6#1 fish (500 g)
+7#1 lobster (900 g)
+8#1 abalone
+9#1 anchovy
+11#1 balsam-pear
+12#1 bar
+13#1 bar (75 ml)
+14#1 beet (5 cm dia)
+15#1 biscuit
+16#1 biscuit ( 2.5 cm x 5.7 cm dia)
+17#1 biscuit (1 cm x 9 cm dia)
+20#1 biscuit (2.5 cm x 6.4 cm dia)
+23#1 block
+24#1 box
+25#1 braided loaf
+26#1 bulb
+27#1 burger
+28#1 cake
+29#1 cake (2 layer, 20 cm dia)
+30#1 cake (2 layer, 23 cm dia)
+31#1 cake (20 cm x 20 cm)
+34#1 cake (25.4 cm dia tube)
+36#1 cake (5 cm x 20 cm dia)
+37#1 can
+38#1 can (284 ml)
+39#1 can (355 ml)
+40#1 can diluted
+42#1 cheesefurter
+43#1 chestnut
+44#1 chimichanga
+45#1 chop
+46#1 chop (113 g)
+47#1 chop (151 g)
+48#1 cone
+49#1 cookie
+50#1 cookie (0.9 cm x 5.1 cm dia)
+51#1 cookie (0.9 cm x 7.6 cm dia)
+52#1 cookie (1.9 cm x 7.6 cm dia)
+53#1 cookie (4.1 cm x 4.1 cm)
+54#1 cookie (5.1 cm dia)
+55#1 cookie (5.1 cm x 5.1 cm)
+56#1 cookie (5.7 cm dia)
+58#1 cookie (6.3 cm dia)
+59#1 cookie (6.7 cm dia)
+60#1 cookie (7 cm dia)
+61#1 cookie (7 cm x 2.2 cm)
+62#1 cookie (7.6 cm dia)
+63#1 cookie (7.9 cm x 3.2 cm x 0.9 cm)
+64#1 biscuit (3.5 cm x 8.3 cm)
+65#1 cookie (8.9 cm x 2.5 cm x 1.3 cm)
+66#1 cookie (8.9-10.2 cm dia)
+67#1 corm (2.5 cm dia)
+68#1 corm (8.9 cm dia)
+70#1 crab (150 g)
+71#1 crab (700 g)
+72#1 cracker
+73#1 crayfish
+74#1 cream puff (8.9 cm dia)
+75#1 croissant
+76#1 crust (23 cm dia)
+77#1 cube (10.5g)
+79#1 doughnut (10,2 cm dia)
+80#1 doughnut (11.4 cm x 8.9 cm, oval)
+81#1 doughnut (7.6 cm dia)
+82#1 doughnut (8.9 cm dia)
+83#1 doughnut (8.9 cm x 6.3 cm, oval)
+84#1 doughnut (9.5cm dia)
+85#1 drink box (250ml)
+86#1 drumstick
+88#1 ear
+89#1 eclair (12.7cm x 5cm x 4.4cm)
+90#1 egg
+91#1 egg (60ml)
+92#1 eggplant peeled
+93#1 enchilada
+94#1 enchirito
+95#1 envelope
+96#1 envelope (8 per 127g)
+97#1 fillet
+98#1 fillet (11 cm x 5 cm x 0.6 cm)
+99#1 fish (1100g)
+100#1 fish (1300g)
+101#1 fish (1800g)
+102#1 fish (2200g)
+103#1 fish (225g)
+104#1 fish (3000g)
+105#1 fish (350g)
+106#1 fish (700g)
+107#1 fish (900g)
+108#1 fritter
+110#1 fruit
+112#1 fruit (14 cm dia)
+113#1 fruit (14.6 cm x 7.3 cm x 6 cm)
+114#1 fruit (22 cm x 3.6 cm dia)
+115#1 fruit (5 cm dia)
+117#1 fruit (6.4 cm dia)
+118#1 fruit (6.4 cm x 7.6 cm dia)
+119#1 fruit (6.7 cm dia)
+120#1 fruit (6.8 cm dia)
+122#1 fruit (7.3 cm dia)
+123#1 fruit (8.3 cm x 7.3 cm dia)
+124#1 fruit (8.5 cm x 7.6 cm dia)
+125#1 fruit (8.9 cm x 6.4 cm dia)
+127#1 fruit (9.5 cm x 8.6 cm dia)
+128#1 gizzard
+129#1 gourd
+130#1 gourd (33.7 cm x 4.4 cm dia)
+131#1 head
+134#1 heart
+135#1 hotdog
+136#1 hushpuppy (5.7 cm x 3.2 cm)
+137#1 ice cube
+138#1 kidney
+139#1 large
+140#1 large (30-40)
+141#1 large clam
+142#1 large egg
+143#1 large fruit
+144#1 large fruit (6 cm dia)
+145#1 large link
+146#1 large patty
+148#1 leaf
+149#1 leek
+150#1 leg
+152#1 link
+153#1 link (10 cm x 3 cm dia)
+154#1 link (26 cm x 3.5 cm dia)
+155#1 liver
+158#1 loaf (23 cm x 12.7 cm x 7.6 cm)
+159#1 lobster (700g)
+160#1 medium
+161#1 medium fruit (5.4 cm dia)
+162#1 medium patty
+163#1 medium slice
+164#1 muffin
+167#1 muffin (5.1 cm x 7 cm dia)
+171#1 mushroom
+172#1 neck
+174#1 package
+175#1 pancake (15.2 cm dia)
+176#1 pancake (8 cm dia)
+177#1 parsnip (16.5 cm x 2.5 cm dia)
+178#1 pastry
+179#1 pastry (12 cm dia)
+180#1 pastry (16.5 cm x 1.9 cm)
+181#1 pastry (7.5 cm dia)
+182#1 pat
+183#1 patty
+184#1 patty (5.7 cm dia)
+185#1 pepper
+186#1 pepper (9.5 cm x 7.6 cm dia)
+190#1 pickle (9.5 cm long)
+191#1 pie
+192#1 pie (12.7 cm x 9.5 cm)
+193#1 pie (20 cm dia)
+194#1 pie (23 cm dia)]
+195#1 pie, ready to serve
+196#1 piece
+197#1 piece (10 cm x 5 cm x 1.3 cm)
+199#1 piece (11 cm x 5 cm x 2 cm)
+200#1 piece (11 cm x 6 cm x 2 cm)
+201#1 piece (12 cm x 5 cm x 2 cm)
+202#1 piece (14 cm x 4 cm x 1 cm)
+203#1 piece (2.5 cm x 25 cm dia)
+205#1 piece (4.5 cm x 4 cm x 4 cm)
+206#1 piece (5 cm x 3 cm x 1.2 cm)
+207#1 piece (6 cm x 4 cm x 4 cm)
+208#1 piece (6.3 cm x 5 cm dia)
+210#1 pita (16.5 cm dia)
+211#1 pizza (12'' )
+212#1 pop
+213#1 pop (75ml)
+216#1 potato
+217#1 potato (12cm x 6cm dia)
+218#1 potato (6.3cm dia)
+219#1 pouch
+220#1 portion (pouch) prepared
+221#1 pretzel
+222#1 pudding cup
+223#1 radish (18cm x 6cm dia)
+224#1 rectangle
+227#1 roll
+228#1 roll (6.3cm dia)
+229#1 roll (8.9cm dia)
+230#1 root
+231#1 round
+232#1 saltine cracker
+233#1 sandwich
+234#1 sardine (12cm long)
+235#1 sardine (7.5cm long)
+236#1 sheet
+237#1 sheet (42cm x 30.5cm, thin)
+238#1 shell (12.7cm dia)
+239#1 shell (15.2-17.8cm dia)
+240#1 shell (17.8cm-20cm dia)
+241#1 shell (26.7cm dia)
+242#1 shell (9cm dia)
+243#1 shoot
+244#1 shoot (39cm x 2.9cm dia)
+245#1 slice
+246#1 slice (0.2cm x 8cm dia)
+247#1 slice (0.3cm x 10cm dia)
+248#1 slice (0.3cm x 10.5cm dia)
+249#1 slice (0.3cm x 11cm dia)
+250#1 slice (0.6cm x 6cm dia)
+251#1 slice (0.6cm)
+252#1 slice (1.3cm x 8.3cm dia)
+253#1 slice (10cm x 10cm x 0.2cm)
+254#1 slice (10.8cm x 7.6cm x 1.9cm)
+255#1 slice (11cm x 11cm x 0.2cm)
+256#1 slice (11 per 175g package)
+258#1 slice (12.7cm x 10.2cm x 0.9cm)
+259#1 slice (12.7cm x 10.2cm x 1.3cm)
+260#1 slice (12.7cm x 10.2cm x 1.9cm)
+263#1 slice (12.7cm x 9.5cm x 1.3cm)
+264#1 slice (13cm x 12cm x 0.2cm)
+266#1 slice (16cm x 10cm x 0.2cm)
+267#1 slice (17 per 375g package)
+269#1 slice (2cm x 9cm dia)
+270#1 slice (6 per 125g package)
+271#1 slice (6 per 175g package)
+273#1 slice (8 per 175g package)
+274#1 small box
+276#1 smelt
+277#1 snack cake
+278#1 spear
+279#1 square
+280#1 square (17.8cm x 17.8cm)
+281#1 squid
+283#1 stem
+284#1 stick
+285#1 stick (19.4cm x 1.6cm dia)
+286#1 strip (21.5cm. long)
+287#1 strudel
+288#1 sub
+289#1 sundae
+290#1 super colossal
+292#1 sweet roll (7cm x 7cm)
+293#1 medium (12.7cm x 5.1cm dia)
+294#1 tablet
+295#1 teaspoon
+296#1 thick wiener
+297#1 thigh
+298#1 toast
+299#1 tomato
+301#2 tostadas
+302#1 triple
+303#1 turtle
+304#1 waffle (10.2cm dia)
+305#1 waffle (17.8cm dia)
+306#1 wiener
+307#1 wing
+308#1 yam (21cm x 6.3cm dia)
+309#1 oz whiskey
+310#1.5 oz whiskey
+311#1/10 cake (300g)
+312#1/10 fruit (20cm x 5cm dia)
+313#1/12 cake (23cm dia)
+314#1/12 cake (454g)
+315#1/2 back
+316#1/2 bird
+317#1/2 breast
+318#1/2 foot
+319#1/2 fruit (13cm dia)
+320#1/2 fruit (9.5cm dia)
+321#1 leg and back
+322#1/4 small fruit
+323#1/5 head
+324#1/6 (17.8cm dia)
+325#1/6 cake (20cm dia)
+326#1/6 cake (482g)
+327#1/6 pie (20cm dia)
+328#1/8 pie (23cm dia)
+329#1/8 ring (425g)
+331#1/9 cake (567g)
+332#10 chips
+333#10 fruits
+334#10 halves
+335#10 nuggets
+336#10 pieces
+337#10 rings
+338#10 slices (0.6cm x 6.3cm dia)
+339#10 strips
+340#10 twists
+341#100ml
+342#100ml chips
+343#100ml chopped
+344#100ml crumbled
+345#100ml crumbs
+346#100ml crushed
+347#100ml cubes
+348#100ml diced
+349#100ml drained
+350#100ml elbows
+351#100ml flaked
+352#100ml giblets
+353#100ml grated
+354#100ml halves
+355#100ml large curd
+357#100ml mashed
+358#100ml melted
+359#100ml mini
+360#100ml nuts
+361#100ml nuts (40)
+362#100ml packed
+363#100ml pieces
+364#100ml pitted
+365#100ml poured
+366#100ml pulp
+367#100ml puree
+368#100ml shredded
+369#100ml shredded, packed
+370#100ml sifted
+371#100ml slices
+374#100ml stirred
+376#100ml unpacked
+377#100ml unsifted
+378#100ml whipped
+379#100ml whole
+382#12 biscuits
+383#125ml
+384#15 kernels
+385#15ml
+386#15ml bits
+387#15ml chopped
+388#150ml
+389#175ml
+394#2 biscuits
+395#2 burritos
+396#2 eggs
+398#2 heaping teaspoons
+399#2 muffets
+400#2 per package
+402#2 pieces
+403#2 slices
+404#2 small
+405#2 tablespoons
+408#2oz cocktail
+410#2.5oz cocktail
+411#20 medium nuts
+412#20 pieces
+413#200ml
+414#225ml
+415#250ml
+418#250ml water + powder
+419#275ml
+427#3-4 heaping teaspoons
+428#30ml
+429#300ml
+430#375ml
+431#4 spears
+434#4.5oz cocktail
+435#5 hushpuppies
+436#5 leaves
+437#5 slices
+438#5 sticks
+439#5ml
+440#5ml chopped
+443#6 medium
+444#6 oysters
+445#6 pieces
+446#6 scallops
+447#15-20 nachos
+448#6-8 shrimps
+451#8 crayfish
+452#8-14 seeds
+453#8-9 rings
+454#dough for 1
+456#1 (0.8cm x 7.6cm dia) + liquid
+471#1 bottle (341ml)
+473#1 bean
+474#1 bird
+477#1 breast
+478#1 cherry
+479#1 cherry tomato
+480#1 chip
+481#1 clam
+482#1 clove
+484#1 container (355ml)
+486#1 cookie (1.9cm x 4.4cm dia)
+488#1 cookie (4.4cm dia)
+489#1 cookie (5.7cm x 3.8cm)
+490#1 cookie (6.3cm x 1.9cm x 0.6cm)
+491#1 cookie (6.3cm x 6.3cm)
+492#1 corm (6.7cm dia)
+493#1 cracker (4.8cm dia)
+494#1 cube (5.9g)
+495#1 doughnut (8.3cm dia)
+496#1 eclair shell (12.7cm x 5cm x 4.5cm)
+497#1 envelope (8 per 112g)
+498#1 flower
+499#1 floweret
+500#1 fruit (5.7cm x 6.4cm dia)
+501#1 fruit (7.6cm x  2.5cm dia)
+503#1 green onion (15cm x 0.75cm dia)
+504#1 jumbo
+505#1 leaf (25cm x 16cm)
+506#1 link (10cm x 2.2cm dia)
+507#1 link (5cm x 2cm dia)
+508#1 medium (11.4cm x 10.2cm x 4.4cm)
+509#1 medium fruit
+510#1 medium leaf
+511#1 muffin (3.8cm x 6.3cm dia)
+512#1 muffin (3.8cm x 6.4cm dia)
+513#1 nutmeat (shelled nut)
+514#1 onion (2.5cm dia)
+515#1 oyster
+516#1 oyster/soup cracker
+517#1 pad
+518#1 pancake (10.2cm dia)
+519#1 pancake (7cm dia)
+520#1 pastry (10.8cm dia)
+521#1 petiole
+522#1 piece (10cm x 2.5cm x 1.3cm)
+523#1 piece (2.54cm x 2.54cm)
+524#1 piece (5cm x 2cm x 1cm)
+525#1 piece (5.7cm x 2cm x 4.5cm)
+526#1 piece (6.3cm x 6.3cm x 3.8cm)
+527#1 pita (10.2cm dia)
+528#1 plant
+529#1 pod
+530#1 pod (34cm x 0.6cm dia)
+531#1 pod (39cm x 1.3cm dia)
+532#1 pod (8cm x 2cm dia)
+533#1 potato puff
+535#1 regular
+536#1 regular (20-25)
+537#1 sausage
+538#1 section
+539#1 shell
+540#1 shortcake
+541#1 slice (0.2cm x 7cm dia)
+542#1 slice (0.3cm x 12cm)
+543#1 slice (0.3cm x 2.5cm dia)
+544#1 slice (11.1cm x 6.3cm x 1.3cm)
+545#1 slice (11.4cm x 8.3cm x 1.9cm)
+548#1 slice (12.7cm x 7.6cm x 1.3cm)
+549#1 slice (8.3cm x 7cm x 1.6cm)
+553#1 small
+554#1 small burger
+555#1 small clam
+556#1 small egg
+558#1 small patty
+559#1 snack size
+560#1 sprig
+561#1 sprout
+562#1 square 8.9cm x 8.9cm)
+563#1 stalk
+564#1 spear (12.7cm long)
+565#1 stick (23.5cm x 0.9cm dia)
+568#1 thick slice
+569#1 thin square
+571#1 very small
+572#1 waffle (10.2cm x 10.2cm)
+573#1 waffle (11.4cm x 11.4cm)
+574#1/10 cake (5cm x 20cm dia)
+575#1/12 cake (2 layer, 20cm dia)
+576#1/12 cake (2 layer, 23cm dia)
+577#1/12 cake (20cm dia)
+578#1/12 cake (20cm x 20cm)
+580#1/12 cake (25.4cm dia tube)
+581#1/12 cake (340g)
+583#1/2 fillet
+584#1/2 fruit + 25ml liquid
+587#1/4 lemon wedge
+588#1/4 pie (15.2cm dia)
+589#1/6 pie
+590#1/6 strudel
+591#1/8 cake (20cm x 15cm)
+592#1/8 cake (23cm dia)
+593#1/8 crust (23cm dia)
+594#1/8 pie (17.8cm dia)
+595#1/8 pie (20cm dia)
+596#1/8 pizza (12'' )
+597#1/9 cake (20cm x 20cm)
+598#10 gumdrops
+599#10 large beans
+600#10 nibs
+601#10 peas
+602#10 peppers
+604#10 radishes
+605#10 sprigs
+606#10 sprouts
+607#10 sticks
+608#100 almonds
+609#100 kernels
+610#100 seeds
+612#100ml ground
+613#100ml hearts
+614#100ml hulled
+616#100ml not pitted
+617#100ml sections
+618#100ml shredded, not packed
+619#100ml small curd
+620#100ml spirals
+621#15 halves
+623#2 fruits + 30ml liquid
+624#2 medium
+625#2 small rice cakes
+626#25 almonds
+628#3 fruits
+629#3 halves + 26ml liquid
+630#3 stalks
+631#4 waterchestnuts (3.2-5.1cm dia)
+633#5 medium
+634#5 skins
+635#5 sprigs
+636#50 kernels
+637#50 seeds
+638#50ml
+639#6 small cups
+640#60ml
+641#75ml
+685#10 nuts
+693#1 bar (60g)
+696#1 envelope (13g)
+697#1 envelope (14g)
+700#1 bar (68g)
+701#1 bar (40g)
+702#1 candy roll
+703#1 bunch
+704#10 slices
+705#1 endive
+709#1 crab leg (500g)
+798#2 leaves
+799#1 cupcake
+800#3 saltine craquers
+801#1 packet (individual)
+858#100ml (7 kernels)
+859#1 large (20cm long)
+860#1 small (15cm long)
+861#1 small (10cm long)
+862#1 medium (11.5cm long)
+863#1 large (13cm long)
+864#1/5 block
+865#1/4 block
+866#1 individual container
+867#1 serving
+868#1 bottle (475ml)
+878#1 unprepared portion
+897#1 shell (7.6cm dia)
+898#1 shell (20cm dia)
+899#1 shell (25cm dia)
+900#1 shell (15.2cm dia)
+917#10-12 kernels
+923#45ml
+931#1 portion (pouch), unprepared
+932#80ml
+933#1 cutlet
+934#1 collar
+935#1 lung
+939#250ml, dry
+941#1 extra large egg
+942#1 medium egg
+943#250ml, crushed
+944#100ml crushed, diced or chunks
+946#10 crackers
+947#175ml prepared
+949#1 slice, small (5cm x 6.3cm x 4.4cm)
+950#1 slice, medium (10cm x 6.3cm x 4.4cm)
+951#1 slice, large (15cm x 6.3cm x 4.4cm)
+952#1 potato small (4.4cm-5.7cm dia)
+953#1 potato medium (5.7cm-8.3cm dia)
+954#1 potato large (7.6cm-10.8cm dia)
+955#15ml drained
+957#1 fruit + liquid
+959#1/2 fruit + liquid
+960#15 chestnuts
+962#5ml, ground
+963#15ml, ground
+964#5ml, leaves
+965#15ml, leaves
+966#1 pat (2.54cm x 2.54cm x 0.85cm)
+968#125ml diced
+969#125ml shredded
+971#125ml slices
+972#125ml large curd
+973#125ml small curd
+974#125ml unpacked
+975#250ml crumbled
+976#250ml diced
+977#250ml shredded
+978#250ml melted
+979#250ml slices
+981#250ml large curd
+982#250ml small curd
+983#250ml unpacked
+987#175g
+988#250ml, sifted
+989#15ml, sifted
+990#50g
+991#250ml, chopped
+992#1 jumbo egg
+994#250ml, diced
+995#250ml, shredded
+996#250ml, melted
+997#250ml, crumbled
+998#1 creamer
+999#250ml whipped
+1000#250ml fluid (yields 2 cups whipped)
+1001#5ml crumbled
+1002#15ml crumbled
+1003#250ml sprigs
+1004#100ml sprigs
+1005#1 dash
+1007#125ml halves
+1009#3 halves with liquid
+1010#250ml halves
+1011#125ml whole
+1012#250ml whole
+1013#125ml puree
+1014#250ml puree
+1015#125ml cubes
+1016#250ml cubes
+1017#125ml frozen
+1018#250ml frozen
+1019#100ml frozen
+1020#125ml thawed
+1021#250ml thawed
+1022#100ml thawed
+1023#1 large fruit (11.5cm long)
+1024#1 medium fruit (9cm long)
+1025#1 small fruit (7.5cm long)
+1026#125ml pitted
+1027#250ml not pitted
+1028#250ml pitted
+1029#125ml not pitted
+1030#20 fruits
+1031#125ml chopped
+1032#250ml chopped
+1033#1 slice (1.3cm thick)
+1034#5 fruits + liquid
+1035#2 figs
+1036#10 figs
+1037#125ml sections
+1038#250ml sections
+1040#40 fruits
+1041#15 fruits
+1042#5 fruits
+1043#1 wedge or slice of medium fruit
+1046#1 small fruit
+1047#1 melon
+1048#10 melon balls
+1049#100ml balls
+1050#125ml balls
+1051#250ml balls
+1052#1 melon (13.3cm dia)
+1053#1 melon (15.2cm - 17.8cm dia)
+1054#1 wedge (1/8 of a 13.3cm dia melon)
+1055#1 wedge (1/8 of a 15.2cm to 17.8cm dia melon)
+1056#1 medium fruit (6cm dia)
+1057#1 small fruit (5.7cm dia)
+1058#1 large fruit (6.4cm dia)
+1059#125ml mashed
+1060#250ml mashed
+1061#1 large (14.6cm long x 8.3cm dia)
+1062#1 medium (13cm long x 7.6cm dia)
+1063#1 small (11.4cm long x 7cm dia)
+1064#100ml halves or slices
+1065#125ml halves or slices
+1066#250ml halves or slices
+1067#1 half with liquid
+1068#2 halves
+1070#75ml halves
+1071#100ml chunks
+1072#125ml chunks
+1073#250ml chunks
+1076#125ml pulp
+1077#250ml pulp
+1078#1 fruit (17.8cm x 13.3cm dia)
+1079#1 melon (38cm x 19cm dia)
+1080#1 piece (1/16 of melon)
+1081#1 medium fruit (7cm dia)
+1082#1 large fruit (8..3cm dia)
+1083#1 small fruit (6.4cm dia)
+1084#1 extra small (less than 15cm long)
+1085#1 small (15cm to 17.5cm long)
+1086#1 medium (18cm to 20cm long)
+1087#1 large (20cm to 22.5cm long)
+1088#1 extra large (23cm or longer)
+1089#50 berries
+1090#100ml pitted, chopped
+1091#125ml pitted, chopped
+1092#250ml pitted, chopped
+1095#1 small fruit (3.8cm dia)
+1096#1/2 fruit (approx 11.5cm dia)
+1097#1/2 fruit (approx 10cm dia)
+1098#1/2 fruit (approx 9cm dia)
+1099#100ml seedless
+1100#125ml seedless
+1101#250ml seedless
+1107#1 large melon (16.5cm dia)
+1108#1 large wedge (1/8 large melon)
+1109#1 medium melon (12.7cm dia)
+1110#1 medium wedge (1/8 medium melon)
+1111#1 small melon (10.8cm dia)
+1112#1 small wedge (1/8 small melon)
+1113#1 large (7.8cm dia)
+1114#1 medium (6.7cm dia)
+1115#1 small (6cm dia)
+1116#1 large (7cm dia)
+1117#1 medium (6.4cm dia)
+1118#1 small (5cm dia)
+1119#125ml drained
+1120#250ml drained
+1121#9 fruits
+1122#100ml chopped or diced
+1123#125ml chopped or diced
+1124#250ml chopped or diced
+1125#1 small (2.5cm dia)
+1126#1 medium (3.2cm dia)
+1127#1 large (3.5cm dia)
+1128#1 extra large (4.1cm dia)
+1129#125ml packed
+1130#250ml packed
+1131#1 miniature box
+1132#50 raisins
+1133#75ml pitted
+1135#125ml crushed, diced or chunks
+1136#250ml crushed, diced or chunks
+1137#1 slice (7.6cm dia) + liquid
+1138#1 thin slice (1.3cm x 9cm dia)
+1140#1 spear tip (5cm long and less)
+1141#1 small spear (12.7cm long or less)
+1142#1 medium spear (13.3cm to 17.8cm long)
+1143#1 large spear (18.4cm to 21.6cm long)
+1144#1 extra large spear (22.2cm to 25.4cm long)
+1145#125ml pieces
+1146#250ml pieces
+1152#1 small (10.2cm dia)
+1153#1 medium (12.7cm dia)
+1154#1 large (14cm dia)
+1161#9 sprigs
+1166#1 eggplant unpeeled
+1173#125ml shredded or chopped
+1174#250ml shredded or chopped
+1175#100ml shredded or chopped
+1176#1 head (12.7cm dia)
+1177#1 small leaf
+1178#1 large leaf
+1179#1 root (24cm long)
+1186#1 medium (10.5cm long)
+1187#1 small (7.6cm long)
+1189#1 skin
+1191#1 squash
+1194#100ml undrained
+1195#125ml undrained
+1196#250ml undrained
+1197#10 sheets
+1200#1 leaf (31cm long)
+1209#1 radish (17cm long)
+1212#1 pancake
+1214#125ml hearts
+1215#250ml hearts
+1216#1 large gherkin (7.6cm long)
+1217#1 medium gherkin (7cm lon)
+1218#1 small gherkin (6.4cm lon)
+1219#1 large (10cm long)
+1220#1 medium (9.5cm long)
+1222#1 large (9.5cm long, 7.6cm dia)
+1228#1 large head (15cm to 18cm dia)
+1229#1 medium head (13cm to 15cm dia)
+1230#1 small head  (10cm dia)
+1231#1 cucumber (21cm long)
+1232#1 spear (about 13cm long)
+1234#10 beans
+1235#1 beet
+1237#1 large stalk (28cm to 31cm long)
+1238#1 medium stalk (19cm to 20cm long)
+1239#1 small stalk (13cm long)
+1241#125ml grated
+1242#250ml grated
+1243#1 large (18.4cm to 21.6cm long)
+1244#1 small (14cm long)
+1245#1 large strip (7.6cm long)
+1246#1 medium strip
+1247#1 thin strip
+1248#1 carrot
+1250#100ml strips
+1251#125ml strips
+1252#250ml strips
+1253#1 strip (10cm long)
+1255#yield from 1 large ear (20cm to 23cm long)
+1256#yield from 1 medium ear (17cm to 19cm long)
+1257#yield from 1 small ear (14cm to 16.5cm long)
+1261#1 large head
+1262#1 medium head (15cm dia)
+1263#1 small head
+1266#1 large slice
+1267#1 thin slice
+1268#10 large rings (7.6cm to 10cm dia)
+1269#10 medium rings (5cm to 7.6cm dia)
+1270#10 small rings (2.5cm to 5cm dia)
+1272#1 parsnip (23cm long)
+1274#1 large (7.6cm to 10.8cm dia)
+1275#1 medium (5.7cm to 8.3cm dia)
+1276#1 small (4.4cm to 6.4cm dia)
+1279#100ml unprepared
+1280#125ml unprepared
+1281#250ml unprepared
+1282#1 oval patty (7.6cm x 3.8cm x 1.3cm)
+1283#1 large (2.5cm to 3.2cm dia)
+1284#1 medium (1.9cm to 2.5cm dia)
+1286#1 squash (10cm dia)
+1290#100ml chopped or sliced
+1291#125ml chopped or sliced
+1292#250ml chopped or sliced
+1293#100ml cherry totatoes
+1294#125ml cherry tomatoes
+1295#250ml cherry tomatoes
+1296#1 italian tomato
+1297#1 plum tomato
+1298#1 large whole (7.6cm dia)
+1299#1 medium whole (6.6cm dia)
+1300#1 small whole (6cm dia)
+1301#1 wedge (1/4 of medium tomato)
+1302#1 medium (7cm long, 6.4cm dia)
+1303#1 ring (7.6cm dia, 0.6cm thick)
+1307#60ml hulled
+1308#125ml hulled
+1309#60ml ground
+1310#125ml ground
+1311#60ml slices
+1312#60ml whole
+1313#100ml slivered
+1314#60ml slivered
+1315#125ml slivered
+1316#1 almond
+1317#30ml packed
+1318#60ml packed
+1319#100ml whole or halves
+1320#60ml whole or halves
+1321#125ml whole or halves
+1322#125ml shredded, not packed
+1323#125ml shredded, packed
+1324#60ml chopped
+1325#60ml halves
+1326#60ml pieces
+1328#100ml halves or whole
+1329#60ml halves or whole
+1330#125ml halves or whole
+1331#2 pancakes
+1332#1 tostada
+1333#125ml regular
+1334#250ml regular
+1335#100ml regular
+1336#100ml ripple, ruffle or crinkle cut
+1337#125ml ripple, ruffle or crinkle cut
+1338#250ml ripple, ruffle or crinkle cut
+1339#250ml dry
+1340#250ml unsifted
+1341#250ml elbows
+1343#250ml spirals
+1344#125ml elbows
+1345#125ml spirals
+1348#20ml
+1349#20ml to 30ml
+1350#30ml to 40ml
+1352#10ml
+1353#500ml
+1354#1 bottle (330ml)
+1355#1 bottle (750ml)
+1356#40ml
+1357#1 mini bagel (6.4cm dia)
+1358#1 small bagel (7.6cm dia)
+1359#1 medium bagel (9-10cm dia)
+1360#1 large bagel (11.4cm dia)
+1362#1 small biscuit (3.8cm dia)
+1363#1 medium biscuit (6.4cm dia)
+1364#1 large biscuit (10.1cm dia)
+1366#100ml purchased
+1367#250ml purchased
+1368#100ml homemade
+1369#250ml homemade
+1370#1/2 medium bagel
+1373#250ml crumbs
+1374#1/8 cake
+1375#1/8 cake (20cm x 20cm)
+1376#1/10 cake (20cm x 20cm)
+1377#1/10 cake (20cm  x 15cm)
+1378#1/10 cake (454g)
+1379#1/8 cake (454g)
+1380#1/10 cake (25.4cm dia tube)
+1381#1/8 cake (25.4cm dia tube)
+1382#1/8 cake (5cm x20cm dia)
+1383#1/8 cake (482g)
+1384#1 mini doughnut (3.81cm) or doughnut hole
+1385#250ml poured
+1386#10 peanuts
+1388#3 patties (5.7cm dia)
+1389#250ml stirred
+1393#240ml
+1394#1 cube
+1399#125ml giblets
+1400#250ml giblets
+1401#1 social tea cookie
+1402#1 arrowroot cookie
+1403#1 animal cracker
+1405#1 bite size cookie
+1406#250ml crushed
+1407#1 cracker (2.54cm dia)
+1408#1 goldfish
+1410#1 cracker (11.4 x 6.4 x .13)
+1411#1 mini cream puff
+1413#1 mini
+1414#1 pastry  (17.8cm dia)
+1415#1 waffle cone
+1417#1 extra large
+1418#1 tart shell
+1420#1 shell (16.5cm dia)
+1424#1 piece (9.5cm x 4.4cm x .13cm dia)
+1425#15 slices
+1426#1 shell (30.5cm dia)
+1427#125ml chips
+1428#250ml chips
+1429#1 slice (.2cm x 3.5cm dia)
+1430#10 small beans
+1431#1 slice (.3cm x 6cm dia)
+1433#1 slice (.3cm x 9.5cm dia)
+1434#1 slice (.6cm x 5cm dia)
+1435#1 slice (.6cm x 6.5cm dia)
+1436#1 slice (.6cm x 8cm dia)
+1438#125ml sifted
+1440#125ml unsifted
+1443#1 bar (62.5g)
+1444#10 gummy worms
+1445#10 gummy fish
+1446#10 gummy bears
+1447#10 gummy dinosaurs
+1451#1 fruit (5.4cm dai)
+1453#1small biscuit (6.4cm dia)
+1454#30g
+1455#100g
+1456#40g
+1457#140g
+1458#6 halves
+1459#1/2 fruit
+1460#1/4 fruit
+1461#55g
+1462#2 fruits
+1463#1 medium fruit (5.7cm dia)
+1464#2 medium fruit
+1465#1/8 fruit
+1466#150g
+1467#15g
+1468#60ml unpacked
+1469#1/2 fruit (6.4cm)
+1470#85g
+1471#65g
+1472#6 spears
+1473#6 medium spears (13.3cm to 17.8cm long)
+1474#4 sprouts
+1475#1 leaf, large
+1476#1 leaf, medium
+1477#1 head, large (18cm dia)
+1478#1 head, medium (14.5cm  dia)
+1479#1 head, small (10.5cm dia)
+1480#8 medium
+1481#4g
+1482#110g
+1483#200ml pieces
+1484#0.5g
+1485#2 hearts
+1486#1/2 root (24cm long)
+1487#1/2 large
+1488#10 mushrooms
+1489#125g
+1490#10 pods
+1491#4 peppers
+1492#2 peppers
+1493#8 peppers
+1494#20g
+1495#2 pancakes (7cm dia)
+1496#75g
+1497#70g
+1498#160g
+1499#20 strips
+1500#3 radishes (17cm long)
+1501#1/2 medium
+1503#3 sticks (19.4cm x 1.6cm dia)
+1505#1/2 slice (11.1cm x 6.3cm x 1.3cm)
+1507#1/2 slice
+1508#1/2 shell (12.7cm dia)
+1509#1/2 pita (16.5cm dia)
+1510#80g
+1515#1/10 cake (340g)
+1517#10 cookies
+1518#1/2 cookie (7.0cm x 2.2cm)
+1521#2 medium cookies (5cm dia)
+1522#2 medium cookies (5.7cm dia)
+1525#2 medium cookies
+1526#3 medium cookies
+1527#3 medium cookies (6cm x 6cm)
+1528#2 medium cookies (1.9cm x 4.4cm)
+1529#2 medium cookies (1cm x 8cm)
+1530#2 medium cookies (7cm dia)
+1531#3 small cookies (4cm x 4cm)
+1532#3 medium wafers
+1533#2 medium cookies (8cm x 3cm x 1cm)
+1534#4 medium wafers
+1535#15 small crackers
+1536#3 medium crackers
+1537#5 medium crackers
+1538#4 toasts
+1539#2 medium crackers
+1540#4 medium crackers
+1541#6 crackers
+1542#4 sandwiches
+1543#10 thin squares
+1544#6 squares
+1545#7g
+1546#1/2 muffin
+1547#0.6g
+1550#1/2 muffin (5cm x 7cm)
+1552#1/6 crust (20cm dia)
+1555#1/2 roll
+1556#1/2 sweet roll (7cm x 7cm)
+1557#2 shells (12.7cm dia)
+1558#1/2 pastry
+1559#1 foot
+1560#100ml shaved
+1561#250ml shaved
+1562#1 half
+1563#1 date pitted
+1564#1 slice cooked
+1565#1 slice raw
+1567#15 pieces
+1568#27 pieces
+1569#17 pieces
+1570#16 pieces
+1571#18 pieces
+1572#no serving specified
+1573#10g
+1574#25g
+1576#2g
+1578#1g
+1579#60g
+1580#1 food guide serving = 90g
+1581#1 food guide serving = 75g
+1583#54g
+1585#4 small
+1586#355ml
+1587#130ml
+1589#90ml
+1590#5g
+1592#105ml
+1597#3g
+1598#amount to make 35ml
+1599#35ml
+1600#amount equivalent in sweetness to 4g of sugar
+1601#45g
+1602#215g
+1603#2 sticks
+1604#1/2 box
+1605#6 cookies
+1606#2 hushpuppies
+1607#195g
+1608#3 egg whites
+1609#2 large eggs
+1610#4 egg yolks
+1611#1/2 egg
+1612#10 eggs
+1614#1/2 bagel = 1 food guide serving
+1615#1 slice = 1 food guide portion
+1616#10 saltines
+1620#1 small papad
+1621#1 large papad
+1622#125ml crushed
+1624#1 flower and leaf
+1628#1 tortilla (7.6cm dia)
+1629#1 tortilla (12.7cm dia)
+1630#1 tortilla (20cm dia)
+1631#1 tortilla (25cm dia)
+1632#1 tortilla (15.2cm dia)
+1633#1 tortilla
+1634#1 tortilla (15.2-17.8cm dia)
+1635#1 tortilla (17.8-20cm dia)
+1636#1 tortilla (30.5cm dia)
+1637#1 whole pizza
+1638#2 cakes
+1639#14g
+1640#1 can (245ml)
+1641#15ml ground
+1645#1 yolk
+1646#1 pouch (30g)
+1647#3 cookies (27g)
+1648#2 cookies (18g)
+1649#1 burrito
+1650#4 crackers (20g)
+1651#4 cookies (36g)
+1652#35g
+1654#30 twists
+1656#60ml shredded, not packed
+1657#60ml shredded
+1658#100ml flowerets
+1659#125ml flowerets
+1660#250ml flowerets
+1661#1 licorice
+1662#2 rectangles
+1663#4 crackers
+1664#4 slices
+1665#3 medium
+1666#7 medium
+1667#99g
+1668#5 large
+1669#4 medium
+1670#3 pieces
+1671#3 slices
+1672#1 pee wee egg
+1674#1 small bag
+1675#17 chips
+1676#2 social tea
+1677#1 packet, prepared
+1678#1 small container
+1679#1 large container
+502333#26 small chips
+502334#2 jumbos
+502335#15 small
+502337#1 ear, small, 14 - 16.5cm
+502338#1 ear, medium, 17 - 19cm
+502339#1 ear, large, 20 - 23cm
+502340#1 container (200ml)
+502341#1/6 cake (15cm diam)
+502342#1/6
+502343#1 individual shell
+502390#1 sweet roll
+502403#1 medium (5cm dia)
+502404#1 large (6.4cm dia)
+502405#1 loaf
+502406#1 pizza
+502407#1 piece (5cm x 5cm)
+502408#1 spray (about 1/3 second)
+502409#1 rusk
+502410#1 slice (10.8cm x 10.8cm x 0.2cm)
+502411#1 snack bag
+502412#2 bars
+502413#1 hop & go
+502414#1 leclerc
+502415#nature valley
+502416#quaker
+502417#leclerc
+502418#president's choice
+502419#1 bar, unspecified
+502420#kellogg's
+502421#1 large egg white
+502422#1 naan (25 cm dia)
+502423#1 small (7.6 cm dia)
+502425#1 large (17.8 cm dia)
+502426#1 small (6.4 cm dia)
+502427#1 medium (7cm dia)
+502428#1 large (8.3cm dia)
+502429#1 tart
+502430#1/10 cake (1-layer)
+502431#1/10 cake (2-layer)
+502432#1 serving (approximately 10 sprays)
+502434#1 bottle (358ml)
+502435#1 cocktail
+502436#125ml flaked
+502437#250ml flakes
+502438#1 fillet (16cm x 9cm x 1cm)
+502439#1 square (7.5 cm x 9 cm)
+502440#1 samosa
+502441#1 sandwich, 15 cm long (6'')
+502442#1 stick (7.6 cm long)
+502443#1 fajita
+502444#1 quesadilla
+502445#1 large cookie (8.9 cm x 10.2 cm)
+502446#1 piece (1/10 of a loaf)
+502447#2 round waffles
+502448#1 piece, bone and skin removed
+502452#2 egg yolks
+502453#1/2 piece
+502454#1/4
