@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         MyAdapter rcAdapter = new MyAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
+        Database.importData(this);
     }
 
     @Override
