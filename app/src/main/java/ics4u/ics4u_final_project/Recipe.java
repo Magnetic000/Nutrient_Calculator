@@ -34,7 +34,7 @@ public class Recipe {
     private static final Font LABEL_BOLD = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
     private Double[] nutrients;
     private String title = "", instructions = "", servingName = "";
-    private int servings = -1;
+    private int servings = -1, photo;
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private ArrayList<String> list = new ArrayList<>();
 
@@ -54,6 +54,11 @@ public class Recipe {
      */
     public Recipe(String title) {
         this.title = title;
+    }
+
+    public Recipe(String title, int photo){
+        this.title = title;
+        this.photo = photo;
     }
 
     /**
@@ -236,6 +241,14 @@ public class Recipe {
      */
     public void setNutrients(Double[] nutrients) {
         this.nutrients = nutrients;
+    }
+
+    public void setPhoto(int photo){
+        this.photo = photo;
+    }
+
+    public int getPhoto(){
+        return photo;
     }
     
     
