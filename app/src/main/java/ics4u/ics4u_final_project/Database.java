@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -327,7 +328,7 @@ public class Database {
      * @param file The file path
      * @return
      */
-    public static Recipe open(File file) {
+    public static Recipe open(InputStream file) {
         System.out.println(file);
         Recipe opened = new Recipe();
         try {
@@ -818,16 +819,19 @@ public class Database {
      *
      * @return an array list containing all the recipes in the folder
      */
-    public static ArrayList<Recipe> importRecipes() {
+    public static ArrayList<Recipe> importRecipes(Context c) {
         ArrayList<Recipe> database = new ArrayList<>();
-        File folder = new File("recipes//");
-        File[] listOfFiles = folder.listFiles();
-        for (File file : listOfFiles) {
-            if (file.isFile() && file.getName().substring(file.getName().indexOf(".")).equals(".xml")) {
-                System.out.println("true");
-                database.add(open(file));
-            }
+        Field[] folder = R.xml.class.getFields();
+        for (Field f : folder) {
+            System.out.println(f.getName());
+            database.add(open(c.getResources().openRawResource(R.xml.banana_lentil_muffins)));
         }
+//        for (File file : listOfFiles) {
+//            if (file.isFile() && file.getName().substring(file.getName().indexOf(".")).equals(".xml")) {
+//                System.out.println("true");
+//                database.add(open(file));
+//            }
+//        }
         return database;
     }
 
