@@ -1,7 +1,6 @@
 package ics4u.ics4u_final_project;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         topToolBar.setLogo(R.drawable.logo);
         topToolBar.setLogoDescription(getResources().getString(R.string.logo_desc));
 
-        List<ItemObject> rowListItem = getAllItemList();
+        List<Recipe> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(MainActivity.this);
 
         RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -69,14 +68,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private List<ItemObject> getAllItemList() {
+    private List<Recipe> getAllItemList() {
 
-        List<ItemObject> allItems = new ArrayList<ItemObject>();
-        allItems.add(new ItemObject("United States", R.drawable.newyork));
-        allItems.add(new ItemObject("Canada", R.drawable.canada));
-        allItems.add(new ItemObject("United Kingdom", R.drawable.uk));
-        allItems.add(new ItemObject("Germany", R.drawable.germany));
-        allItems.add(new ItemObject("Sweden", R.drawable.sweden));
+        List<Recipe> allItems = new ArrayList<Recipe>();
+        allItems.add(new Recipe("Breadsticks", R.drawable.bread));
+        allItems.add(new Recipe("Fishsticks", R.drawable.fish));
+        allItems.add(new Recipe("Banana Bread", R.drawable.banana));
+        allItems.add(new Recipe("Seafood", R.drawable.crab));
+        allItems.add(new Recipe("Soup", R.drawable.soup));
 
         return allItems;
     }

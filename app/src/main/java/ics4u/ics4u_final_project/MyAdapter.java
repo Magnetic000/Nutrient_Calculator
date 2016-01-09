@@ -10,10 +10,10 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
 
-    private List<ItemObject> itemList;
+    private List<Recipe> itemList;
     private Context context;
 
-    public MyAdapter(Context context, List<ItemObject> itemList) {
+    public MyAdapter(Context context, List<Recipe> itemList) {
         this.itemList = itemList;
         this.context = context;
     }
@@ -28,8 +28,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
 
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
-        holder.countryName.setText(itemList.get(position).getName());
-        holder.countryPhoto.setImageResource(itemList.get(position).getPhoto());
+        holder.recipeName.setText(itemList.get(position).getName());
+        holder.recipeIcon.setImageResource(itemList.get(position).getPhoto());
     }
 
     @Override
