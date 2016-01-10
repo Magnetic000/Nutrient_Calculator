@@ -6,7 +6,6 @@ package ics4u.ics4u_final_project;
 import java.util.ArrayList;
 
 /**
- *
  * @author isaac
  */
 public class Ingredient {
@@ -18,7 +17,6 @@ public class Ingredient {
     private ArrayList<Measures> measures = new ArrayList<>();
 
     /**
-     *
      * @param i The ID of the ingredient
      * @param s The name of the ingredient
      */
@@ -34,7 +32,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @return the ID of the ingredient
      */
     public int getID() {
@@ -42,7 +39,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @return the name of the ingredient
      */
     public String getName() {
@@ -50,7 +46,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @return the quantity of the the ingredient
      */
     public int getQuantity() {
@@ -58,7 +53,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @return the unit used for the ingredient
      */
     public String getUnit() {
@@ -66,7 +60,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param i the ID of the ingredient
      */
     public void setID(int i) {
@@ -74,7 +67,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param s the name of the ingredient
      */
     public void setName(String s) {
@@ -82,7 +74,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param q the quantity of the ingredient
      */
     public void setQuantity(int q) {
@@ -90,7 +81,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param u the Unit of the ingredient
      */
     public void setUnit(String u) {
@@ -98,7 +88,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @return the index in the combobox of the fraction
      */
     public int getFractionNum() {
@@ -106,7 +95,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param fractionNum the index in the combobox of the fraction
      */
     public void setFractionNum(int fractionNum) {
@@ -114,7 +102,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @return The formatted name for output to the user
      */
     public String getFormattedName() {
@@ -122,7 +109,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param formattedName The formatted name for output to the user
      */
     public void setFormattedName(String formattedName) {
@@ -130,7 +116,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @return the name of the fraction
      */
     public String getFractionName() {
@@ -138,7 +123,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param FractionName the name of the fraction
      */
     public void setFractionName(String FractionName) {
@@ -146,7 +130,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @return the combobox index of the unit
      */
     public int getUnitNum() {
@@ -154,7 +137,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param unitNum the combobox index of the unit
      */
     public void setUnitNum(int unitNum) {
@@ -162,7 +144,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @return a full list of measures
      */
     public ArrayList<Measures> getMeasures() {
@@ -170,7 +151,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param measures set a full list of measures
      */
     public void setMeasures(ArrayList<Measures> measures) {
@@ -178,7 +158,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param ID the ID of the measure
      * @return the matching measure object
      */
@@ -192,8 +171,7 @@ public class Ingredient {
     }
 
     /**
-     *
-     * @param ID the ID of the measure
+     * @param ID   the ID of the measure
      * @param name the name of the measure
      */
     public void setMeasures(int ID, String name) {
@@ -205,8 +183,7 @@ public class Ingredient {
     }
 
     /**
-     *
-     * @param ID the ID of the measure
+     * @param ID         the ID of the measure
      * @param conversion the conversion rate of the measure
      */
     public void addMeasure(int ID, double conversion) {
@@ -214,7 +191,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param measure the measure to add, as an object
      */
     public void addMeasureFull(Measures measure) {
@@ -222,7 +198,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param index the index of the measure to remove
      */
     public void removeSingleMeasure(int index) {
@@ -230,7 +205,6 @@ public class Ingredient {
     }
 
     /**
-     *
      * @param index the position of the mesure
      * @return the specified measure object
      */
@@ -240,6 +214,7 @@ public class Ingredient {
 
     /**
      * Checks if 2 ingredients are equal
+     *
      * @param in Another ingedient object
      * @return a boolean with true of they are equal, false if not
      */
