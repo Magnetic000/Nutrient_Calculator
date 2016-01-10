@@ -18,9 +18,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Andrew on 2016-01-09.
- */
 public class IngredientSelectionActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private MenuItem mSearchAction;
