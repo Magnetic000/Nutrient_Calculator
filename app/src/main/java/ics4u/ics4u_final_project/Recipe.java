@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- *
  * @author isaac
  */
 public class Recipe {
@@ -39,8 +38,7 @@ public class Recipe {
     private ArrayList<String> list = new ArrayList<>();
 
     /**
-     *
-     * @param title the Title of the recipe
+     * @param title        the Title of the recipe
      * @param instructions the instructions for the recipe
      */
     public Recipe(String title, String instructions) {
@@ -49,14 +47,13 @@ public class Recipe {
     }
 
     /**
-     *
      * @param title the title of the recipe
      */
     public Recipe(String title) {
         this.title = title;
     }
 
-    public Recipe(String title, int photo){
+    public Recipe(String title, int photo) {
         this.title = title;
         this.photo = photo;
     }
@@ -68,7 +65,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @return the title of the recipe
      */
     public String getTitle() {
@@ -76,7 +72,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param title the title of the recipe
      */
     public void setTitle(String title) {
@@ -84,7 +79,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @return the instructions for the recipe
      */
     public String getInstructions() {
@@ -92,7 +86,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @return the number of ingredients
      */
     public int size() {
@@ -100,7 +93,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param instructions instructions for the recipe
      */
     public void setInstructions(String instructions) {
@@ -108,7 +100,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @return
      */
     public String getServingName() {
@@ -116,7 +107,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param servingName
      */
     public void setServingName(String servingName) {
@@ -124,7 +114,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @return the number of servings it makes
      */
     public int getServings() {
@@ -132,7 +121,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param servings the number of servings it makes
      */
     public void setServings(int servings) {
@@ -140,7 +128,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param ingred an ingredient object to add to the recipe
      */
     public void addIngredient(Ingredient ingred) {
@@ -148,8 +135,7 @@ public class Recipe {
     }
 
     /**
-     *
-     * @param index the index to overwrite/place the ingredient at
+     * @param index  the index to overwrite/place the ingredient at
      * @param ingred the ingredient to place
      */
     public void setSingleIngredient(int index, Ingredient ingred) {
@@ -157,7 +143,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @return the entire array of ingredients
      */
     public ArrayList<Ingredient> getIngredients() {
@@ -165,7 +150,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param ingredients the entire array of ingredients
      */
     public void setIngredients(ArrayList<Ingredient> ingredients) {
@@ -173,7 +157,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param index the index of the ingredient
      * @return the ingredient object from the specified index
      */
@@ -182,7 +165,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param ID the ID of the ingredient you want
      * @return the ingredient with the matching ID
      */
@@ -196,7 +178,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param index the index of the ingredient to remove
      */
     public void remove(int index) {
@@ -204,7 +185,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @return the list of ingredients for a combobox
      */
     public ArrayList<String> getList() {
@@ -212,7 +192,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param list the list of ingredients for a combobox
      */
     public void setList(ArrayList<String> list) {
@@ -220,7 +199,6 @@ public class Recipe {
     }
 
     /**
-     *
      * @param item the item to be added to the list
      */
     public void addListItem(String item) {
@@ -229,6 +207,7 @@ public class Recipe {
 
     /**
      * returns the nutrients array for the recipe
+     *
      * @return a double array containing the nutrient data
      */
     public Double[] getNutrients() {
@@ -237,24 +216,23 @@ public class Recipe {
 
     /**
      * sets the nutrients data for this recipe
+     *
      * @param nutrients a double array containing the nutrient data
      */
     public void setNutrients(Double[] nutrients) {
         this.nutrients = nutrients;
     }
 
-    public void setPhoto(int photo){
+    public void setPhoto(int photo) {
         this.photo = photo;
     }
 
-    public int getPhoto(){
+    public int getPhoto() {
         return photo;
     }
-    
-    
+
 
     /**
-     *
      * @param r another recipe
      * @return whether or not they are equal
      */
