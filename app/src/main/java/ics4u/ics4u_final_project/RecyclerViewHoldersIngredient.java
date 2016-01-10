@@ -14,7 +14,7 @@ public class RecyclerViewHoldersIngredient extends RecyclerView.ViewHolder imple
     public RecyclerViewHoldersIngredient(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
-        ingredientName = (TextView)itemView.findViewById(R.id.recipe_name);
+        ingredientName = (TextView)itemView.findViewById(R.id.ingredient_name);
     }
 
     @Override

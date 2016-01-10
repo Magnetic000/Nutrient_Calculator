@@ -23,12 +23,12 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     private boolean isSearchOpened = false;
     private EditText edtSeach;
     private LinearLayoutManager lLayoutIngredient;
-    ArrayList<Ingredient> results;
+    ArrayList<Ingredient> results = new ArrayList<Ingredient>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        results.add(new Ingredient(0,"bob"));
+        results.add(new Ingredient(0,"Please search for an ingredient"));
         setContentView(R.layout.rv_ingredientselect);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("Create A Recipe");
@@ -130,8 +130,16 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     private void doSearch() {
         results = Database.search(edtSeach.getText().toString());
         System.out.println("Search Done");
-        TextView t = (TextView) findViewById(R.id.textView);
-        System.out.println(results.size());
-        t.setText(results.get(0).getName());
+        //TextView t = (TextView) findViewById(R.id.textView);
+        //System.out.println(results.size());
+        //t.setText(results.get(0).getName());
+        List<Ingredient> rowListItem = getAllItemList();
+        lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
+
+        RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
+        rView.setLayoutManager(lLayoutIngredient);
+
+        IngredientAdapter rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, rowListItem);
+        rView.setAdapter(rcAdapter);
     }
 }
