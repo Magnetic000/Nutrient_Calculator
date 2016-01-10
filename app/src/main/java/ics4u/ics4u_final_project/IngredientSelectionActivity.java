@@ -23,15 +23,17 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     private boolean isSearchOpened = false;
     private EditText edtSeach;
     private LinearLayoutManager lLayoutIngredient;
+    ArrayList<Ingredient> results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        results.add(new Ingredient(0,"bob"));
         setContentView(R.layout.rv_ingredientselect);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("Create A Recipe");
         setSupportActionBar(mToolbar);
-
+        System.out.println(results.get(0).getName());
         List<Ingredient> rowListItem = getAllItemList();
         lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
 
@@ -44,14 +46,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
 
     private List<Ingredient> getAllItemList() {
 
-        List<Ingredient> allItems = new ArrayList<Ingredient>();
-        allItems.add(new Ingredient(0,"Breadsticks"));
-        allItems.add(new Ingredient(0,"Fishsticks"));
-        allItems.add(new Ingredient(0,"Banana Bread"));
-        allItems.add(new Ingredient(0,"Seafood"));
-        allItems.add(new Ingredient(0,"Soup"));
-
-        return allItems;
+        return results;
     }
 
     @Override
@@ -133,7 +128,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     }
 
     private void doSearch() {
-        ArrayList<Ingredient> results = Database.search(edtSeach.getText().toString());
+        results = Database.search(edtSeach.getText().toString());
         System.out.println("Search Done");
         TextView t = (TextView) findViewById(R.id.textView);
         System.out.println(results.size());
