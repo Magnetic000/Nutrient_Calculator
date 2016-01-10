@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">RecyclerView and CardView</string>
+    <string name="app_name">Nutrient Calculator</string>
     <string name="action_settings">Settings</string>
     <string name="action_refresh">Settings</string>
     <string name="action_new">Settings</string>
     <string name="logo_desc">App logo</string>
     <string name="recipe_name">Breadstick</string>
     <string name="recipe_description">Basic Information</string>
+    <string name="search"></string>
 </resources>
