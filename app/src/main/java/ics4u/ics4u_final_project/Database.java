@@ -41,13 +41,11 @@ public class Database {
     public static void importData(Context c) {
         System.out.println("food Name");
         ArrayList<String> file = readFile(c.getResources().openRawResource(R.raw.food_nm));
-        for (int i = 0; i < file.size(); i++) {
-            System.out.println(file.get(i));
-        }
         int fields = getFields(file.get(0));
         String[] line = new String[fields];
         Object[] temp = new Object[fields];
-        for (int i = 0; i < file.size(); i++) {
+        int fileSize = file.size();
+        for (int i = 0; i < fileSize; i++) {
             String s = file.get(i);
             for (int j = 0; j < fields - 1; j++) {//go through each of the fields in the line
                 line[j] = s.substring(0, s.indexOf(delimiter));//add the field
@@ -56,7 +54,7 @@ public class Database {
             line[fields - 1] = s;
             temp[0] = Integer.parseInt(line[0]);
             temp[1] = line[1];
-            fdName.add(temp);
+            fdName.add(temp.clone());
         }
         System.out.println("Conv Fac");
         file = readFile(c.getResources().openRawResource(R.raw.conv_fac));
@@ -76,7 +74,7 @@ public class Database {
             temp[0] = Integer.parseInt(line[0]);
             temp[1] = Integer.parseInt(line[1]);
             temp[2] = Double.parseDouble(line[2]);
-            convFact.add(temp);
+            convFact.add(temp.clone());
         }
         System.out.println("Nt amount");
         file = readFile(c.getResources().openRawResource(R.raw.nt_amt));
@@ -96,7 +94,7 @@ public class Database {
             temp[0] = Integer.parseInt(line[0]);
             temp[1] = Integer.parseInt(line[1]);
             temp[2] = Double.parseDouble(line[2]);
-            ntAmt.add(temp);
+            ntAmt.add(temp.clone());
         }
         System.out.println("measures");
         file = readFile(c.getResources().openRawResource(R.raw.measure));
@@ -112,7 +110,7 @@ public class Database {
             line[fields - 1] = s;
             temp[0] = Integer.parseInt(line[0]);
             temp[1] = line[1];
-            msName.add(temp);
+            msName.add(temp.clone());
         }
         System.out.println("Nt name");
         file = readFile(c.getResources().openRawResource(R.raw.nt_nm));
@@ -129,7 +127,7 @@ public class Database {
             temp[0] = Integer.parseInt(line[0]);
             temp[1] = line[1];
             temp[2] = line[2];
-            ntName.add(temp);
+            ntName.add(temp.clone());
         }
     }
 
@@ -169,6 +167,10 @@ public class Database {
      * @return a list of the matches
      */
     public static ArrayList<Ingredient> search(String keyword) {
+        keyword = keyword.toUpperCase();
+        //System.out.println(keyword);
+        //System.out.println(fdName.get(0)[1].toString());
+        //System.out.println(fdName.get(0)[1].toString().contains(keyword));
         //create new arraylist for the matched
         ArrayList<Ingredient> match = new ArrayList<>(0);
         int index;
@@ -185,13 +187,13 @@ public class Database {
         }
         //add the remaining part of the string to the queries
         query.add(keyword);
-        System.out.println(keyword);
+        //System.out.println(keyword);
         //read from the nutrients to check if they match the queries
         //read from the file
         //read each line and check if it matched the search terms
         int length = fdName.size();
         for (int i = 0; i < length; i++) {
-            System.out.println(fdName.get(i)[1]);
+            //System.out.println(fdName.get(i)[1]);
             boolean matches = true;
             //check if the food item matches the query
             for (int j = 0; j < query.size(); j++) {
@@ -201,7 +203,7 @@ public class Database {
             }
             //if it does add it to the list of matches
             if (matches) {
-                System.out.println(fdName.get(i)[1]);
+                //System.out.println(fdName.get(i)[1]);
                 match.add(new Ingredient((Integer) fdName.get(i)[0], (String) fdName.get(i)[1]));
             }
         }
