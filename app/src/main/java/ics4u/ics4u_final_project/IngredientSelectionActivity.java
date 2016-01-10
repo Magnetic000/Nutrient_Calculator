@@ -1,66 +1,62 @@
 package ics4u.ics4u_final_project;
 
-
 import android.content.Context;
-import android.os.Build;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class RecipeCreator extends AppCompatActivity {
-
+/**
+ * Created by Andrew on 2016-01-09.
+ */
+public class IngredientSelectionActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
+    private LinearLayoutManager lLayoutIngredient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AdapterView.OnItemSelectedListener onSpinner = new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView myTextView = (TextView) findViewById(R.id.textView);
-                myTextView.setText((String) parent.getItemAtPosition(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        };
-        setContentView(R.layout.recipe_maker);
-        Spinner dropdown = (Spinner) findViewById(R.id.spinner1);
-        String[] items = new String[]{"", "1", "2", "three"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setPrompt("Please select a value");
-        dropdown.setAdapter(adapter);
-        dropdown.setOnItemSelectedListener(onSpinner);
-        items[0] = "Changed";
-        adapter.notifyDataSetChanged();//tells adapter that data set has changed and updates
-
+        setContentView(R.layout.rv_ingredientselect);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("Create A Recipe");
         setSupportActionBar(mToolbar);
 
+        List<Ingredient> rowListItem = getAllItemList();
+        lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
 
+        RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
+        rView.setLayoutManager(lLayoutIngredient);
 
+        IngredientAdapter rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, rowListItem);
+        rView.setAdapter(rcAdapter);
     }
 
+    private List<Ingredient> getAllItemList() {
+
+        List<Ingredient> allItems = new ArrayList<Ingredient>();
+        allItems.add(new Ingredient(0,"Breadsticks"));
+        allItems.add(new Ingredient(0,"Fishsticks"));
+        allItems.add(new Ingredient(0,"Banana Bread"));
+        allItems.add(new Ingredient(0,"Seafood"));
+        allItems.add(new Ingredient(0,"Soup"));
+
+        return allItems;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -141,6 +137,6 @@ public class RecipeCreator extends AppCompatActivity {
     }
 
     private void doSearch() {
-        //
+
     }
 }

@@ -18,10 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeCreator"
+        <activity android:name=".MeasureSelectionActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
         <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
+        <activity android:name=".IngredientSelectionActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
     </application>

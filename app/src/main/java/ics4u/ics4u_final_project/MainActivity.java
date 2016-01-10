@@ -8,14 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
-import java.lang.reflect.Field;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recyclerview_activity);
+        setContentView(R.layout.rv_mainactivity);
         setTitle(null);
 
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
@@ -38,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
 
-        MyAdapter rcAdapter = new MyAdapter(MainActivity.this, rowListItem);
+        RecipeAdapter rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
         Database.importData(this);
         Database.importRecipes(this);
@@ -86,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void createRecipe() {
-        Intent intent = new Intent(this, RecipeCreator.class);
+        Intent intent = new Intent(this, IngredientSelectionActivity.class);
         startActivity(intent);
     }
 
