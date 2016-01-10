@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         rView.setAdapter(rcAdapter);
         Database.importData(this);
         Database.importRecipes(this);
+//        for(int i = 0; i < Database.fdName.size(); i++){
+//            System.out.println(Database.fdName.get(i)[1]);
+//        }
     }
 
     @Override

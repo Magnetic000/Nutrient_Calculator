@@ -146,6 +146,7 @@ public class RecipeCreator extends AppCompatActivity {
         ArrayList<Ingredient> results = Database.search(edtSeach.getText().toString());
         System.out.println("Search Done");
         TextView t = (TextView) findViewById(R.id.textView);
+        System.out.println(results.size());
         t.setText(results.get(0).getName());
     }
 }

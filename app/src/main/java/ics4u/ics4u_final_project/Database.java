@@ -14,12 +14,14 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
 import javax.xml.transform.stream.*;
+
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -39,6 +41,9 @@ public class Database {
     public static void importData(Context c) {
         System.out.println("food Name");
         ArrayList<String> file = readFile(c.getResources().openRawResource(R.raw.food_nm));
+        for (int i = 0; i < file.size(); i++) {
+            System.out.println(file.get(i));
+        }
         int fields = getFields(file.get(0));
         String[] line = new String[fields];
         Object[] temp = new Object[fields];
@@ -141,6 +146,7 @@ public class Database {
             e.printStackTrace();
         }
         System.out.println("finish read");
+
         return a;
     }
 
@@ -179,10 +185,13 @@ public class Database {
         }
         //add the remaining part of the string to the queries
         query.add(keyword);
+        System.out.println(keyword);
         //read from the nutrients to check if they match the queries
         //read from the file
         //read each line and check if it matched the search terms
-        for (int i = 0; i < fdName.size(); i++) {
+        int length = fdName.size();
+        for (int i = 0; i < length; i++) {
+            System.out.println(fdName.get(i)[1]);
             boolean matches = true;
             //check if the food item matches the query
             for (int j = 0; j < query.size(); j++) {
@@ -192,6 +201,7 @@ public class Database {
             }
             //if it does add it to the list of matches
             if (matches) {
+                System.out.println(fdName.get(i)[1]);
                 match.add(new Ingredient((Integer) fdName.get(i)[0], (String) fdName.get(i)[1]));
             }
         }
