@@ -1,20 +1,30 @@
 package ics4u.ics4u_final_project;
 
+
 import android.content.Context;
+import android.os.Build;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+
 public class RecipeCreator extends AppCompatActivity {
-    private Toolbar rToolbar;
+
+    private Toolbar mToolbar;
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
@@ -22,18 +32,47 @@ public class RecipeCreator extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AdapterView.OnItemSelectedListener onSpinner = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TextView myTextView = (TextView) findViewById(R.id.textView);
+                myTextView.setText((String) parent.getItemAtPosition(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        };
         setContentView(R.layout.recipe_maker);
-        setTitle("Create A Recipe");
+        Spinner dropdown = (Spinner) findViewById(R.id.spinner1);
+        String[] items = new String[]{"", "1", "2", "three"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setPrompt("Please select a value");
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(onSpinner);
+        items[0] = "Changed";
+        adapter.notifyDataSetChanged();//tells adapter that data set has changed and updates
 
-        rToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(rToolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("Create A Recipe");
+        setSupportActionBar(mToolbar);
 
+
+
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_recipe, menu);
+        return true;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_recipe, menu);
-        return true;
+        mSearchAction = menu.findItem(R.id.action_search);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -41,8 +80,6 @@ public class RecipeCreator extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_settings:
-                return true;
             case R.id.action_search:
                 handleMenuSearch();
                 return true;
@@ -51,10 +88,10 @@ public class RecipeCreator extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void handleMenuSearch(){
+    protected void handleMenuSearch() {
         ActionBar action = getSupportActionBar(); //get the actionbar
 
-        if(isSearchOpened){ //test if the search is open
+        if (isSearchOpened) { //test if the search is open
 
             action.setDisplayShowCustomEnabled(false); //disable a custom view inside the actionbar
             action.setDisplayShowTitleEnabled(true); //show the title in the action bar
@@ -74,7 +111,7 @@ public class RecipeCreator extends AppCompatActivity {
             action.setCustomView(R.layout.search_bar);//add the custom view
             action.setDisplayShowTitleEnabled(false); //hide the title
 
-            edtSeach = (EditText)action.getCustomView().findViewById(R.id.edtSearch); //the text editor
+            edtSeach = (EditText) action.getCustomView().findViewById(R.id.edtSearch); //the text editor
 
             //this is a listener to do a search when the user clicks on search button
             edtSeach.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -103,16 +140,7 @@ public class RecipeCreator extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        if(isSearchOpened) {
-            handleMenuSearch();
-            return;
-        }
-        super.onBackPressed();
-    }
-
-    public void doSearch(){
-
+    private void doSearch() {
+        //
     }
 }

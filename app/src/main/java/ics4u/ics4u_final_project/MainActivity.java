@@ -64,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Refresh App", Toast.LENGTH_LONG).show();
         }
         if (id == R.id.action_new) {
-            Intent intent = new Intent(MainActivity.this, RecipeCreator.class);
-            startActivity(intent);
+            createRecipe();
         }
 
         return super.onOptionsItemSelected(item);
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void createRecipe(View view) {
+    public void createRecipe() {
         Intent intent = new Intent(this, RecipeCreator.class);
         startActivity(intent);
     }

@@ -5,15 +5,9 @@
     tools:context=".RecipeCreator">
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/action_search"
         android:title="@string/search"
-        android:orderInCategory="200"
+        android:orderInCategory="100"
         android:icon="@drawable/search"
         app:showAsAction="ifRoom"
         />
