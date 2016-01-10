@@ -163,10 +163,9 @@ public class Database {
      * @return a list of the matches
      */
     public static ArrayList<Ingredient> search(String keyword) {
-        double temp;
         //create new arraylist for the matched
         ArrayList<Ingredient> match = new ArrayList<>(0);
-        int counter = 0, index;
+        int index;
         //create new arraylist for the search queryies
         ArrayList<String> query = new ArrayList<>(0);
         //separate the search string into queryies

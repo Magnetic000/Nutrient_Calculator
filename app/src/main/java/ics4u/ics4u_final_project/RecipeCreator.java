@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class RecipeCreator extends AppCompatActivity {
 
@@ -141,6 +143,9 @@ public class RecipeCreator extends AppCompatActivity {
     }
 
     private void doSearch() {
-        //
+        ArrayList<Ingredient> results = Database.search(edtSeach.getText().toString());
+        System.out.println("Search Done");
+        TextView t = (TextView) findViewById(R.id.textView);
+        t.setText(results.get(0).getName());
     }
 }
