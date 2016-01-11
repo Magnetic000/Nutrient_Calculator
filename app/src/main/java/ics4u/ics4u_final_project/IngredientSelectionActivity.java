@@ -47,8 +47,8 @@ public class IngredientSelectionActivity extends AppCompatActivity {
             }
         };
         Spinner ingredientDropdown = (Spinner) findViewById(R.id.category_combobox);
-        String[] items = new String[]{"", "1", "2", "three"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        String[] ingredientCategories = new String[]{"", "1", "2", ""};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
         ingredientDropdown.setPrompt("Please select a category of ingredient");
         ingredientDropdown.setAdapter(adapter);
         ingredientDropdown.setOnItemSelectedListener(onSpinner);
