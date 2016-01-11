@@ -1,6 +1,7 @@
 package ics4u.ics4u_final_project;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +18,12 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayoutManager lLayout;
     public ArrayList<Recipe> importedRecipes;
+    public static SharedPreferences prefs = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Database.importData(this);
+        prefs = getSharedPreferences("ics4u.ics4u_final_project", MODE_PRIVATE);
         importedRecipes = Database.importRecipes(this);
         importedRecipes.get(0).setPhoto(R.drawable.shaq);
         super.onCreate(savedInstanceState);

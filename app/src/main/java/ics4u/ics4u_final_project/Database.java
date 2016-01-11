@@ -14,6 +14,7 @@ import org.xml.sax.SAXException;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -851,18 +852,37 @@ public class Database {
      */
     public static ArrayList<Recipe> importRecipes(Context c) {
         ArrayList<Recipe> database = new ArrayList<>();
-        Field[] folder = R.xml.class.getFields();
-        //for (Field f : folder) {
-            //System.out.println(f.getName());
+        if (MainActivity.prefs.getBoolean("firstrun", true)) {
+            MainActivity.prefs.edit().putBoolean("firstrun", false).commit();
             database.add(open(c.getResources().openRawResource(R.raw.banana_lentil_muffins)));
-            System.out.println(database.get(0).toString());
-        //}
-//        for (File file : listOfFiles) {
-//            if (file.isFile() && file.getName().substring(file.getName().indexOf(".")).equals(".xml")) {
-//                System.out.println("true");
-//                database.add(open(file));
-//            }
-//        }
+            File recipeFolder = new File(c.getFilesDir() + "/recipes/");
+            recipeFolder.mkdir();
+            try {
+                save(new File(c.getFilesDir() + "/recipes/" + database.get(0).getTitle() + ".xml"), database.get(0));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            File folder = new File(c.getFilesDir() + "/recipes/");
+            File[] listOfFiles = folder.listFiles();
+            for (File file : listOfFiles) {
+                if (file.isFile() && file.getName().substring(file.getName().indexOf(".")).equals(".xml")) {
+                    System.out.println("true");
+                    try {
+                        database.add(open(new FileInputStream(file)));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+//        Field[] folder = R.xml.class.getFields();
+//        //for (Field f : folder) {
+//            //System.out.println(f.getName());
+//
+//            System.out.println(database.get(0).toString());
+//        //}
+
         return database;
     }
 
