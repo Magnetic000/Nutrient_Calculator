@@ -30,21 +30,54 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     private boolean isSearchOpened = false;
     private EditText edtSeach;
     private LinearLayoutManager lLayoutIngredient;
-    ArrayList<Ingredient> results = new ArrayList<>();
+    ArrayList<Ingredient> results = new ArrayList<>(), catResults = new ArrayList<>();
     String[] ingredientCategories;
     ArrayAdapter<String> adapter;
     Spinner ingredientDropdown;
+    IngredientAdapter rcAdapter;
+    List<Ingredient> rowListItem;
+    RecyclerView rView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        results.add(new Ingredient(0,"Search for an Ingredient. Use commas to separate keywords."));
+        results.add(new Ingredient(0, "Search for an Ingredient. Use commas to separate keywords."));
         setContentView(R.layout.rv_ingredientselect);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("Create A Recipe");
+        setSupportActionBar(mToolbar);
+        rowListItem = getAllItemList();
+        lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
+
+        rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
+        rView.setLayoutManager(lLayoutIngredient);
+
+        rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, rowListItem);
 
         AdapterView.OnItemSelectedListener onSpinner = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                String selCat = ingredientCategories[position].toString();
+                System.out.println(selCat);
+                if (!selCat.equals("Show all")&& !selCat.equals("Show All") && !selCat.equals("")) {
+                    catResults = (ArrayList<Ingredient>) results.clone();
+                    for (int i = catResults.size() - 1; i >= 0; i--) {
+                        if (catResults.get(i).getName().contains(",")) {
+                            if (!catResults.get(i).getName().substring(0, catResults.get(i).getName().indexOf(",")).equals(selCat)) {
+                                catResults.remove(i);
+                            }
+                        } else if (!catResults.get(i).getName().equals(selCat)) {
+                            catResults.remove(i);
+                        }
+                    }
+                    rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, catResults);
+                    rView.setAdapter(rcAdapter);
+                } else {
+                    System.out.println("reset");
+                    rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, results);
+                    rView.setAdapter(rcAdapter);
+                }
             }
 
             @Override
@@ -59,18 +92,6 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         ingredientDropdown.setOnItemSelectedListener(onSpinner);
 
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle("Create A Recipe");
-        setSupportActionBar(mToolbar);
-        System.out.println(results.get(0).getName());
-        List<Ingredient> rowListItem = getAllItemList();
-        lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
-
-        RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
-        rView.setLayoutManager(lLayoutIngredient);
-
-        IngredientAdapter rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, rowListItem);
-        rView.setAdapter(rcAdapter);
     }
 
     private List<Ingredient> getAllItemList() {
@@ -158,7 +179,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
 
     private void doSearch(boolean fetchCats) {
         String searchText = edtSeach.getText().toString();
-        if (searchText.length() < 2){
+        if (searchText.length() < 2) {
             Toast.makeText(getBaseContext(), "Search keyword too short, please be more specific", Toast.LENGTH_SHORT).show();
         } else {
             results = Database.search(searchText);
@@ -166,51 +187,54 @@ public class IngredientSelectionActivity extends AppCompatActivity {
             //TextView t = (TextView) findViewById(R.id.textView);
             //System.out.println(results.size());
             //t.setText(results.get(0).getName());
-            if (results.isEmpty()){
+            if (results.isEmpty()) {
                 Toast.makeText(getBaseContext(), "Nothing Found", Toast.LENGTH_SHORT).show();
             } else {
-                List<Ingredient> rowListItem = getAllItemList();
-                //add the matches to the list model
-                ArrayList<String> cats = new ArrayList<>();
-                cats.add("Show All");
-                for (int i = 0; i < rowListItem.size(); i++) {
-                    if (fetchCats) {
-                        if (rowListItem.get(i).getName().contains(",")) {
-                            cats.add(rowListItem.get(i).getName().substring(0, rowListItem.get(i).getName().indexOf(",")));
-                        } else {
-                            cats.add(rowListItem.get(i).getName());
+                if (fetchCats) {
+                    //add the matches to the list model
+                    ArrayList<String> cats = new ArrayList<>();
+                    cats.add("Show All");
+                    for (int i = 0; i < results.size(); i++) {
+                        if (fetchCats) {
+                            if (results.get(i).getName().contains(",")) {
+                                cats.add(results.get(i).getName().substring(0, results.get(i).getName().indexOf(",")));
+                            } else {
+                                cats.add(results.get(i).getName());
+                            }
                         }
                     }
-                }
-                for (int i = 0; i < cats.size(); i++){
-                    for (int j = i + 1; j < cats.size(); j++) {
-                        if (cats.get(i).equals(cats.get(j))) {
-                            cats.remove(j);
-                            j--;
+                    for (int i = 0; i < cats.size(); i++) {
+                        for (int j = i + 1; j < cats.size(); j++) {
+                            if (cats.get(i).equals(cats.get(j))) {
+                                cats.remove(j);
+                                j--;
+                            }
                         }
                     }
+                    System.out.println(cats.size());
+                    String[] categories = new String[cats.size()];
+                    for (int i = 0; i < cats.size(); i++) {
+                        categories[i] = cats.get(i);
+                        //System.out.println(categories[i]);
+                    }
+
+                    ingredientCategories = categories;
+                    adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
+                    ingredientDropdown.setAdapter(adapter);
                 }
-                System.out.println(cats.size());
-                String[] categories = new String[cats.size()];
-                for (int i = 0; i < cats.size(); i++){
-                    categories[i] = cats.get(i);
-                    System.out.println(categories[i]);
-                }
-                ingredientCategories = categories;
-                adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
-                ingredientDropdown.setAdapter(adapter);
                 lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
 
-                RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
+                rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
                 rView.setLayoutManager(lLayoutIngredient);
 
-                IngredientAdapter rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, rowListItem);
+                rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, results);
                 rView.setAdapter(rcAdapter);
             }
         }
     }
+
     public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 }
