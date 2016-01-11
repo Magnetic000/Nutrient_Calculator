@@ -46,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
 //        for(int i = 0; i < Database.fdName.size(); i++){
 //            System.out.println(Database.fdName.get(i)[1]);
 //        }
-        try {
-            System.out.println(this.getFilesDir().toString());
-            System.out.println(this.getFilesDir().getAbsolutePath());
-            Database.save(new File(this.getFilesDir(), importedRecipes.get(0).getTitle() + ".xml"), importedRecipes.get(0));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        importedRecipes.get(0).export(new File(this.getFilesDir(), importedRecipes.get(0).getTitle() + ".pdf"));
+//        try {
+//            System.out.println(this.getFilesDir().toString());
+//            System.out.println(this.getFilesDir().getAbsolutePath());
+//            Database.save(new File(this.getFilesDir(), importedRecipes.get(0).getTitle() + ".xml"), importedRecipes.get(0));
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+        //importedRecipes.get(0).export(new File(this.getFilesDir(), importedRecipes.get(0).getTitle() + ".pdf"));
     }
 
     @Override
