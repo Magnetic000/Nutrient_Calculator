@@ -30,6 +30,9 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     private EditText edtSeach;
     private LinearLayoutManager lLayoutIngredient;
     ArrayList<Ingredient> results = new ArrayList<>();
+    String[] ingredientCategories;
+    ArrayAdapter<String> adapter;
+    Spinner ingredientDropdown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +43,16 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         AdapterView.OnItemSelectedListener onSpinner = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         };
-        Spinner ingredientDropdown = (Spinner) findViewById(R.id.category_combobox);
-        String[] ingredientCategories = new String[]{"", "1", "2", ""};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
+        ingredientDropdown = (Spinner) findViewById(R.id.category_combobox);
+        ingredientCategories = new String[]{"Show all"};
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
         ingredientDropdown.setPrompt("Please select a category of ingredient");
         ingredientDropdown.setAdapter(adapter);
         ingredientDropdown.setOnItemSelectedListener(onSpinner);
@@ -129,7 +133,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                        doSearch();
+                        doSearch(true);
                         return true;
                     }
                     return false;
@@ -151,7 +155,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         }
     }
 
-    private void doSearch() {
+    private void doSearch(boolean fetchCats) {
         String searchText = edtSeach.getText().toString();
         if (searchText.length() < 2){
             Toast.makeText(getBaseContext(), "Search keyword too short, please be more specific", Toast.LENGTH_SHORT).show();
@@ -165,6 +169,35 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Nothing Found", Toast.LENGTH_SHORT).show();
             } else {
                 List<Ingredient> rowListItem = getAllItemList();
+                //add the matches to the list model
+                ArrayList<String> cats = new ArrayList<>();
+                cats.add("Show All");
+                for (int i = 0; i < rowListItem.size(); i++) {
+                    if (fetchCats) {
+                        if (rowListItem.get(i).getName().contains(",")) {
+                            cats.add(rowListItem.get(i).getName().substring(0, rowListItem.get(i).getName().indexOf(",")));
+                        } else {
+                            cats.add(rowListItem.get(i).getName());
+                        }
+                    }
+                }
+                for (int i = 0; i < cats.size(); i++){
+                    for (int j = i + 1; j < cats.size(); j++) {
+                        if (cats.get(i).equals(cats.get(j))) {
+                            cats.remove(j);
+                            j--;
+                        }
+                    }
+                }
+                System.out.println(cats.size());
+                String[] categories = new String[cats.size()];
+                for (int i = 0; i < cats.size(); i++){
+                    categories[i] = cats.get(i);
+                    System.out.println(categories[i]);
+                }
+                ingredientCategories = categories;
+                adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
+                ingredientDropdown.setAdapter(adapter);
                 lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
 
                 RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
