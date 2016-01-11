@@ -49,10 +49,11 @@ public class MainActivity extends AppCompatActivity {
         try {
             System.out.println(this.getFilesDir().toString());
             System.out.println(this.getFilesDir().getAbsolutePath());
-            Database.save(new File(this.getFilesDir(), "recipe.xml"), importedRecipes.get(0));
+            Database.save(new File(this.getFilesDir(), importedRecipes.get(0).getTitle() + ".xml"), importedRecipes.get(0));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        importedRecipes.get(0).export(new File(this.getFilesDir(), importedRecipes.get(0).getTitle() + ".pdf"));
     }
 
     @Override
