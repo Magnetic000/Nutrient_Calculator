@@ -10,9 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +36,24 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         results.add(new Ingredient(0,"Search for an Ingredient. Use commas to separate keywords."));
         setContentView(R.layout.rv_ingredientselect);
+
+        AdapterView.OnItemSelectedListener onSpinner = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        };
+        Spinner ingredientDropdown = (Spinner) findViewById(R.id.category_combobox);
+        String[] items = new String[]{"", "1", "2", "three"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        ingredientDropdown.setPrompt("Please select a category of ingredient");
+        ingredientDropdown.setAdapter(adapter);
+        ingredientDropdown.setOnItemSelectedListener(onSpinner);
+
+
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("Create A Recipe");
         setSupportActionBar(mToolbar);
