@@ -222,7 +222,7 @@ public class Database {
      * @param file The file path
      * @throws FileNotFoundException
      */
-    public static void save(File file) throws FileNotFoundException {
+    public static void save(File file, Recipe r) throws FileNotFoundException {
         //PrintWriter p = new PrintWriter(file + ".txt");
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -235,34 +235,34 @@ public class Database {
 
 //             title element
             Element title = doc.createElement("title");
-            title.appendChild(doc.createTextNode(recipe.getTitle()));
+            title.appendChild(doc.createTextNode(r.getTitle()));
 //            p.println(GUI.recipe.getTitle());
             rootElement.appendChild(title);
 //             title element
             Element instructions = doc.createElement("instructions");
-            instructions.appendChild(doc.createTextNode(recipe.getInstructions()));
+            instructions.appendChild(doc.createTextNode(r.getInstructions()));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(instructions);
 
             Element servings = doc.createElement("servings");
-            instructions.appendChild(doc.createTextNode(recipe.getServings() + ""));
+            instructions.appendChild(doc.createTextNode(r.getServings() + ""));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(servings);
 
             Element servingName = doc.createElement("servingName");
-            instructions.appendChild(doc.createTextNode(recipe.getServingName()));
+            instructions.appendChild(doc.createTextNode(r.getServingName()));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(servingName);
 
             Element photo = doc.createElement("photo");
-            instructions.appendChild(doc.createTextNode(recipe.getPhoto() + ""));
+            instructions.appendChild(doc.createTextNode(r.getPhoto() + ""));
 //            p.println(GUI.recipe.getInstructions());
-            rootElement.appendChild(servingName);
+            rootElement.appendChild(photo);
 
-            for (int i = 0; i < recipe.getIngredients().size(); i++) {
+            for (int i = 0; i < r.getIngredients().size(); i++) {
                 Element ingredients = doc.createElement("ingredients");
                 rootElement.appendChild(ingredients);
-                Ingredient ing = recipe.getSingleIngredientIndex(i);
+                Ingredient ing = r.getSingleIngredientIndex(i);
 
                 Element id = doc.createElement("ID");
                 id.appendChild(doc.createTextNode(ing.getID() + ""));

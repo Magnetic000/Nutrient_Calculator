@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
 //        for(int i = 0; i < Database.fdName.size(); i++){
 //            System.out.println(Database.fdName.get(i)[1]);
 //        }
+        try {
+            System.out.println(this.getFilesDir().toString());
+            System.out.println(this.getFilesDir().getAbsolutePath());
+            Database.save(new File(this.getFilesDir(), "recipe.xml"), importedRecipes.get(0));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
