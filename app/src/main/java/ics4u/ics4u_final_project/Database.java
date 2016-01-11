@@ -5,6 +5,13 @@ package ics4u.ics4u_final_project;
 
 import android.content.Context;
 
+import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,12 +25,11 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
-
-import org.w3c.dom.*;
-import org.xml.sax.SAXException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 /**
  * @author isaac
@@ -248,6 +254,11 @@ public class Database {
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(servingName);
 
+            Element photo = doc.createElement("photo");
+            instructions.appendChild(doc.createTextNode(recipe.getPhoto() + ""));
+//            p.println(GUI.recipe.getInstructions());
+            rootElement.appendChild(servingName);
+
             for (int i = 0; i < recipe.getIngredients().size(); i++) {
                 Element ingredients = doc.createElement("ingredients");
                 rootElement.appendChild(ingredients);
@@ -345,10 +356,9 @@ public class Database {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(file);
+            Document doc = dBuilder.parse(file, "UTF-8");
 
             doc.getDocumentElement().normalize();
-
             //title
             NodeList nList = doc.getElementsByTagName("title");
             Node nNode = nList.item(0);
@@ -370,6 +380,15 @@ public class Database {
             nNode = nList.item(0);
             eElement = (Element) nNode;
             opened.setServingName(eElement.getTextContent());
+            //photo
+            nList = doc.getElementsByTagName("photo");
+            nNode = nList.item(0);
+            eElement = (Element) nNode;
+            if (eElement.getTextContent().equals("")){
+                opened.setPhoto(-1);
+            } else {
+                opened.setPhoto(Integer.parseInt(eElement.getTextContent()));
+            }
             //System.out.println(GUI.recipe.getInstructions());
             //ingredients
             nList = doc.getElementsByTagName("ingredients");
@@ -833,10 +852,11 @@ public class Database {
     public static ArrayList<Recipe> importRecipes(Context c) {
         ArrayList<Recipe> database = new ArrayList<>();
         Field[] folder = R.xml.class.getFields();
-        for (Field f : folder) {
-            System.out.println(f.getName());
-            database.add(open(c.getResources().openRawResource(R.xml.banana_lentil_muffins)));
-        }
+        //for (Field f : folder) {
+            //System.out.println(f.getName());
+            database.add(open(c.getResources().openRawResource(R.raw.banana_lentil_muffins)));
+            System.out.println(database.get(0).toString());
+        //}
 //        for (File file : listOfFiles) {
 //            if (file.isFile() && file.getName().substring(file.getName().indexOf(".")).equals(".xml")) {
 //                System.out.println("true");

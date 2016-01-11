@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class Splash extends AppCompatActivity{
     /** Duration of wait **/
-    private final int displayLength = 1500;
+    private final int displayLength = 3000;
 
     /**Called when the activity is first created */
     @Override

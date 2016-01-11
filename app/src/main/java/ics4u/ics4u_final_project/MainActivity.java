@@ -16,9 +16,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayoutManager lLayout;
+    public ArrayList<Recipe> importedRecipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Database.importData(this);
+        importedRecipes = Database.importRecipes(this);
+        importedRecipes.get(0).setPhoto(R.drawable.shaq);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rv_mainactivity);
         setTitle(null);
@@ -36,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecipeAdapter rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
-        Database.importData(this);
-        Database.importRecipes(this);
+
 //        for(int i = 0; i < Database.fdName.size(); i++){
 //            System.out.println(Database.fdName.get(i)[1]);
 //        }
@@ -73,7 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Recipe> getAllItemList() {
 
-        List<Recipe> allItems = new ArrayList<Recipe>();
+        List<Recipe> allItems = new ArrayList<>();
+        System.out.println("Getting imported recipes");
+        for (int i = 0; i < importedRecipes.size(); i++){
+            allItems.add(importedRecipes.get(i));
+            System.out.println("Title" + importedRecipes.get(i).getTitle());
+        }
         allItems.add(new Recipe("Breadsticks", R.drawable.bread));
         allItems.add(new Recipe("Fishsticks", R.drawable.fish));
         allItems.add(new Recipe("Banana Bread", R.drawable.banana));
