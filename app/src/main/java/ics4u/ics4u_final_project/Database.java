@@ -4,6 +4,7 @@
 package ics4u.ics4u_final_project;
 
 import android.content.Context;
+import android.sax.RootElement;
 
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -246,17 +247,17 @@ public class Database {
             rootElement.appendChild(instructions);
 
             Element servings = doc.createElement("servings");
-            instructions.appendChild(doc.createTextNode(r.getServings() + ""));
+            rootElement.appendChild(doc.createTextNode(r.getServings() + ""));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(servings);
 
             Element servingName = doc.createElement("servingName");
-            instructions.appendChild(doc.createTextNode(r.getServingName()));
+            rootElement.appendChild(doc.createTextNode(r.getServingName()));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(servingName);
 
             Element photo = doc.createElement("photo");
-            instructions.appendChild(doc.createTextNode(r.getPhoto() + ""));
+            rootElement.appendChild(doc.createTextNode(r.getPhoto() + ""));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(photo);
 
@@ -380,7 +381,6 @@ public class Database {
             } else {
                 opened.setServings(Integer.parseInt(eElement.getTextContent()));
             }
-
             //Serving Name
             nList = doc.getElementsByTagName("servingName");
             nNode = nList.item(0);
@@ -863,6 +863,8 @@ public class Database {
             File recipeFolder = new File(c.getFilesDir() + "/recipes/");
             recipeFolder.mkdir();
             try {
+                System.out.println("NAme" + database.get(0).getServingName());
+                System.out.println("servings" + database.get(0).getServings());
                 save(new File(c.getFilesDir() + "/recipes/" + database.get(0).getTitle() + ".xml"), database.get(0));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
