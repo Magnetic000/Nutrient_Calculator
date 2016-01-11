@@ -375,7 +375,12 @@ public class Database {
             nList = doc.getElementsByTagName("servings");
             nNode = nList.item(0);
             eElement = (Element) nNode;
-            opened.setServings(Integer.parseInt(eElement.getTextContent()));
+            if (eElement.getTextContent().equals("")){
+                opened.setServings(1);
+            } else {
+                opened.setServings(Integer.parseInt(eElement.getTextContent()));
+            }
+
             //Serving Name
             nList = doc.getElementsByTagName("servingName");
             nNode = nList.item(0);
