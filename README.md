@@ -5,3 +5,8 @@ This was created for the final project for ICS4U. It may be available on the Pla
 
 This project uses the iTextPDF Library to output the PDFs. http://itextpdf.com/   
 Their License is availavle at: http://itextpdf.com/AGPL
+
+This project was authored by:
+* Isaac (Project Manager, Backend Programming)
+* Andrew (Frontend Programming)
+* Griffin (Graphic Design and Images)
