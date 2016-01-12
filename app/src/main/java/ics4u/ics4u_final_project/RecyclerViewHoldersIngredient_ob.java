@@ -6,11 +6,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class RecyclerViewHoldersIngredient extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+public class RecyclerViewHoldersIngredient_ob extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     public TextView ingredientName;
 
-    public RecyclerViewHoldersIngredient(View itemView) {
+    public RecyclerViewHoldersIngredient_ob(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         ingredientName = (TextView) itemView.findViewById(R.id.ingredient_name);

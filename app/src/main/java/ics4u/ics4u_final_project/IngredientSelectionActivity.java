@@ -2,6 +2,7 @@ package ics4u.ics4u_final_project;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -37,11 +38,13 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     IngredientAdapter rcAdapter;
     List<Ingredient> rowListItem;
     RecyclerView rView;
+    static boolean onIngredient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        results.add(new Ingredient(0, "Search for an Ingredient. Use commas to separate keywords."));
+        onIngredient = true;
+        results.add(new Ingredient(0,"Search for an Ingredient. Use commas to separate keywords."));
         setContentView(R.layout.rv_ingredientselect);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -155,6 +158,8 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(edtSeach.getWindowToken(), 0);
                         doSearch(true);
                         return true;
                     }
@@ -313,5 +318,10 @@ public class IngredientSelectionActivity extends AppCompatActivity {
             quickSort(list, low, r);
             quickSort(list, l, high);
         }
+    }
+
+    public void launchMeasure(){
+        Intent intent = new Intent(this, IngredientSelectionActivity.class);
+        startActivity(intent);
     }
 }

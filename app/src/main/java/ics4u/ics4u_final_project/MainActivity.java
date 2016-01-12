@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        IngredientSelectionActivity.onIngredient = false;
         Database.importData(this);
         prefs = getSharedPreferences("ics4u.ics4u_final_project", MODE_PRIVATE);
         importedRecipes = Database.importRecipes(this);

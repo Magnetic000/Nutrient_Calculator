@@ -19,8 +19,6 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         AdapterView.OnItemSelectedListener onSpinner = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView myTextView = (TextView) findViewById(R.id.textView);
-                myTextView.setText((String) parent.getItemAtPosition(position));
             }
 
             @Override
