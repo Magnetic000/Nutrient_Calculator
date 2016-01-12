@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Database.importData(this);
         prefs = getSharedPreferences("ics4u.ics4u_final_project", MODE_PRIVATE);
         importedRecipes = Database.importRecipes(this);
-        importedRecipes.get(0).setPhoto(R.drawable.shaq);
+        importedRecipes.get(0).setPhoto(R.drawable.canada);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rv_mainactivity);
         setTitle(null);
@@ -43,17 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         RecipeAdapter rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
-
-//        for(int i = 0; i < Database.fdName.size(); i++){
-//            System.out.println(Database.fdName.get(i)[1]);
-//        }
-//        try {
-//            System.out.println(this.getFilesDir().toString());
-//            System.out.println(this.getFilesDir().getAbsolutePath());
-//            Database.save(new File(this.getFilesDir(), importedRecipes.get(0).getTitle() + ".xml"), importedRecipes.get(0));
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
 //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
     }
 

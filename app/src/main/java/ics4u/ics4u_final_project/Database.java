@@ -169,9 +169,6 @@ public class Database {
      */
     public static ArrayList<Ingredient> search(String keyword) {
         keyword = keyword.toUpperCase();
-        //System.out.println(keyword);
-        //System.out.println(fdName.get(0)[1].toString());
-        //System.out.println(fdName.get(0)[1].toString().contains(keyword));
         //create new arraylist for the matched
         ArrayList<Ingredient> match = new ArrayList<>(0);
         int index;
@@ -754,13 +751,6 @@ public class Database {
                 }
             }
         }
-//        Field[] folder = R.xml.class.getFields();
-//        //for (Field f : folder) {
-//            //System.out.println(f.getName());
-//
-//            System.out.println(database.get(0).toString());
-//        //}
-
         return database;
     }
 

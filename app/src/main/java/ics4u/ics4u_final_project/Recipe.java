@@ -300,7 +300,7 @@ public class Recipe {
         doc.addSubject("Recipies");
         doc.addKeywords("recipe, " + title);
         doc.addAuthor("Isaac Wismer");
-        doc.addCreator("Nutrient Calculator");
+        doc.addCreator("Nutrient Calculator. Made using the iTextPDF Library 5.5.8 http://itextpdf.com/");
     }
 
     private void addData(Document doc) {
