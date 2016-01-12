@@ -18,6 +18,8 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         selected = IngredientSelectionActivity.getResults().get(RecyclerViewHolders.location);
         System.out.println(selected);
+        System.out.println(selected.getName());
+        System.out.println(selected.getID());
         AdapterView.OnItemSelectedListener onSpinnerType = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -37,7 +39,8 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             }
         };
         TextView name = (TextView) findViewById(R.id.ingredient_title);
-        name.setText(selected.getName());
+        System.out.println(name);
+        name.setText("Set");
 
         setContentView(R.layout.measure_selector);
         Spinner measureType = (Spinner) findViewById(R.id.measurement_type);
