@@ -2,6 +2,7 @@ package ics4u.ics4u_final_project;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -34,10 +35,11 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     String[] ingredientCategories;
     ArrayAdapter<String> adapter;
     Spinner ingredientDropdown;
-
+    static boolean onIngredient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        onIngredient = true;
         results.add(new Ingredient(0,"Search for an Ingredient. Use commas to separate keywords."));
         setContentView(R.layout.rv_ingredientselect);
 
@@ -211,8 +213,9 @@ public class IngredientSelectionActivity extends AppCompatActivity {
             }
         }
     }
-    public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    public void launchMeasure(){
+        Intent intent = new Intent(this, IngredientSelectionActivity.class);
+        startActivity(intent);
     }
+
 }
