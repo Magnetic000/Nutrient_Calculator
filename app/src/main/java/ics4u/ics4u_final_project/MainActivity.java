@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Recipe> allItems = new ArrayList<>();
         System.out.println("Getting imported recipes");
-        for (int i = 0; i < importedRecipes.size(); i++){
+        for (int i = 0; i < importedRecipes.size(); i++) {
             allItems.add(importedRecipes.get(i));
             System.out.println("Title" + importedRecipes.get(i).getTitle());
         }

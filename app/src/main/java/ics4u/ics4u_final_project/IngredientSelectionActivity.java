@@ -60,7 +60,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selCat = ingredientCategories[position].toString();
                 System.out.println(selCat);
-                if (!selCat.equals("Show all")&& !selCat.equals("Show All") && !selCat.equals("")) {
+                if (!selCat.equals("Show all") && !selCat.equals("Show All") && !selCat.equals("")) {
                     catResults = (ArrayList<Ingredient>) results.clone();
                     for (int i = catResults.size() - 1; i >= 0; i--) {
                         if (catResults.get(i).getName().contains(",")) {
@@ -243,7 +243,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
      * This method sorts an array of strings in ascending lexicographical order
      *
      * @param list the list to sort
-     * @param low the low index of the list to sort
+     * @param low  the low index of the list to sort
      * @param high the high index of the list to sort
      */
     public static void quickSort(String[] list, int low, int high) {
@@ -281,7 +281,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
      * This method sorts an array of strings in ascending lexicographical order
      *
      * @param list the list to sort
-     * @param low the low index of the list to sort
+     * @param low  the low index of the list to sort
      * @param high the high index of the list to sort
      */
     public static void quickSort(ArrayList<Ingredient> list, int low, int high) {

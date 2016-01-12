@@ -4,7 +4,6 @@
 package ics4u.ics4u_final_project;
 
 import android.content.Context;
-import android.sax.RootElement;
 
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -20,18 +19,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 /**
  * @author isaac
@@ -219,7 +212,6 @@ public class Database {
     }//End searchByName()
 
 
-
     /**
      * This method opens a saved recipe and re-assings the variable with the new
      * data
@@ -251,7 +243,7 @@ public class Database {
             nList = doc.getElementsByTagName("servings");
             nNode = nList.item(0);
             eElement = (Element) nNode;
-            if (eElement.getTextContent().equals("")){
+            if (eElement.getTextContent().equals("")) {
                 opened.setServings(1);
             } else {
                 opened.setServings(Integer.parseInt(eElement.getTextContent()));
@@ -265,7 +257,7 @@ public class Database {
             nList = doc.getElementsByTagName("photo");
             nNode = nList.item(0);
             eElement = (Element) nNode;
-            if (eElement.getTextContent().equals("")){
+            if (eElement.getTextContent().equals("")) {
                 opened.setPhoto(-1);
             } else {
                 opened.setPhoto(Integer.parseInt(eElement.getTextContent()));
@@ -738,7 +730,7 @@ public class Database {
             File recipeFolder = new File(c.getFilesDir() + "/recipes/");
             recipeFolder.mkdir();
             File pdfFolder = new File("/sdcard/Recipes/");
-            if(!pdfFolder.isDirectory()) {
+            if (!pdfFolder.isDirectory()) {
                 pdfFolder.mkdir();
             }
             try {

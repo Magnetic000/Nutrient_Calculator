@@ -467,6 +467,7 @@ public class Recipe {
             System.out.println("Error: " + ex.toString());
         }
     }
+
     /**
      * This method saves the recipe to a file
      *
