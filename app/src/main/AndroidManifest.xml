@@ -6,8 +6,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/food"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:largeHeap="true">
+        android:largeHeap="true"
+        android:supportsRtl="true">
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".Splash"
@@ -15,6 +15,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,6 +28,9 @@
         <activity
             android:name=".IngredientSelectionActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".RecipeCreateActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        />
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

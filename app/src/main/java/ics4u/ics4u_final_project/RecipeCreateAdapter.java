@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public class RecipeAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
+public class RecipeCreateAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
 
     private List<Recipe> itemList;
     private Context context;
 
-    public RecipeAdapter(Context context, List<Recipe> itemList) {
+    public RecipeCreateAdapter(Context context, List<Recipe> itemList) {
         this.itemList = itemList;
         this.context = context;
     }
@@ -21,7 +21,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
     @Override
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_recipecreate, null);
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_mainactivity, null);
         RecyclerViewHolders rcv = new RecyclerViewHolders(layoutView,context);
         return rcv;
     }

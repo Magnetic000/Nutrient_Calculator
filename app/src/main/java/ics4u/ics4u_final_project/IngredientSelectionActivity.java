@@ -1,6 +1,5 @@
 package ics4u.ics4u_final_project;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -109,7 +108,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_recipe, menu);
+        getMenuInflater().inflate(R.menu.menu_ingredient, menu);
         return true;
     }
 
