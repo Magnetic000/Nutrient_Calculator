@@ -1,27 +1,16 @@
 package ics4u.ics4u_final_project;
 
 
-import android.content.Context;
-import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 
 public class MeasureSelectionActivity extends AppCompatActivity {
-
-
 
 
     @Override
@@ -47,11 +36,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();//tells adapter that data set has changed and updates
 
 
-
-
-
     }
-
 
 
 }

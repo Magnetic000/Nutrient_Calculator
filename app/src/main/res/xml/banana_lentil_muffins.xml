@@ -2,13 +2,15 @@
 <recipe>
     <title>Banana Lentil Muffins</title>
     <instructions>Preheat the oven to 400F (200C)
-Combine egg, oil, sugar, bananas, lentil puree, and vanilla. Mix well.
-Mix together flour, baking soda, baking powder, and raisins. Stir into egg mixture only until combined.
-Spoon into greased muffin tins 2/3 full.
-Bake 15-20 minutes241 Muffin</instructions>
+        Combine egg, oil, sugar, bananas, lentil puree, and vanilla. Mix well.
+        Mix together flour, baking soda, baking powder, and raisins. Stir into egg mixture only
+        until combined.
+        Spoon into greased muffin tins 2/3 full.
+        Bake 15-20 minutes241 Muffin
+    </instructions>
     <servings>24</servings>
     <servingName>1 Muffin</servingName>
-    <photo/>
+    <photo />
     <ingredients>
         <ID>125</ID>
         <name>EGG, CHICKEN, WHOLE, FRESH OR FROZEN, RAW</name>
@@ -337,7 +339,8 @@ Bake 15-20 minutes241 Muffin</instructions>
     <ingredients>
         <ID>4003</ID>
         <name>LEAVENING AGENT, BAKING POWDER, DOUBLE ACTING, PHOSPHATE</name>
-        <formattedName>1 Teaspoon LEAVENING AGENT, BAKING POWDER, DOUBLE ACTING, PHOSPHATE</formattedName>
+        <formattedName>1 Teaspoon LEAVENING AGENT, BAKING POWDER, DOUBLE ACTING, PHOSPHATE
+        </formattedName>
         <unitName>Metric Cooking Measures</unitName>
         <unitNum>0</unitNum>
         <fractionName>1 Teaspoon</fractionName>

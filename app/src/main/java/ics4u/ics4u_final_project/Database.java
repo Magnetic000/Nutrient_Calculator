@@ -4,7 +4,6 @@
 package ics4u.ics4u_final_project;
 
 import android.content.Context;
-import android.sax.RootElement;
 
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -20,18 +19,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 /**
  * @author isaac
@@ -176,9 +169,6 @@ public class Database {
      */
     public static ArrayList<Ingredient> search(String keyword) {
         keyword = keyword.toUpperCase();
-        //System.out.println(keyword);
-        //System.out.println(fdName.get(0)[1].toString());
-        //System.out.println(fdName.get(0)[1].toString().contains(keyword));
         //create new arraylist for the matched
         ArrayList<Ingredient> match = new ArrayList<>(0);
         int index;
@@ -218,132 +208,6 @@ public class Database {
         return match;
     }//End searchByName()
 
-    /**
-     * This method saves the recipe to a file
-     *
-     * @param file The file path
-     * @throws FileNotFoundException
-     */
-    public static void save(File file, Recipe r) throws FileNotFoundException {
-        //PrintWriter p = new PrintWriter(file + ".txt");
-        try {
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-
-            // root elements
-            Document doc = docBuilder.newDocument();
-            Element rootElement = doc.createElement("recipe");
-            doc.appendChild(rootElement);
-
-//             title element
-            Element title = doc.createElement("title");
-            title.appendChild(doc.createTextNode(r.getTitle()));
-//            p.println(GUI.recipe.getTitle());
-            rootElement.appendChild(title);
-//             title element
-            Element instructions = doc.createElement("instructions");
-            instructions.appendChild(doc.createTextNode(r.getInstructions()));
-//            p.println(GUI.recipe.getInstructions());
-            rootElement.appendChild(instructions);
-
-            Element servings = doc.createElement("servings");
-            rootElement.appendChild(doc.createTextNode(r.getServings() + ""));
-//            p.println(GUI.recipe.getInstructions());
-            rootElement.appendChild(servings);
-
-            Element servingName = doc.createElement("servingName");
-            rootElement.appendChild(doc.createTextNode(r.getServingName()));
-//            p.println(GUI.recipe.getInstructions());
-            rootElement.appendChild(servingName);
-
-            Element photo = doc.createElement("photo");
-            rootElement.appendChild(doc.createTextNode(r.getPhoto() + ""));
-//            p.println(GUI.recipe.getInstructions());
-            rootElement.appendChild(photo);
-
-            for (int i = 0; i < r.getIngredients().size(); i++) {
-                Element ingredients = doc.createElement("ingredients");
-                rootElement.appendChild(ingredients);
-                Ingredient ing = r.getSingleIngredientIndex(i);
-
-                Element id = doc.createElement("ID");
-                id.appendChild(doc.createTextNode(ing.getID() + ""));
-                ingredients.appendChild(id);
-//                p.println(ing.getID());
-
-                Element name = doc.createElement("name");
-                name.appendChild(doc.createTextNode(ing.getName()));
-                ingredients.appendChild(name);
-//                p.println(ing.getName());
-
-                Element formattedName = doc.createElement("formattedName");
-                formattedName.appendChild(doc.createTextNode(ing.getFormattedName()));
-                ingredients.appendChild(formattedName);
-//                p.println(ing.getFormattedName());
-
-                Element unitName = doc.createElement("unitName");
-                unitName.appendChild(doc.createTextNode(ing.getUnit()));
-                ingredients.appendChild(unitName);
-//                p.println(ing.getUnit());
-
-                Element unitNum = doc.createElement("unitNum");
-                unitNum.appendChild(doc.createTextNode(ing.getUnitNum() + ""));
-                ingredients.appendChild(unitNum);
-//                p.println(ing.getUnitNum());
-
-                Element fractionName = doc.createElement("fractionName");
-                fractionName.appendChild(doc.createTextNode(ing.getFractionName()));
-                ingredients.appendChild(fractionName);
-//                p.println(ing.getFractionName());
-
-                Element fractionNum = doc.createElement("fractionNum");
-                fractionNum.appendChild(doc.createTextNode(ing.getFractionNum() + ""));
-                ingredients.appendChild(fractionNum);
-//                p.println(ing.getFractionNum());
-
-                Element quantity = doc.createElement("quantity");
-                quantity.appendChild(doc.createTextNode(ing.getQuantity() + ""));
-                ingredients.appendChild(quantity);
-//                p.println(ing.getQuantity());
-
-                for (int j = 0; j < ing.getMeasures().size(); j++) {
-                    Element measures = doc.createElement("measures");
-                    ingredients.appendChild(measures);
-                    Measures m = ing.getSingleMeasureIndex(j);
-
-                    Element measureID = doc.createElement("id");
-                    measureID.appendChild(doc.createTextNode(m.getID() + ""));
-                    measures.appendChild(measureID);
-//                    p.println(m.getID());
-
-                    Element conversion = doc.createElement("conversion");
-                    conversion.appendChild(doc.createTextNode(m.getConversion() + ""));
-                    measures.appendChild(conversion);
-//                    p.println(m.getConversion());
-
-                    Element measureName = doc.createElement("measureName");
-                    measureName.appendChild(doc.createTextNode(m.getName()));
-                    measures.appendChild(measureName);
-//                    p.println(m.getName());
-                }
-            }
-            // write the content into xml file
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
-            StreamResult result;
-            if (!file.toString().substring(file.toString().length() - 4, file.toString().length()).equals(".xml")) {
-                result = new StreamResult(file + ".xml");
-            } else {
-                result = new StreamResult(file);
-            }
-            transformer.transform(source, result);
-            System.out.println("File saved!");
-//            p.close();
-        } catch (ParserConfigurationException | TransformerException ex) {
-            System.out.println("XML Error: " + ex.toString());
-        }
-    }//End save()
 
     /**
      * This method opens a saved recipe and re-assings the variable with the new
@@ -376,7 +240,7 @@ public class Database {
             nList = doc.getElementsByTagName("servings");
             nNode = nList.item(0);
             eElement = (Element) nNode;
-            if (eElement.getTextContent().equals("")){
+            if (eElement.getTextContent().equals("")) {
                 opened.setServings(1);
             } else {
                 opened.setServings(Integer.parseInt(eElement.getTextContent()));
@@ -390,7 +254,7 @@ public class Database {
             nList = doc.getElementsByTagName("photo");
             nNode = nList.item(0);
             eElement = (Element) nNode;
-            if (eElement.getTextContent().equals("")){
+            if (eElement.getTextContent().equals("")) {
                 opened.setPhoto(-1);
             } else {
                 opened.setPhoto(Integer.parseInt(eElement.getTextContent()));
@@ -862,10 +726,14 @@ public class Database {
             database.add(open(c.getResources().openRawResource(R.raw.banana_lentil_muffins)));
             File recipeFolder = new File(c.getFilesDir() + "/recipes/");
             recipeFolder.mkdir();
+            File pdfFolder = new File("/sdcard/Recipes/");
+            if (!pdfFolder.isDirectory()) {
+                pdfFolder.mkdir();
+            }
             try {
-                System.out.println("NAme" + database.get(0).getServingName());
-                System.out.println("servings" + database.get(0).getServings());
-                save(new File(c.getFilesDir() + "/recipes/" + database.get(0).getTitle() + ".xml"), database.get(0));
+                //System.out.println("NAme" + database.get(0).getServingName());
+                //System.out.println("servings" + database.get(0).getServings());
+                database.get(0).save(new File(c.getFilesDir() + "/recipes/" + database.get(0).getTitle() + ".xml"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -883,13 +751,6 @@ public class Database {
                 }
             }
         }
-//        Field[] folder = R.xml.class.getFields();
-//        //for (Field f : folder) {
-//            //System.out.println(f.getName());
-//
-//            System.out.println(database.get(0).toString());
-//        //}
-
         return database;
     }
 

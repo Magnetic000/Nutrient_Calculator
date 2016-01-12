@@ -21,6 +21,15 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 /**
  * @author isaac
  */
@@ -291,7 +300,7 @@ public class Recipe {
         doc.addSubject("Recipies");
         doc.addKeywords("recipe, " + title);
         doc.addAuthor("Isaac Wismer");
-        doc.addCreator("Nutrient Calculator");
+        doc.addCreator("Nutrient Calculator. Made using the iTextPDF Library 5.5.8 http://itextpdf.com/");
     }
 
     private void addData(Document doc) {
@@ -458,4 +467,131 @@ public class Recipe {
             System.out.println("Error: " + ex.toString());
         }
     }
+
+    /**
+     * This method saves the recipe to a file
+     *
+     * @param file The file path
+     * @throws FileNotFoundException
+     */
+    public void save(File file) throws FileNotFoundException {
+        //PrintWriter p = new PrintWriter(file + ".txt");
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            // root elements
+            org.w3c.dom.Document doc = docBuilder.newDocument();
+            org.w3c.dom.Element rootElement = doc.createElement("recipe");
+            doc.appendChild(rootElement);
+
+//             title element
+            org.w3c.dom.Element title = doc.createElement("title");
+            title.appendChild(doc.createTextNode(this.title + ""));
+//            p.println(GUI.recipe.getTitle());
+            rootElement.appendChild(title);
+//             title element
+            org.w3c.dom.Element instructions = doc.createElement("instructions");
+            instructions.appendChild(doc.createTextNode(this.instructions + ""));
+//            p.println(GUI.recipe.getInstructions());
+            rootElement.appendChild(instructions);
+
+            org.w3c.dom.Element servings = doc.createElement("servings");
+            servings.appendChild(doc.createTextNode(this.servings + ""));
+//            p.println(GUI.recipe.getInstructions());
+            rootElement.appendChild(servings);
+
+            org.w3c.dom.Element servingName = doc.createElement("servingName");
+            servingName.appendChild(doc.createTextNode(this.servingName + ""));
+//            p.println(GUI.recipe.getInstructions());
+            rootElement.appendChild(servingName);
+
+            org.w3c.dom.Element photo = doc.createElement("photo");
+            photo.appendChild(doc.createTextNode(this.photo + ""));
+//            p.println(GUI.recipe.getInstructions());
+            rootElement.appendChild(photo);
+
+            for (int i = 0; i < ingredients.size(); i++) {
+                org.w3c.dom.Element ingredients = doc.createElement("ingredients");
+                rootElement.appendChild(ingredients);
+                Ingredient ing = this.ingredients.get(i);
+
+                org.w3c.dom.Element id = doc.createElement("ID");
+                id.appendChild(doc.createTextNode(ing.getID() + ""));
+                ingredients.appendChild(id);
+//                p.println(ing.getID());
+
+                org.w3c.dom.Element name = doc.createElement("name");
+                name.appendChild(doc.createTextNode(ing.getName()));
+                ingredients.appendChild(name);
+//                p.println(ing.getName());
+
+                org.w3c.dom.Element formattedName = doc.createElement("formattedName");
+                formattedName.appendChild(doc.createTextNode(ing.getFormattedName()));
+                ingredients.appendChild(formattedName);
+//                p.println(ing.getFormattedName());
+
+                org.w3c.dom.Element unitName = doc.createElement("unitName");
+                unitName.appendChild(doc.createTextNode(ing.getUnit()));
+                ingredients.appendChild(unitName);
+//                p.println(ing.getUnit());
+
+                org.w3c.dom.Element unitNum = doc.createElement("unitNum");
+                unitNum.appendChild(doc.createTextNode(ing.getUnitNum() + ""));
+                ingredients.appendChild(unitNum);
+//                p.println(ing.getUnitNum());
+
+                org.w3c.dom.Element fractionName = doc.createElement("fractionName");
+                fractionName.appendChild(doc.createTextNode(ing.getFractionName()));
+                ingredients.appendChild(fractionName);
+//                p.println(ing.getFractionName());
+
+                org.w3c.dom.Element fractionNum = doc.createElement("fractionNum");
+                fractionNum.appendChild(doc.createTextNode(ing.getFractionNum() + ""));
+                ingredients.appendChild(fractionNum);
+//                p.println(ing.getFractionNum());
+
+                org.w3c.dom.Element quantity = doc.createElement("quantity");
+                quantity.appendChild(doc.createTextNode(ing.getQuantity() + ""));
+                ingredients.appendChild(quantity);
+//                p.println(ing.getQuantity());
+
+                for (int j = 0; j < ing.getMeasures().size(); j++) {
+                    org.w3c.dom.Element measures = doc.createElement("measures");
+                    ingredients.appendChild(measures);
+                    Measures m = ing.getSingleMeasureIndex(j);
+
+                    org.w3c.dom.Element measureID = doc.createElement("id");
+                    measureID.appendChild(doc.createTextNode(m.getID() + ""));
+                    measures.appendChild(measureID);
+//                    p.println(m.getID());
+
+                    org.w3c.dom.Element conversion = doc.createElement("conversion");
+                    conversion.appendChild(doc.createTextNode(m.getConversion() + ""));
+                    measures.appendChild(conversion);
+//                    p.println(m.getConversion());
+
+                    org.w3c.dom.Element measureName = doc.createElement("measureName");
+                    measureName.appendChild(doc.createTextNode(m.getName()));
+                    measures.appendChild(measureName);
+//                    p.println(m.getName());
+                }
+            }
+            // write the content into xml file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result;
+            if (!file.toString().substring(file.toString().length() - 4, file.toString().length()).equals(".xml")) {
+                result = new StreamResult(file + ".xml");
+            } else {
+                result = new StreamResult(file);
+            }
+            transformer.transform(source, result);
+            System.out.println("File saved!");
+//            p.close();
+        } catch (ParserConfigurationException | TransformerException ex) {
+            System.out.println("XML Error: " + ex.toString());
+        }
+    }//End save()
 }
