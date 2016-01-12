@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void createRecipe() {
-        Intent intent = new Intent(this, IngredientSelectionActivity.class);
+        Intent intent = new Intent(this, RecipeCreateActivity.class);
         startActivity(intent);
     }
 

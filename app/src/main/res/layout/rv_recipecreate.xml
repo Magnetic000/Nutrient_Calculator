@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:minHeight="?attr/actionBarSize"
+        android:elevation="10dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        tools:context=".MainActivity">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ingredient_name"
+            android:layout_toRightOf="@+id/recipe_icon"
+            android:text="Lentil Banana Muffins"
+            />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/recipe_icon"
+            android:src="@drawable/bread"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click for instructions"
+            android:id="@+id/instructions_button"
+            android:layout_below="@+id/ingredient_name"
+            android:layout_alignStart="@+id/ingredient_name" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_recipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:layout_below="@id/recipe_icon"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

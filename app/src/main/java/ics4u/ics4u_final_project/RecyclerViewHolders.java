@@ -14,8 +14,6 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
     public TextView recipeName;
     public ImageView recipeIcon;
     public TextView ingredientName;
-    public static boolean openMeasure = false;
-    public static boolean openRecipe = false;
     private final Context context;
     public RecyclerViewHolders(View itemView, Context context) {
         super(itemView);
@@ -32,8 +30,8 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
             Intent intent = new Intent(this.context,MeasureSelectionActivity.class);
             context.startActivity(intent);
         } else {
-            openRecipe = true;
-            Toast.makeText(view.getContext(), "Clicked Country Position = " + getPosition(), Toast.LENGTH_SHORT).show();
+
+            //Toast.makeText(view.getContext(), "Clicked Country Position = " + getPosition(), Toast.LENGTH_SHORT).show();
         }
     }
 }
