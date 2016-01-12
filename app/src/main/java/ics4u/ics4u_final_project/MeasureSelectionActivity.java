@@ -16,6 +16,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.measure_selector);
         selected = IngredientSelectionActivity.getResults().get(RecyclerViewHolders.location);
         System.out.println(selected);
         System.out.println(selected.getName());
@@ -39,12 +40,11 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             }
         };
         TextView name = (TextView) findViewById(R.id.ingredient_title);
-        System.out.println(name);
-        name.setText("Set");
+        name.setText(selected.getName());
 
-        setContentView(R.layout.measure_selector);
+
         Spinner measureType = (Spinner) findViewById(R.id.measurement_type);
-        String[] types = {"Metric Cooking Measures", "mL", "g", "other"};
+        String[] types = {"Metric Cooking Measures", "mL", "g", "Other"};
         measureType.setPrompt("Please select a measure type");
         ArrayAdapter<String> typesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, types);
         measureType.setAdapter(typesAdapter);
