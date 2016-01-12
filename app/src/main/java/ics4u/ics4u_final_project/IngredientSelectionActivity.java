@@ -217,7 +217,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                         categories[i] = cats.get(i);
                         //System.out.println(categories[i]);
                     }
-
+                    quickSort(categories, 1, categories.length - 1);
                     ingredientCategories = categories;
                     adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
                     ingredientDropdown.setAdapter(adapter);
@@ -237,4 +237,41 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
+
+    /**
+     * This method sorts an array of strings in ascending lexicographical order
+     *
+     * @param list the list to sort
+     * @param low the low index of the list to sort
+     * @param high the high index of the list to sort
+     */
+    public static void quickSort(String[] list, int low, int high) {
+        //only do this while the size of the array is at least 1
+        if (low < high) {
+            //set the pivot to the middle, the left to the low index, right to the high index
+            int l = low, r = high;
+            String pivot = list[(high + low) / 2];
+            //loop while the left and right have not passed each other
+            while (l <= r) {
+                //decrement the right index until it finds a number out of place
+                while (list[r].compareToIgnoreCase(pivot) > 0) {
+                    r--;
+                }
+                //increment the left index until it finds a number out of place
+                while (list[l].compareToIgnoreCase(pivot) < 0) {
+                    l++;
+                }
+                //if the left and right don't overlap, swap l and r
+                if (l <= r) {
+                    String temp = list[l];
+                    list[l] = list[r];
+                    list[r] = temp;
+                    l++;
+                    r--;
+                }
+            }
+            //do the preceding process on the left and right sides of the partition
+            quickSort(list, low, r);
+            quickSort(list, l, high);
+        }
 }

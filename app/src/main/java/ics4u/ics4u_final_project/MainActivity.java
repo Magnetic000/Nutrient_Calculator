@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        }
-//        importedRecipes.get(0).export(new File("/sdcard/", importedRecipes.get(0).getTitle() + ".pdf"));
+//        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
     }
 
     @Override
