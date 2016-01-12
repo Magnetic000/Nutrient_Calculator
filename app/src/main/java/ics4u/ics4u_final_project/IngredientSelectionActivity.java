@@ -184,6 +184,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         } else {
             results = Database.search(searchText);
             System.out.println("Search Done");
+            quickSort(results, 0, results.size() - 1);
             //TextView t = (TextView) findViewById(R.id.textView);
             //System.out.println(results.size());
             //t.setText(results.get(0).getName());
@@ -274,4 +275,43 @@ public class IngredientSelectionActivity extends AppCompatActivity {
             quickSort(list, low, r);
             quickSort(list, l, high);
         }
+    }
+
+    /**
+     * This method sorts an array of strings in ascending lexicographical order
+     *
+     * @param list the list to sort
+     * @param low the low index of the list to sort
+     * @param high the high index of the list to sort
+     */
+    public static void quickSort(ArrayList<Ingredient> list, int low, int high) {
+        //only do this while the size of the array is at least 1
+        if (low < high) {
+            //set the pivot to the middle, the left to the low index, right to the high index
+            int l = low, r = high;
+            String pivot = list.get((high + low) / 2).getName();
+            //loop while the left and right have not passed each other
+            while (l <= r) {
+                //decrement the right index until it finds a number out of place
+                while (list.get(r).getName().compareToIgnoreCase(pivot) > 0) {
+                    r--;
+                }
+                //increment the left index until it finds a number out of place
+                while (list.get(l).getName().compareToIgnoreCase(pivot) < 0) {
+                    l++;
+                }
+                //if the left and right don't overlap, swap l and r
+                if (l <= r) {
+                    Ingredient temp = list.get(l);
+                    list.set(l, list.get(r));
+                    list.set(r, temp);
+                    l++;
+                    r--;
+                }
+            }
+            //do the preceding process on the left and right sides of the partition
+            quickSort(list, low, r);
+            quickSort(list, l, high);
+        }
+    }
 }
