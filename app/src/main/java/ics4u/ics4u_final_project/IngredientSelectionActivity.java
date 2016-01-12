@@ -31,7 +31,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     private boolean isSearchOpened = false;
     private EditText edtSeach;
     private LinearLayoutManager lLayoutIngredient;
-    ArrayList<Ingredient> results = new ArrayList<>(), catResults = new ArrayList<>();
+    public static ArrayList<Ingredient> results = new ArrayList<>(), catResults = new ArrayList<>();
     String[] ingredientCategories;
     ArrayAdapter<String> adapter;
     Spinner ingredientDropdown;
@@ -102,6 +102,10 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         return results;
     }
 
+    public static ArrayList<Ingredient> getResults(){
+        return catResults;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -158,7 +162,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(edtSeach.getWindowToken(), 0);
                         doSearch(true);
                         return true;
@@ -232,8 +236,8 @@ public class IngredientSelectionActivity extends AppCompatActivity {
 
                 rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
                 rView.setLayoutManager(lLayoutIngredient);
-
-                rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, results);
+                catResults = (ArrayList<Ingredient>) results.clone();
+                rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, catResults);
                 rView.setAdapter(rcAdapter);
             }
         }
@@ -318,10 +322,5 @@ public class IngredientSelectionActivity extends AppCompatActivity {
             quickSort(list, low, r);
             quickSort(list, l, high);
         }
-    }
-
-    public void launchMeasure(){
-        Intent intent = new Intent(this, IngredientSelectionActivity.class);
-        startActivity(intent);
     }
 }

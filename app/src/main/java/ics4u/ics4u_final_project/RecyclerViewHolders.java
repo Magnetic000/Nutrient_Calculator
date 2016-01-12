@@ -17,6 +17,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
     public static boolean openMeasure = false;
     public static boolean openRecipe = false;
     private final Context context;
+    public static int location = 0;
     public RecyclerViewHolders(View itemView, Context context) {
         super(itemView);
         itemView.setOnClickListener(this);
@@ -31,6 +32,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         if (IngredientSelectionActivity.onIngredient) {
             Intent intent = new Intent(this.context,MeasureSelectionActivity.class);
             context.startActivity(intent);
+            location = Toast.LENGTH_SHORT;
         } else {
             openRecipe = true;
             Toast.makeText(view.getContext(), "Clicked Country Position = " + getPosition(), Toast.LENGTH_SHORT).show();

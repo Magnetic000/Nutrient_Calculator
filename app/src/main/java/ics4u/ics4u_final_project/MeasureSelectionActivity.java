@@ -11,12 +11,14 @@ import android.widget.TextView;
 
 
 public class MeasureSelectionActivity extends AppCompatActivity {
-
+    Ingredient selected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AdapterView.OnItemSelectedListener onSpinner = new AdapterView.OnItemSelectedListener() {
+        selected = IngredientSelectionActivity.getResults().get(RecyclerViewHolders.location);
+        System.out.println(selected);
+        AdapterView.OnItemSelectedListener onSpinnerType = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             }
@@ -25,16 +27,32 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         };
-        setContentView(R.layout.measure_selector);
-        Spinner dropdown = (Spinner) findViewById(R.id.measurement_amount);
-        String[] items = new String[]{"", "1", "2", "three"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setPrompt("Please select a value");
-        dropdown.setAdapter(adapter);
-        dropdown.setOnItemSelectedListener(onSpinner);
-        items[0] = "Changed";
-        adapter.notifyDataSetChanged();//tells adapter that data set has changed and updates
+        AdapterView.OnItemSelectedListener onSpinnerSize = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        };
+        TextView name = (TextView) findViewById(R.id.ingredient_title);
+        name.setText(selected.getName());
+
+        setContentView(R.layout.measure_selector);
+        Spinner measureType = (Spinner) findViewById(R.id.measurement_type);
+        String[] types = {"Metric Cooking Measures", "mL", "g", "other"};
+        measureType.setPrompt("Please select a measure type");
+        ArrayAdapter<String> typesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, types);
+        measureType.setAdapter(typesAdapter);
+        measureType.setOnItemSelectedListener(onSpinnerType);
+
+        Spinner measureSize = (Spinner) findViewById(R.id.measurement_amount);
+        String[] items = new String[]{"1/4 Teaspoon", "1/2 Teaspoon", "1 Teaspoon", "1 Tablespoon", "1/4 Cup", "1/3 Cup", "1/2 Cup", "1 Cup"};
+        ArrayAdapter<String> sizeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        measureSize.setPrompt("Please select a measure");
+        measureSize.setAdapter(sizeAdapter);
+        measureSize.setOnItemSelectedListener(onSpinnerSize);
 
     }
 
