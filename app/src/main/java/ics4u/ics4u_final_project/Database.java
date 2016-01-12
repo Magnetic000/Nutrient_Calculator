@@ -737,6 +737,8 @@ public class Database {
             database.add(open(c.getResources().openRawResource(R.raw.banana_lentil_muffins)));
             File recipeFolder = new File(c.getFilesDir() + "/recipes/");
             recipeFolder.mkdir();
+            File pdfFolder = new File("/sdcard/Recipes");
+            pdfFolder.mkdir();
             try {
                 System.out.println("NAme" + database.get(0).getServingName());
                 System.out.println("servings" + database.get(0).getServings());
