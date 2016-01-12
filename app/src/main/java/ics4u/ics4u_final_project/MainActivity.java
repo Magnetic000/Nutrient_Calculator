@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace();
 //        }
-        //importedRecipes.get(0).export(new File(this.getFilesDir(), importedRecipes.get(0).getTitle() + ".pdf"));
+//        importedRecipes.get(0).export(new File("/sdcard/", importedRecipes.get(0).getTitle() + ".pdf"));
     }
 
     @Override
