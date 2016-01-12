@@ -300,7 +300,7 @@ public class Recipe {
         doc.addSubject("Recipies");
         doc.addKeywords("recipe, " + title);
         doc.addAuthor("Isaac Wismer");
-        doc.addCreator("Nutrient Calculator");
+        doc.addCreator("Nutrient Calculator. Made using the iTextPDF Library 5.5.8 http://itextpdf.com/");
     }
 
     private void addData(Document doc) {
@@ -467,6 +467,7 @@ public class Recipe {
             System.out.println("Error: " + ex.toString());
         }
     }
+
     /**
      * This method saves the recipe to a file
      *
@@ -486,27 +487,27 @@ public class Recipe {
 
 //             title element
             org.w3c.dom.Element title = doc.createElement("title");
-            title.appendChild(doc.createTextNode(title + ""));
+            title.appendChild(doc.createTextNode(this.title + ""));
 //            p.println(GUI.recipe.getTitle());
             rootElement.appendChild(title);
 //             title element
             org.w3c.dom.Element instructions = doc.createElement("instructions");
-            instructions.appendChild(doc.createTextNode(instructions + ""));
+            instructions.appendChild(doc.createTextNode(this.instructions + ""));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(instructions);
 
             org.w3c.dom.Element servings = doc.createElement("servings");
-            servings.appendChild(doc.createTextNode(servings + ""));
+            servings.appendChild(doc.createTextNode(this.servings + ""));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(servings);
 
             org.w3c.dom.Element servingName = doc.createElement("servingName");
-            servingName.appendChild(doc.createTextNode(servingName + ""));
+            servingName.appendChild(doc.createTextNode(this.servingName + ""));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(servingName);
 
             org.w3c.dom.Element photo = doc.createElement("photo");
-            photo.appendChild(doc.createTextNode(photo + ""));
+            photo.appendChild(doc.createTextNode(this.photo + ""));
 //            p.println(GUI.recipe.getInstructions());
             rootElement.appendChild(photo);
 

@@ -4,7 +4,6 @@
 package ics4u.ics4u_final_project;
 
 import android.content.Context;
-import android.sax.RootElement;
 
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -20,18 +19,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 /**
  * @author isaac
@@ -176,9 +169,6 @@ public class Database {
      */
     public static ArrayList<Ingredient> search(String keyword) {
         keyword = keyword.toUpperCase();
-        //System.out.println(keyword);
-        //System.out.println(fdName.get(0)[1].toString());
-        //System.out.println(fdName.get(0)[1].toString().contains(keyword));
         //create new arraylist for the matched
         ArrayList<Ingredient> match = new ArrayList<>(0);
         int index;
@@ -219,7 +209,6 @@ public class Database {
     }//End searchByName()
 
 
-
     /**
      * This method opens a saved recipe and re-assings the variable with the new
      * data
@@ -251,7 +240,7 @@ public class Database {
             nList = doc.getElementsByTagName("servings");
             nNode = nList.item(0);
             eElement = (Element) nNode;
-            if (eElement.getTextContent().equals("")){
+            if (eElement.getTextContent().equals("")) {
                 opened.setServings(1);
             } else {
                 opened.setServings(Integer.parseInt(eElement.getTextContent()));
@@ -265,7 +254,7 @@ public class Database {
             nList = doc.getElementsByTagName("photo");
             nNode = nList.item(0);
             eElement = (Element) nNode;
-            if (eElement.getTextContent().equals("")){
+            if (eElement.getTextContent().equals("")) {
                 opened.setPhoto(-1);
             } else {
                 opened.setPhoto(Integer.parseInt(eElement.getTextContent()));
@@ -737,11 +726,13 @@ public class Database {
             database.add(open(c.getResources().openRawResource(R.raw.banana_lentil_muffins)));
             File recipeFolder = new File(c.getFilesDir() + "/recipes/");
             recipeFolder.mkdir();
-            File pdfFolder = new File("/sdcard/Recipes");
-            pdfFolder.mkdir();
+            File pdfFolder = new File("/sdcard/Recipes/");
+            if (!pdfFolder.isDirectory()) {
+                pdfFolder.mkdir();
+            }
             try {
-                System.out.println("NAme" + database.get(0).getServingName());
-                System.out.println("servings" + database.get(0).getServings());
+                //System.out.println("NAme" + database.get(0).getServingName());
+                //System.out.println("servings" + database.get(0).getServings());
                 database.get(0).save(new File(c.getFilesDir() + "/recipes/" + database.get(0).getTitle() + ".xml"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -760,13 +751,6 @@ public class Database {
                 }
             }
         }
-//        Field[] folder = R.xml.class.getFields();
-//        //for (Field f : folder) {
-//            //System.out.println(f.getName());
-//
-//            System.out.println(database.get(0).toString());
-//        //}
-
         return database;
     }
 

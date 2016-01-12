@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView recipeName;
     public ImageView recipeIcon;
@@ -16,9 +16,9 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
     public RecyclerViewHolders(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
-        recipeName = (TextView)itemView.findViewById(R.id.recipe_name);
-        recipeIcon = (ImageView)itemView.findViewById(R.id.recipe_icon);
-        ingredientName = (TextView)itemView.findViewById(R.id.ingredient_name);
+        recipeName = (TextView) itemView.findViewById(R.id.recipe_name);
+        recipeIcon = (ImageView) itemView.findViewById(R.id.recipe_icon);
+        ingredientName = (TextView) itemView.findViewById(R.id.ingredient_name);
     }
 
     @Override
