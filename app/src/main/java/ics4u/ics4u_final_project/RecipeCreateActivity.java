@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,7 +18,6 @@ import java.util.List;
 public class RecipeCreateActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private LinearLayoutManager lLayoutIngredient;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,14 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
         RecipeAdapter rcAdapter = new RecipeAdapter(RecipeCreateActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
+        final Button button = (Button)findViewById(R.id.instructions_button);
+        button.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        launchInstructions();
+                    }
+                }
+        );
     }
     private List<Recipe> getAllItemList() {
 
@@ -67,5 +76,9 @@ public class RecipeCreateActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void launchInstructions(){
+        Intent intent = new Intent(this,InstructionCreator.class);
+        startActivity(intent);
     }
 }
