@@ -16,6 +16,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
     public TextView ingredientName;
     private final Context context;
     public static int location = 0;
+    static boolean edit;
     public RecyclerViewHolders(View itemView, Context context) {
         super(itemView);
         itemView.setOnClickListener(this);
@@ -28,10 +29,12 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
     @Override
     public void onClick(View view) {
         location = Toast.LENGTH_SHORT;
+        edit = false;
         if (IngredientSelectionActivity.onIngredient && IngredientSelectionActivity.searchCompleted) {
             Intent intent = new Intent(this.context,MeasureSelectionActivity.class);
             context.startActivity(intent);
         } else {
+            edit = true;
             Intent intent = new Intent(this.context,RecipeCreateActivity.class);
             context.startActivity(intent);
             //Toast.makeText(view.getContext(), "Clicked Country Position = " + getPosition(), Toast.LENGTH_SHORT).show();
