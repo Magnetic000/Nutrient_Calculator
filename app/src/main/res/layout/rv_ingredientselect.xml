@@ -1,26 +1,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@id/toolbar" />
+        android:layout_height="64dp"
+        android:background="@color/color_primary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"/>
 
     <Spinner
         android:id="@+id/category_combobox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dialog"
-        android:layout_marginTop="10dp" />
+        android:spinnerMode="dialog" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
+        android:background="@color/background"
         tools:context=".IngredientSelectionActivity">
 
 

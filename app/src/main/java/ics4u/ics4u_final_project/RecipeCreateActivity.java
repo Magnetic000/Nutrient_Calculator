@@ -22,9 +22,11 @@ public class RecipeCreateActivity extends AppCompatActivity {
     private LinearLayoutManager lLayoutIngredient;
     Recipe recipe;
     boolean addedIngred;
+    static boolean onRecipe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        onRecipe = true;
         setContentView(R.layout.rv_recipecreate);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("Create A Recipe");
@@ -64,7 +66,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
         rView.setLayoutManager(lLayoutIngredient);
 
-        IngredientAdapter rcAdapter = new IngredientAdapter(RecipeCreateActivity.this, rowListItem);
+        RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
     }
     private List<Ingredient> getAllItemList() {

@@ -20,8 +20,17 @@
             android:layout_alignParentTop="true"
             android:text="@string/recipe_name"
             android:textColor="@color/text_primary"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            android:padding="5sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingredient_name"
+            android:text="Measurements"
+            android:textColor="@color/text_secondary"
+            android:layout_alignLeft="@id/ingredient_name"
+            android:textSize="12sp"
+            android:padding="5sp"/>
 
     </RelativeLayout>
 
