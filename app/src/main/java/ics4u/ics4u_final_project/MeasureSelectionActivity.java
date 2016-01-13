@@ -22,6 +22,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
     boolean edit;
     String[] types, items;
     Context c = this;
+    Spinner measureType, measureSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,33 +35,15 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             //add making it show the right measure
         }
         RecipeCreateActivity.search = false;
-        final Spinner measureSize = (Spinner) findViewById(R.id.measurement_amount);
-        Spinner measureType = (Spinner) findViewById(R.id.measurement_type);
+        measureSize = (Spinner) findViewById(R.id.measurement_amount);
+        measureType = (Spinner) findViewById(R.id.measurement_type);
         setTitle("Ingredient Amount");
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
         AdapterView.OnItemSelectedListener onSpinnerType = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //change what is showing depending on what unit is selected
-                if (types[(int) id].equals("Metric Cooking Measures")) {
-                    items = new String[]{"1/4 Teaspoon", "1/2 Teaspoon", "1 Teaspoon", "1 Tablespoon", "1/4 Cup", "1/3 Cup", "1/2 Cup", "1 Cup"};
-                    ArrayAdapter<String> sizeAdapter = new ArrayAdapter<String>(c, android.R.layout.simple_spinner_dropdown_item, items);
-                    measureSize.setPrompt("Please select a measure");
-                    measureSize.setAdapter(sizeAdapter);
-                    measureSize.setEnabled(true);
-                } else if (types[(int) id].equals("Other")) {
-                    items = new String[selected.getMeasures().size()];
-                    for (int i = 0; i < selected.getMeasures().size(); i++) {
-                        items[i] = selected.getSingleMeasureIndex(i).getName();
-                    }
-                    ArrayAdapter<String> sizeAdapter = new ArrayAdapter<String>(c, android.R.layout.simple_spinner_dropdown_item, items);
-                    measureSize.setPrompt("Please select a measure");
-                    measureSize.setAdapter(sizeAdapter);
-                    measureSize.setEnabled(true);
-                } else {
-                    measureSize.setEnabled(false);
-                }
+               setSizeSpinner((int)id);
             }
 
             @Override
@@ -99,6 +82,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
                 while (selected.getSingleMeasureIndex(selected.getMeasures().size() - 1).getName().equals("")) { //prevents empty measures in the list
                     selected.getMeasures().remove(selected.getMeasures().size() - 1);
                 }
+
             }
         }
 
@@ -111,6 +95,12 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         measureSize.setPrompt("Please select a measure");
         measureSize.setAdapter(sizeAdapter);
         measureSize.setOnItemSelectedListener(onSpinnerSize);
+        if (edit){
+            // FIXME: 1/13/2016 not selecting the right spinner index
+            measureType.setSelection(selected.getUnitNum());
+            setSizeSpinner(selected.getUnitNum());
+            measureSize.setSelection(selected.getFractionNum());
+        }
     }
 
     /**
@@ -227,5 +217,28 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setSizeSpinner(int id){
+        //change what is showing depending on what unit is selected
+        if (types[(int) id].equals("Metric Cooking Measures")) {
+            items = new String[]{"1/4 Teaspoon", "1/2 Teaspoon", "1 Teaspoon", "1 Tablespoon", "1/4 Cup", "1/3 Cup", "1/2 Cup", "1 Cup"};
+            ArrayAdapter<String> sizeAdapter = new ArrayAdapter<String>(c, android.R.layout.simple_spinner_dropdown_item, items);
+            measureSize.setPrompt("Please select a measure");
+            measureSize.setAdapter(sizeAdapter);
+            measureSize.setEnabled(true);
+        } else if (types[id].equals("Other")) {
+            // FIXME: 1/13/2016 this should only be a temp fix.
+            items = new String[selected.getMeasures().size()/2];
+            for (int i = 0; i < items.length; i++) {
+                items[i] = selected.getSingleMeasureIndex(i).getName();
+            }
+            ArrayAdapter<String> sizeAdapter = new ArrayAdapter<String>(c, android.R.layout.simple_spinner_dropdown_item, items);
+            measureSize.setPrompt("Please select a measure");
+            measureSize.setAdapter(sizeAdapter);
+            measureSize.setEnabled(true);
+        } else {
+            measureSize.setEnabled(false);
+        }
     }
 }

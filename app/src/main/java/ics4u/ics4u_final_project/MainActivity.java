@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Database.importData(this);
         prefs = getSharedPreferences("ics4u.ics4u_final_project", MODE_PRIVATE);
         importedRecipes = Database.importRecipes(this);
-        importedRecipes.get(0).setPhoto(R.drawable.canada);
+        importedRecipes.get(0).setPhoto(R.drawable.shaq);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rv_mainactivity);
         setTitle(null);
