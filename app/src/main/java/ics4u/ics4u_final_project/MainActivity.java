@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         RecipeAdapter rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
 //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
-        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.add_recipe_button);
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

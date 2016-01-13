@@ -20,14 +20,15 @@
             android:layout_height="match_parent"
             android:padding="8dp"
             tools:context=".MainActivity"
-            android:id="@+id/rLayout">
+            android:id="@+id/rLayout"
+            android:focusableInTouchMode="true">
 
             <EditText
                 android:id="@+id/ingredient_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/recipe_icon"
-                android:text="Lentil Banana Muffins" />
+                android:text="Lentil Banana Muffins"/>
 
             <ImageView
                 android:id="@+id/recipe_icon"
@@ -58,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:clickable="true"
-            android:src="@drawable/ic_action_new"
+            android:src="@drawable/fab_plus"
             app:backgroundTint="#E0E0E0"
             app:layout_anchor="@id/rLayout"
             app:layout_anchorGravity="bottom|right|end"
