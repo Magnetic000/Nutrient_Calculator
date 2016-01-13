@@ -20,7 +20,7 @@ import java.util.List;
 public class RecipeCreateActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private LinearLayoutManager lLayoutIngredient;
-    Recipe recipe;
+    static Recipe recipe;
     boolean addedIngred;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
