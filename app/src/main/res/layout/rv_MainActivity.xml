@@ -2,20 +2,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:minHeight="?attr/actionBarSize"
-        android:elevation="10dp" />
+        android:elevation="10dp"
+        android:background="#00BCD4"/>
 
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:id="@+id/rLayout"
+        android:background="#FAFAFA">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -24,5 +30,16 @@
             android:scrollbars="vertical" />
 
     </RelativeLayout>
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_action_new"
+        app:layout_anchor="@id/rLayout"
+        app:layout_anchorGravity="bottom|right|end"
+        app:backgroundTint="#E0E0E0"
+        app:rippleColor="#FFF" />
+    </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>
