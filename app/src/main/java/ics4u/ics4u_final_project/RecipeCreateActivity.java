@@ -29,13 +29,13 @@ public class RecipeCreateActivity extends AppCompatActivity {
         setTitle(null);
 
 
-        List<Recipe> rowListItem = getAllItemList();
+        List<Ingredient> rowListItem = getAllItemList();
         lLayoutIngredient = new LinearLayoutManager(RecipeCreateActivity.this);
 
         RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
         rView.setLayoutManager(lLayoutIngredient);
 
-        RecipeAdapter rcAdapter = new RecipeAdapter(RecipeCreateActivity.this, rowListItem);
+        IngredientAdapter rcAdapter = new IngredientAdapter(RecipeCreateActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
         final Button button = (Button)findViewById(R.id.instructions_button);
         button.setOnClickListener(
@@ -53,15 +53,11 @@ public class RecipeCreateActivity extends AppCompatActivity {
             }
         });
     }
-    private List<Recipe> getAllItemList() {
+    private List<Ingredient> getAllItemList() {
 
-        List<Recipe> allItems = new ArrayList<>();
+        List<Ingredient> allItems = new ArrayList<>();
 
-        allItems.add(new Recipe("Breadsticks", R.drawable.bread));
-        allItems.add(new Recipe("Fishsticks", R.drawable.fish));
-        allItems.add(new Recipe("Banana Bread", R.drawable.banana));
-        allItems.add(new Recipe("Seafood", R.drawable.crab));
-        allItems.add(new Recipe("Soup", R.drawable.soup));
+        allItems.add(new Ingredient(-1, "Add Ingredients"));
 
         return allItems;
     }
