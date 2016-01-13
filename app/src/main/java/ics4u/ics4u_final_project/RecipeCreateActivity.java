@@ -1,6 +1,7 @@
 package ics4u.ics4u_final_project;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,7 +19,6 @@ import java.util.List;
 public class RecipeCreateActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private LinearLayoutManager lLayoutIngredient;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,21 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
         RecipeAdapter rcAdapter = new RecipeAdapter(RecipeCreateActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
+        final Button button = (Button)findViewById(R.id.instructions_button);
+        button.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        launchInstructions();
+                    }
+                }
+        );
+        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.fab);
+        FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchIngredients();
+            }
+        });
     }
     private List<Recipe> getAllItemList() {
 
@@ -61,11 +78,14 @@ public class RecipeCreateActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_new) {
-            Intent intent = new Intent(this,IngredientSelectionActivity.class);
-            startActivity(intent);
-        }
-
         return super.onOptionsItemSelected(item);
+    }
+    public void launchInstructions(){
+        Intent intent = new Intent(this,InstructionCreator.class);
+        startActivity(intent);
+    }
+    public void launchIngredients(){
+        Intent intent = new Intent(this,IngredientSelectionActivity.class);
+        startActivity(intent);
     }
 }

@@ -3,12 +3,14 @@ package ics4u.ics4u_final_project;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -45,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         RecipeAdapter rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
 //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
+        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.fab);
+        FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createRecipe();
+            }
+        });
     }
 
     @Override
@@ -67,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
         }
         if (id == R.id.action_refresh) {
             Toast.makeText(MainActivity.this, "Refresh App", Toast.LENGTH_LONG).show();
-        }
-        if (id == R.id.action_new) {
-            createRecipe();
         }
 
         return super.onOptionsItemSelected(item);

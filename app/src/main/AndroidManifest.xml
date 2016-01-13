@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ics4u.ics4u_final_project">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/food"
@@ -28,9 +30,11 @@
         <activity
             android:name=".IngredientSelectionActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".RecipeCreateActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        />
+        <activity
+            android:name=".RecipeCreateActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".InstructionCreator"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 </manifest>
