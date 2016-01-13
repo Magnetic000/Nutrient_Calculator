@@ -38,13 +38,13 @@ public class MainActivity extends AppCompatActivity {
         topToolBar.setLogo(R.drawable.logo);
         topToolBar.setLogoDescription(getResources().getString(R.string.logo_desc));
 
-        List<Recipe> rowListItem = getAllItemList();
+        final List<Recipe> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(MainActivity.this);
 
         RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
 
-        RecipeAdapter rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
+        final RecipeAdapter rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
 //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
         FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.add_recipe_button);
@@ -54,6 +54,36 @@ public class MainActivity extends AppCompatActivity {
                 createRecipe();
             }
         });
+
+
+        SwipeableRecyclerViewTouchListener swipeTouchListener =
+                new SwipeableRecyclerViewTouchListener(rView,
+                        new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                            @Override
+                            public boolean canSwipe(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    rowListItem.remove(position);
+                                    rcAdapter.notifyItemRemoved(position);
+                                }
+                                rcAdapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    rowListItem.remove(position);
+                                    rcAdapter.notifyItemRemoved(position);
+                                }
+                                rcAdapter.notifyDataSetChanged();
+                            }
+                        });
+
+        rView.addOnItemTouchListener(swipeTouchListener);
     }
 
     @Override

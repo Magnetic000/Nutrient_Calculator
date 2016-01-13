@@ -6,6 +6,7 @@
     card_view:cardUseCompatPadding="true"
     card_view:cardElevation="6dp"
     card_view:cardBackgroundColor="@color/text_icons"
+    card_view:cardCornerRadius="2dp"
     >
 
     <RelativeLayout
@@ -31,7 +32,7 @@
             android:id="@+id/recipe_name"
             android:layout_toRightOf="@+id/recipe_icon"
             android:layout_alignParentTop="true"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:text="@string/recipe_name"
             android:textColor="@color/text_primary"
             android:textStyle="bold"/>
@@ -44,6 +45,7 @@
             android:layout_below="@+id/recipe_name"
             android:text="@string/recipe_description"
             android:textColor="@color/text_secondary"
+            android:textSize="14sp"
             android:textStyle="bold"
             />
 
