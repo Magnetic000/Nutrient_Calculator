@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -96,10 +97,11 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         measureSize.setAdapter(sizeAdapter);
         measureSize.setOnItemSelectedListener(onSpinnerSize);
         if (edit){
-            // FIXME: 1/13/2016 not selecting the right spinner index
             measureType.setSelection(selected.getUnitNum());
             setSizeSpinner(selected.getUnitNum());
             measureSize.setSelection(selected.getFractionNum());
+            EditText measureQuantity = (EditText) findViewById(R.id.ingredient_amount);
+            measureQuantity.setText(String.valueOf(selected.getQuantity()));
         }
     }
 
