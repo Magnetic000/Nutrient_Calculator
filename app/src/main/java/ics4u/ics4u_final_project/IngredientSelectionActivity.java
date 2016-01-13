@@ -38,12 +38,13 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     IngredientAdapter rcAdapter;
     List<Ingredient> rowListItem;
     RecyclerView rView;
-    static boolean onIngredient;
+    static boolean onIngredient, searchCompleted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         onIngredient = true;
+        searchCompleted = false;
         results.add(new Ingredient(0,"Search for an Ingredient. Use commas to separate keywords."));
         setContentView(R.layout.rv_ingredientselect);
 
@@ -239,6 +240,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                 catResults = (ArrayList<Ingredient>) results.clone();
                 rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, catResults);
                 rView.setAdapter(rcAdapter);
+                searchCompleted = true;
             }
         }
     }

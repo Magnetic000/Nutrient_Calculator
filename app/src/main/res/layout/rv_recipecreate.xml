@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/ingredient_name"
             android:layout_toRightOf="@+id/recipe_icon"
-            android:text="Lentil Banana Muffins"
+            android:text="Recipe Name"
             />
         <ImageView
             android:layout_width="100dp"
@@ -32,7 +32,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Click for instructions"
+            android:text="Click to add/edit instructions"
             android:id="@+id/instructions_button"
             android:layout_below="@+id/ingredient_name"
             android:layout_alignStart="@+id/ingredient_name" />
