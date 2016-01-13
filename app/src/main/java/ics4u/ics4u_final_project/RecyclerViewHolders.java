@@ -27,12 +27,13 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
 
     @Override
     public void onClick(View view) {
+        location = Toast.LENGTH_SHORT;
         if (IngredientSelectionActivity.onIngredient && IngredientSelectionActivity.searchCompleted) {
             Intent intent = new Intent(this.context,MeasureSelectionActivity.class);
             context.startActivity(intent);
-            location = Toast.LENGTH_SHORT;
         } else {
-
+            Intent intent = new Intent(this.context,RecipeCreateActivity.class);
+            context.startActivity(intent);
             //Toast.makeText(view.getContext(), "Clicked Country Position = " + getPosition(), Toast.LENGTH_SHORT).show();
         }
     }
