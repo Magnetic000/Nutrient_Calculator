@@ -19,6 +19,7 @@ import java.util.List;
 public class RecipeCreateActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private LinearLayoutManager lLayoutIngredient;
+    Recipe recipe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         setTitle(null);
 
+        
 
         List<Ingredient> rowListItem = getAllItemList();
         lLayoutIngredient = new LinearLayoutManager(RecipeCreateActivity.this);
