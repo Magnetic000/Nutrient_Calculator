@@ -18,19 +18,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:padding="5sp"
             android:text="@string/recipe_name"
             android:textColor="@color/text_primary"
-            android:textSize="18sp"
-            android:padding="5sp"/>
+            android:textSize="18sp" />
+
         <TextView
+            android:id="@+id/measure_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/ingredient_name"
             android:layout_below="@id/ingredient_name"
+            android:padding="5sp"
             android:text="Measurements"
             android:textColor="@color/text_secondary"
-            android:layout_alignLeft="@id/ingredient_name"
-            android:textSize="12sp"
-            android:padding="5sp"/>
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
