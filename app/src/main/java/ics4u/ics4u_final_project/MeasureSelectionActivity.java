@@ -4,6 +4,9 @@ package ics4u.ics4u_final_project;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,6 +30,9 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         selected = IngredientSelectionActivity.getResults().get(RecyclerViewHolders.location);
         final Spinner measureSize = (Spinner) findViewById(R.id.measurement_amount);
         Spinner measureType = (Spinner) findViewById(R.id.measurement_type);
+        setTitle("Ingredient Amount");
+        Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(topToolBar);
         AdapterView.OnItemSelectedListener onSpinnerType = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -195,5 +201,25 @@ public class MeasureSelectionActivity extends AppCompatActivity {
 //            }
 //        }
     }//end getConv
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_measurement, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_add) {
+            //insert code for what happens after add is pressed
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

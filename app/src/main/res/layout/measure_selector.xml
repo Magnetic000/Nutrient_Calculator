@@ -7,15 +7,19 @@
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@id/toolbar" />
+        android:id="@id/toolbar"
+        android:background="@color/color_primary"
+        android:elevation="6dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/ingredient_title"
         android:layout_below="@id/toolbar"
-        android:textSize="15sp"
+        android:textSize="24sp"
+        android:textColor="@color/text_primary"
         android:text="TEST"
+        android:padding="5dp"
         />
     <Spinner
         android:id="@+id/measurement_type"
