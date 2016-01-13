@@ -45,7 +45,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
                     }
                 }
         );
-        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.add_ingredient_button);
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

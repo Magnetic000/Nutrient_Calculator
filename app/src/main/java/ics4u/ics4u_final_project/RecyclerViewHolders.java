@@ -28,7 +28,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
 
     @Override
     public void onClick(View view) {
-        location = Toast.LENGTH_SHORT;
+        location = this.getLayoutPosition();
         edit = false;
         if (IngredientSelectionActivity.onIngredient && IngredientSelectionActivity.searchCompleted) {
             Intent intent = new Intent(this.context,MeasureSelectionActivity.class);

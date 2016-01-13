@@ -9,32 +9,38 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:elevation="10dp"
+        android:background="@color/color_primary"
+        android:elevation="6dp"
         android:minHeight="?attr/actionBarSize" />
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
+            android:id="@+id/rLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
-            tools:context=".MainActivity"
-            android:id="@+id/rLayout"
-            android:focusableInTouchMode="true">
+            android:background="@color/background"
+            tools:context=".MainActivity">
 
             <EditText
                 android:id="@+id/ingredient_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/recipe_icon"
-                android:text="Recipe Title" />
+                android:text="Recipe Title"
+                android:textSize="24sp"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"/>
 
             <ImageView
                 android:id="@+id/recipe_icon"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/bread" />
+                android:src="@drawable/bread"
+                android:layout_marginRight="16dp"
+                android:padding="10dp"/>
 
             <Button
                 android:id="@+id/instructions_button"
@@ -42,7 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/ingredient_name"
                 android:layout_below="@+id/ingredient_name"
-                android:text="Click for instructions" />
+                android:text="Click for instructions"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_recipe"
@@ -54,15 +62,15 @@
         </RelativeLayout>
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/add_ingredient_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:clickable="true"
             android:src="@drawable/fab_plus"
-            app:backgroundTint="#E0E0E0"
+            app:backgroundTint="@color/accent_color"
             app:layout_anchor="@id/rLayout"
             app:layout_anchorGravity="bottom|right|end"
-            app:rippleColor="#FFF" />
+            app:rippleColor="@color/text_icons" />
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>
