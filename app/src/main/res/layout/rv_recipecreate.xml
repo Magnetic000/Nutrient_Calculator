@@ -25,7 +25,7 @@
             tools:context=".MainActivity">
 
             <EditText
-                android:id="@+id/ingredient_name"
+                android:id="@+id/recipe_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/recipe_icon"
@@ -46,11 +46,11 @@
                 android:id="@+id/instructions_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/ingredient_name"
-                android:layout_below="@+id/ingredient_name"
-                android:text="Click for instructions"
                 android:textSize="14sp"
-                android:textColor="@color/text_secondary"/>
+                android:textColor="@color/text_secondary"
+                android:layout_alignStart="@+id/recipe_name"
+                android:layout_below="@+id/recipe_name"
+                android:text="Click for instructions" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_recipe"

@@ -19,7 +19,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayoutManager lLayout;
-    public ArrayList<Recipe> importedRecipes;
+    public static ArrayList<Recipe> importedRecipes;
     public static SharedPreferences prefs = null;
 
     @Override

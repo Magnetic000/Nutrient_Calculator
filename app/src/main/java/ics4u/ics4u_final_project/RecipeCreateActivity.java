@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ import java.util.List;
 public class RecipeCreateActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private LinearLayoutManager lLayoutIngredient;
+    Recipe recipe;
+    boolean addedIngred;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +30,9 @@ public class RecipeCreateActivity extends AppCompatActivity {
         mToolbar.setTitle("Create A Recipe");
         setSupportActionBar(mToolbar);
         setTitle(null);
+        addedIngred = false;
 
 
-        List<Ingredient> rowListItem = getAllItemList();
-        lLayoutIngredient = new LinearLayoutManager(RecipeCreateActivity.this);
-
-        RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
-        rView.setLayoutManager(lLayoutIngredient);
-
-        IngredientAdapter rcAdapter = new IngredientAdapter(RecipeCreateActivity.this, rowListItem);
-        rView.setAdapter(rcAdapter);
         final Button button = (Button)findViewById(R.id.instructions_button);
         button.setOnClickListener(
                 new Button.OnClickListener() {
@@ -52,15 +48,31 @@ public class RecipeCreateActivity extends AppCompatActivity {
                 launchIngredients();
             }
         });
+        List<Ingredient> rowListItem;
+        if (RecyclerViewHolders.edit){
+            recipe = MainActivity.importedRecipes.get(RecyclerViewHolders.location);
+            TextView name = (TextView) findViewById(R.id.recipe_name);
+            name.setText(recipe.getTitle());
+            rowListItem = recipe.getIngredients();
+        } else {
+            recipe = new Recipe();
+            rowListItem = getAllItemList();
+        }
+
+        lLayoutIngredient = new LinearLayoutManager(RecipeCreateActivity.this);
+
+        RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
+        rView.setLayoutManager(lLayoutIngredient);
+
+        IngredientAdapter rcAdapter = new IngredientAdapter(RecipeCreateActivity.this, rowListItem);
+        rView.setAdapter(rcAdapter);
     }
     private List<Ingredient> getAllItemList() {
-
         List<Ingredient> allItems = new ArrayList<>();
-
         allItems.add(new Ingredient(-1, "Add Ingredients"));
-
         return allItems;
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
