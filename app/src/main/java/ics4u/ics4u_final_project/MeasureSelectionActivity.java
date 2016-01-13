@@ -24,7 +24,13 @@ public class MeasureSelectionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.measure_selector);
-        selected = IngredientSelectionActivity.getResults().get(RecyclerViewHolders.location);
+        if (RecipeCreateActivity.search) {
+            selected = IngredientSelectionActivity.getResults().get(RecyclerViewHolders.location);
+        } else {
+            selected = RecipeCreateActivity.recipe.getSingleIngredientIndex(RecyclerViewHolders.location);
+            //add making it show the right measure
+        }
+        RecipeCreateActivity.search = false;
         final Spinner measureSize = (Spinner) findViewById(R.id.measurement_amount);
         Spinner measureType = (Spinner) findViewById(R.id.measurement_type);
         AdapterView.OnItemSelectedListener onSpinnerType = new AdapterView.OnItemSelectedListener() {

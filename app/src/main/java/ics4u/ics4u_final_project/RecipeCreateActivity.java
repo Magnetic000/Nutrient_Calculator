@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     private LinearLayoutManager lLayoutIngredient;
     static Recipe recipe;
     boolean addedIngred;
-    static boolean onRecipe;
+    static boolean onRecipe, search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                search = true;
                 launchIngredients();
             }
         });
@@ -56,6 +58,8 @@ public class RecipeCreateActivity extends AppCompatActivity {
             TextView name = (TextView) findViewById(R.id.recipe_name);
             name.setText(recipe.getTitle());
             rowListItem = recipe.getIngredients();
+            ImageView recipeIcon = (ImageView) findViewById(R.id.recipe_icon);
+            recipeIcon.setImageDrawable(getResources().getDrawable(recipe.getPhoto()));
         } else {
             recipe = new Recipe();
             rowListItem = getAllItemList();

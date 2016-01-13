@@ -28,7 +28,7 @@ public class RecipeCreateAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
-        holder.ingredientName.setText(itemList.get(position).getName());
+        holder.ingredientName.setText(itemList.get(position).getFormattedName());
     }
 
     @Override
