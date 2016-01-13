@@ -33,7 +33,10 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         if (IngredientSelectionActivity.onIngredient && IngredientSelectionActivity.searchCompleted) {
             Intent intent = new Intent(this.context,MeasureSelectionActivity.class);
             context.startActivity(intent);
-        } else {
+        } else if (RecipeCreateActivity.onRecipe) {
+            Intent intent = new Intent(this.context,MeasureSelectionActivity.class);
+            context.startActivity(intent);
+        } else  {
             edit = true;
             Intent intent = new Intent(this.context,RecipeCreateActivity.class);
             context.startActivity(intent);
