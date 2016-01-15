@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,6 +27,8 @@ public class RecipeCreateActivity extends AppCompatActivity {
     static Recipe recipe;
     boolean addedIngred;
     static boolean onRecipe, search;
+    ImageView iconContextMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +40,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         addedIngred = false;
 
 
-        final Button button = (Button)findViewById(R.id.instructions_button);
+        final Button button = (Button) findViewById(R.id.instructions_button);
         button.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
@@ -52,7 +57,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
             }
         });
         List<Ingredient> rowListItem;
-        if (RecyclerViewHolders.edit){
+        if (RecyclerViewHolders.edit) {
             recipe = MainActivity.importedRecipes.get(RecyclerViewHolders.location);
             TextView name = (TextView) findViewById(R.id.recipe_name);
             name.setText(recipe.getTitle());
@@ -71,21 +76,25 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
         RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
+        clickingIcon();
     }
+
     private List<Ingredient> getAllItemList() {
         List<Ingredient> allItems = new ArrayList<>();
         allItems.add(new Ingredient(-1, "Add Ingredients"));
         return allItems;
     }
 
-    public void launchInstructions(){
-        Intent intent = new Intent(this,InstructionCreator.class);
+    public void launchInstructions() {
+        Intent intent = new Intent(this, InstructionCreator.class);
         startActivity(intent);
     }
-    public void launchIngredients(){
-        Intent intent = new Intent(this,IngredientSelectionActivity.class);
+
+    public void launchIngredients() {
+        Intent intent = new Intent(this, IngredientSelectionActivity.class);
         startActivity(intent);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -107,4 +116,39 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        menu.setHeaderTitle("Change recipe icon");
+        inflater.inflate(R.menu.menu_icon, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        super.onContextItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.icon1:
+                iconContextMenu.setImageResource(R.drawable.banana);
+                return true;
+            case R.id.icon2:
+                iconContextMenu.setImageResource(R.drawable.fish);
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public void clickingIcon() {
+        iconContextMenu = (ImageView) findViewById(R.id.recipe_icon);
+        iconContextMenu.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                registerForContextMenu(iconContextMenu);
+                return false;
+            }
+        });
+    }
+
 }

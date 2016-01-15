@@ -40,7 +40,8 @@
                 android:layout_height="100dp"
                 android:layout_marginRight="16dp"
                 android:padding="10dp"
-                android:src="@drawable/bread" />
+                android:src="@drawable/bread"
+                android:clickable="true"/>
 
             <Button
                 android:id="@+id/instructions_button"

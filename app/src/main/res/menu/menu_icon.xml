@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/icon_menu"
-        android:title="Please select an icon"/>
-        <group android:checkableBehavior="single">
-            <item android:id="@+id/icon1"
-                android:icon="@drawable/banana"
-                android:title="banana"
-                />
-        </group>
+
+    <item
+        android:id="@+id/icon1"
+        android:title="Banana" />
+    <item
+        android:id="@+id/icon2"
+        android:title="Fish"/>
 </menu>
