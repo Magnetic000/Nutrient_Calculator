@@ -212,10 +212,11 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        Toast.makeText(this, "add2", Toast.LENGTH_LONG);
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
-            //insert code for what happens after add is pressed
+            Toast.makeText(this, "add", Toast.LENGTH_LONG);
         }
 
         return super.onOptionsItemSelected(item);
