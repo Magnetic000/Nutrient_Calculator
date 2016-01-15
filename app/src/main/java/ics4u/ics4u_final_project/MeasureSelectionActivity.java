@@ -41,6 +41,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         setTitle("Ingredient Amount");
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
+
         AdapterView.OnItemSelectedListener onSpinnerType = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -216,6 +217,8 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
             //insert code for what happens after add is pressed
+        } else if (id == R.id.action_cancel){
+            //insert code for what happens after cancel is pressed
         }
 
         return super.onOptionsItemSelected(item);
