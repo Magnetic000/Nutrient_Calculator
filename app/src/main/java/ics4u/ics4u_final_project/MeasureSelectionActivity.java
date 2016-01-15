@@ -218,9 +218,9 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
             //insert code for what happens after add is pressed
-        } else if (id == R.id.action_cancel){
+        } else if (id == R.id.action_cancel) {
             //insert code for what happens after cancel is pressed
-
+        }
         return super.onOptionsItemSelected(item);
     }
 
