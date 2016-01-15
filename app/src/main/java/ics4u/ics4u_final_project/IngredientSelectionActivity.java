@@ -35,7 +35,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     String[] ingredientCategories;
     ArrayAdapter<String> adapter;
     Spinner ingredientDropdown;
-    IngredientAdapter rcAdapter;
+    static IngredientAdapter rcAdapter;
     List<Ingredient> rowListItem;
     RecyclerView rView;
     static boolean onIngredient, searchCompleted;
@@ -325,4 +325,5 @@ public class IngredientSelectionActivity extends AppCompatActivity {
             quickSort(list, l, high);
         }
     }
+
 }

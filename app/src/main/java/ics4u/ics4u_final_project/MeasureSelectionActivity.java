@@ -15,8 +15,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 
 public class MeasureSelectionActivity extends AppCompatActivity {
     Ingredient selected;
@@ -45,7 +43,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         AdapterView.OnItemSelectedListener onSpinnerType = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               setSizeSpinner((int)id);
+                setSizeSpinner((int) id);
             }
 
             @Override
@@ -97,7 +95,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         measureSize.setPrompt("Please select a measure");
         measureSize.setAdapter(sizeAdapter);
         measureSize.setOnItemSelectedListener(onSpinnerSize);
-        if (edit){
+        if (edit) {
             measureType.setSelection(selected.getUnitNum());
             setSizeSpinner(selected.getUnitNum());
             measureSize.setSelection(selected.getFractionNum());
@@ -200,6 +198,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
 //            }
 //        }
     }//end getConv
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -213,18 +212,99 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        Toast.makeText(this, "add2", Toast.LENGTH_LONG);
-
+        EditText quantityBox = (EditText) findViewById(R.id.ingredient_amount);
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
-            //insert code for what happens after add is pressed
-        } else if (id == R.id.action_cancel){
-            //insert code for what happens after cancel is pressed
+            int temp;
+            String ingredient = "";
+            int quantity = Integer.parseInt(quantityBox.getText().toString());
+            if (measureType.getSelectedItem().toString() == "Metric Cooking Measures") {
+                //add the correct fraction to the begining of the ingredient name
+                if (quantity > 1) {
+                    temp = Integer.parseInt(measureSize.getSelectedItem().toString().substring(0, 1)) * quantity;
+                    if (measureSize.getSelectedItemPosition() != 2 && measureSize.getSelectedItemPosition() != 3 && measureSize.getSelectedItemPosition() != 7) {//not full measures eg 1 cup
+                        if (temp / Integer.parseInt(measureSize.getSelectedItem().toString().substring(2, 3)) >= 1) {
+                            if (temp % Double.parseDouble(measureSize.getSelectedItem().toString().substring(2, 3)) == 0) {
+                                ingredient = temp / Integer.parseInt(measureSize.getSelectedItem().toString().substring(2, 3)) + measureSize.getSelectedItem().toString().substring(3);
+                                if (temp / Integer.parseInt(measureSize.getSelectedItem().toString().substring(2, 3)) > 1) {
+                                    ingredient += "s";
+                                }
+                                ingredient += " " + selected.getName();
+                            } else {
+                                ingredient += (int) Math.floor(temp / Double.parseDouble(measureSize.getSelectedItem().toString().substring(2, 3)));
+                                temp -= Double.parseDouble(measureSize.getSelectedItem().toString().substring(2, 3));
+                                double temp2 = (double) temp / Double.parseDouble(measureSize.getSelectedItem().toString().substring(2, 3));
+                                temp2 -= Math.floor(temp2);//leftovers
+                                if (temp2 == 0.25) {
+                                    ingredient += " 1/4";
+                                } else if (temp2 == 0.5) {
+                                    ingredient += " 1/2";
+                                } else if (temp2 == 0.75) {
+                                    ingredient += " 3/4";
+                                } else if ((temp2 + "").substring(2, 3).equals("3")) {
+                                    ingredient += " 1/3";
+                                } else {
+                                    ingredient += " 2/3";
+                                }
+                                ingredient += measureSize.getSelectedItem().toString().substring(3) + "s" + " " + selected.getName();
+                            }
+                        } else {
+                            ingredient = temp + measureSize.getSelectedItem().toString().substring(1) + "s" + " " + selected.getName();
+                        }
+                    } else {
+                        ingredient = temp + measureSize.getSelectedItem().toString().substring(1) + "s" + " " + selected.getName();
+                    }
+                } else {
+                    ingredient = measureSize.getSelectedItem() + " " + selected.getName();
+                }
+            } else if (measureType.getSelectedItem().toString() == "g") {
+                if (quantity < 1000) {
+                    ingredient = quantity + "g " + selected.getName();
+                } else {
+                    ingredient = ((double) quantity / 1000.0) + "Kg " + selected.getName();
+                }
 
+            } else if (measureType.getSelectedItem().toString() == "Other") {
+                String str = "";
+                int i;
+                for (i = 0; i < measureSize.getSelectedItem().toString().length(); i++) {//get the numbers from the front of the other name
+                    if (measureSize.getSelectedItem().toString().charAt(i) >= 48
+                            && measureSize.getSelectedItem().toString().charAt(i) <= 57) {
+                        str += measureSize.getSelectedItem().toString().charAt(i);
+                    } else {
+                        break;
+                    }
+                }
+                int num = Integer.parseInt(str);
+                int num2 = num * quantity;
+                ingredient = num2 + measureSize.getSelectedItem().toString().substring(i) + " " + selected.getName();
+            } else if (quantity < 1000) {
+                ingredient = quantity + "mL " + selected.getName();
+            } else {
+                ingredient = ((double)quantity / 1000.0) + "L " + selected.getName();
+            }
+            selected.setUnit(measureType.getSelectedItem().toString());
+            selected.setUnitNum(measureType.getSelectedItemPosition());
+            selected.setFractionNum(measureSize.getSelectedItemPosition());
+            selected.setFractionName(measureSize.getSelectedItem().toString());
+
+            System.out.println(quantity);
+            selected.setQuantity(quantity);
+            if (RecyclerViewHolders.edit) {
+                RecipeCreateActivity.recipe.setSingleIngredient(RecyclerViewHolders.location, selected);
+            } else {
+                RecipeCreateActivity.recipe.addIngredient(selected);
+            }
+            // TODO: 1/15/2016 update the cards
+            IngredientSelectionActivity.updateAdapter();
+            this.finish();
+        } else if (id == R.id.action_cancel) {
+            this.finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 
-    private void setSizeSpinner(int id){
+    private void setSizeSpinner(int id) {
         //change what is showing depending on what unit is selected
         if (types[(int) id].equals("Metric Cooking Measures")) {
             items = new String[]{"1/4 Teaspoon", "1/2 Teaspoon", "1 Teaspoon", "1 Tablespoon", "1/4 Cup", "1/3 Cup", "1/2 Cup", "1 Cup"};
@@ -234,7 +314,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             measureSize.setEnabled(true);
         } else if (types[id].equals("Other")) {
             // FIXME: 1/13/2016 this should only be a temp fix.
-            items = new String[selected.getMeasures().size()/2];
+            items = new String[selected.getMeasures().size() / 2];
             for (int i = 0; i < items.length; i++) {
                 items[i] = selected.getSingleMeasureIndex(i).getName();
             }

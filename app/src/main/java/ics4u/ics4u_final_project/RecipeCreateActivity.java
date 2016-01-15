@@ -24,6 +24,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     static Recipe recipe;
     boolean addedIngred;
     static boolean onRecipe, search;
+    static RecyclerView rView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +68,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
         lLayoutIngredient = new LinearLayoutManager(RecipeCreateActivity.this);
 
-        RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
+        rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
         rView.setLayoutManager(lLayoutIngredient);
 
         RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
@@ -86,5 +87,10 @@ public class RecipeCreateActivity extends AppCompatActivity {
     public void launchIngredients(){
         Intent intent = new Intent(this,IngredientSelectionActivity.class);
         startActivity(intent);
+    }
+
+    public static void updateAdapter(){
+        RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(this, recipe.getIngredients());
+        rView.setAdapter(rcAdapter);
     }
 }
