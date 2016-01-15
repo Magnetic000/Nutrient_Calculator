@@ -131,9 +131,11 @@ public class RecipeCreateActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.icon1:
                 iconContextMenu.setImageResource(R.drawable.banana);
+                recipe.setPhoto(R.drawable.banana);
                 return true;
             case R.id.icon2:
                 iconContextMenu.setImageResource(R.drawable.fish);
+                recipe.setPhoto(R.drawable.fish);
                 return true;
             default:
                 return false;
