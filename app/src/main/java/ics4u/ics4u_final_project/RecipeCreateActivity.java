@@ -1,5 +1,6 @@
 package ics4u.ics4u_final_project;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     static Recipe recipe;
     boolean addedIngred;
     static boolean onRecipe, search;
+    static RecyclerView rView;
     ImageView iconContextMenu;
 
     @Override
@@ -71,7 +72,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
         lLayoutIngredient = new LinearLayoutManager(RecipeCreateActivity.this);
 
-        RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
+        rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
         rView.setLayoutManager(lLayoutIngredient);
 
         RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
@@ -95,6 +96,10 @@ public class RecipeCreateActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+//    public static void updateAdapter(){
+//        RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(this.getApplicationContext(), recipe.getIngredients());
+//        rView.setAdapter(rcAdapter);
+//    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
