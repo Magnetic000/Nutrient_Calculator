@@ -31,7 +31,6 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             selected = IngredientSelectionActivity.getResults().get(RecyclerViewHolders.location);
         } else {
             selected = RecipeCreateActivity.recipe.getSingleIngredientIndex(RecyclerViewHolders.location);
-            //add making it show the right measure
         }
         RecipeCreateActivity.search = false;
         measureSize = (Spinner) findViewById(R.id.measurement_amount);
@@ -287,13 +286,17 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             selected.setUnitNum(measureType.getSelectedItemPosition());
             selected.setFractionNum(measureSize.getSelectedItemPosition());
             selected.setFractionName(measureSize.getSelectedItem().toString());
-
+            selected.setFormattedName(ingredient);
             System.out.println(quantity);
             selected.setQuantity(quantity);
             if (RecyclerViewHolders.edit) {
                 RecipeCreateActivity.recipe.setSingleIngredient(RecyclerViewHolders.location, selected);
             } else {
                 RecipeCreateActivity.recipe.addIngredient(selected);
+            }
+            RecipeCreateActivity.addedIngred = true;
+            if (RecipeCreateActivity.recipe.getIngredients().get(0).getID() == -1){
+                RecipeCreateActivity.recipe.getIngredients().remove(0);
             }
             // TODO: 1/15/2016 update the cards
 //            RecipeCreateActivity.updateAdapter();

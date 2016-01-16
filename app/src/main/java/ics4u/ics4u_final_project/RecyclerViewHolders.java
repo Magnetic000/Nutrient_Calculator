@@ -17,6 +17,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
     private final Context context;
     public static int location = 0;
     static boolean edit;
+
     public RecyclerViewHolders(View itemView, Context context) {
         super(itemView);
         itemView.setOnClickListener(this);
@@ -31,14 +32,21 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         location = this.getLayoutPosition();
         edit = false;
         if (IngredientSelectionActivity.onIngredient && IngredientSelectionActivity.searchCompleted) {
-            Intent intent = new Intent(this.context,MeasureSelectionActivity.class);
+            Intent intent = new Intent(this.context, MeasureSelectionActivity.class);
             context.startActivity(intent);
         } else if (RecipeCreateActivity.onRecipe) {
-            Intent intent = new Intent(this.context,MeasureSelectionActivity.class);
-            context.startActivity(intent);
-        } else  {
+            System.out.println("Called");
+            System.out.println("added" + RecipeCreateActivity.addedIngred);
+            if (RecipeCreateActivity.recipe.getIngredients().size() > 0 && RecipeCreateActivity.addedIngred) {
+                Intent intent = new Intent(this.context, MeasureSelectionActivity.class);
+                context.startActivity(intent);
+            } else {
+                Toast t = Toast.makeText(context, "Please create a new ingredient", Toast.LENGTH_LONG);
+                t.show();
+            }
+        } else {
             edit = true;
-            Intent intent = new Intent(this.context,RecipeCreateActivity.class);
+            Intent intent = new Intent(this.context, RecipeCreateActivity.class);
             context.startActivity(intent);
             //Toast.makeText(view.getContext(), "Clicked Country Position = " + getPosition(), Toast.LENGTH_SHORT).show();
         }

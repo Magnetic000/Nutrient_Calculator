@@ -15,9 +15,13 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +29,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private LinearLayoutManager lLayoutIngredient;
     static Recipe recipe;
-    boolean addedIngred;
+    static boolean addedIngred;
     static boolean onRecipe, search;
     static RecyclerView rView;
     ImageView iconContextMenu;
@@ -65,6 +69,9 @@ public class RecipeCreateActivity extends AppCompatActivity {
             rowListItem = recipe.getIngredients();
             ImageView recipeIcon = (ImageView) findViewById(R.id.recipe_icon);
             recipeIcon.setImageDrawable(getResources().getDrawable(recipe.getPhoto()));
+            if (recipe.getIngredients().size() > 0) {
+                addedIngred = true;
+            }
         } else {
             recipe = new Recipe();
             rowListItem = getAllItemList();
@@ -83,6 +90,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     private List<Ingredient> getAllItemList() {
         List<Ingredient> allItems = new ArrayList<>();
         allItems.add(new Ingredient(-1, "Add Ingredients"));
+        allItems.get(0).setFormattedName("Add Ingredients using the floating button.");
         return allItems;
     }
 
@@ -116,7 +124,15 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
-            //ISAAC INSERT YOUR CODE HERE
+            EditText nameBox = (EditText)findViewById(R.id.recipe_name);
+            recipe.setTitle(nameBox.getText().toString());
+            try {
+                recipe.save(new File(getFilesDir() + "/recipes/" + recipe.getTitle() + ".xml"));
+                Toast t = Toast.makeText(this, "Recipe Saved", Toast.LENGTH_SHORT);
+                t.show();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
         return super.onOptionsItemSelected(item);

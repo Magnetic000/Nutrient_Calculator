@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         Database.importData(this);
         prefs = getSharedPreferences("ics4u.ics4u_final_project", MODE_PRIVATE);
         importedRecipes = Database.importRecipes(this);
-        importedRecipes.get(0).setPhoto(R.drawable.shaq);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rv_mainactivity);
         setTitle(null);
@@ -119,11 +118,6 @@ public class MainActivity extends AppCompatActivity {
             allItems.add(importedRecipes.get(i));
             System.out.println("Title" + importedRecipes.get(i).getTitle());
         }
-        allItems.add(new Recipe("Breadsticks", R.drawable.bread));
-        allItems.add(new Recipe("Fishsticks", R.drawable.fish));
-        allItems.add(new Recipe("Banana Bread", R.drawable.banana));
-        allItems.add(new Recipe("Seafood", R.drawable.crab));
-        allItems.add(new Recipe("Soup", R.drawable.soup));
 
         return allItems;
     }

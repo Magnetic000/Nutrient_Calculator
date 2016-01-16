@@ -475,6 +475,7 @@ public class Recipe {
      * @throws FileNotFoundException
      */
     public void save(File file) throws FileNotFoundException {
+        Database.recipe(this, true, true);
         //PrintWriter p = new PrintWriter(file + ".txt");
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
