@@ -300,6 +300,9 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             this.finish();
         } else if (id == R.id.action_cancel) {
             this.finish();
+            //insert code for what happens after add is pressed
+        } else if (id == R.id.action_cancel) {
+            //insert code for what happens after cancel is pressed
         }
         return super.onOptionsItemSelected(item);
     }
