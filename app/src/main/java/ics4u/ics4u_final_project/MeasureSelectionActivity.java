@@ -296,7 +296,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
                 RecipeCreateActivity.recipe.addIngredient(selected);
             }
             // TODO: 1/15/2016 update the cards
-            IngredientSelectionActivity.updateAdapter();
+//            RecipeCreateActivity.updateAdapter();
             this.finish();
         } else if (id == R.id.action_cancel) {
             this.finish();

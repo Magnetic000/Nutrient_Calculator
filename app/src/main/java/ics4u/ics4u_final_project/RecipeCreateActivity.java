@@ -1,5 +1,6 @@
 package ics4u.ics4u_final_project;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -89,8 +90,8 @@ public class RecipeCreateActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public static void updateAdapter(){
-        RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(this, recipe.getIngredients());
-        rView.setAdapter(rcAdapter);
-    }
+//    public static void updateAdapter(){
+//        RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(this.getApplicationContext(), recipe.getIngredients());
+//        rView.setAdapter(rcAdapter);
+//    }
 }
