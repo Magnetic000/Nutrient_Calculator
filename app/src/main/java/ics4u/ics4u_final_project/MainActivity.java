@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     public static SharedPreferences prefs = null;
     RecyclerView rView;
     RecipeAdapter rcAdapter;
-    List<Recipe> rowListItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +41,12 @@ public class MainActivity extends AppCompatActivity {
         topToolBar.setLogo(R.drawable.logo);
         topToolBar.setLogoDescription(getResources().getString(R.string.logo_desc));
 
-        rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(MainActivity.this);
 
         rView = (RecyclerView) findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
 
-        rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
+        rcAdapter = new RecipeAdapter(MainActivity.this, importedRecipes);
         rView.setAdapter(rcAdapter);
 //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
         FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.add_recipe_button);
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    rowListItem.remove(position);
+                                    importedRecipes.remove(position);
                                     rcAdapter.notifyItemRemoved(position);
                                 }
                                 rcAdapter.notifyDataSetChanged();
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    rowListItem.remove(position);
+                                    importedRecipes.remove(position);
                                     rcAdapter.notifyItemRemoved(position);
                                 }
                                 rcAdapter.notifyDataSetChanged();
@@ -113,18 +111,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private List<Recipe> getAllItemList() {
-
-//        List<Recipe> allItems = new ArrayList<>();
-//        System.out.println("Getting imported recipes");
-//        for (int i = 0; i < importedRecipes.size(); i++) {
-//            allItems.add(importedRecipes.get(i));
-//            System.out.println("Title" + importedRecipes.get(i).getTitle());
-//        }
-
-        return importedRecipes;
     }
 
 
@@ -170,8 +156,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         importedRecipes = Database.importRecipes(this);
-        rowListItem = importedRecipes;
-        rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
+        rcAdapter = new RecipeAdapter(MainActivity.this, importedRecipes);
         rView.setAdapter(rcAdapter);
     }
 

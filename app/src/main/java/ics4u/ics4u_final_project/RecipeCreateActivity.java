@@ -125,6 +125,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
             saveRecipe();
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);
