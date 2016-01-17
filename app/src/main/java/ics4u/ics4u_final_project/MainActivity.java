@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager lLayout;
     public static ArrayList<Recipe> importedRecipes;
     public static SharedPreferences prefs = null;
+    RecyclerView rView;
+    RecipeAdapter rcAdapter;
+    List<Recipe> rowListItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +42,13 @@ public class MainActivity extends AppCompatActivity {
         topToolBar.setLogo(R.drawable.logo);
         topToolBar.setLogoDescription(getResources().getString(R.string.logo_desc));
 
-        final List<Recipe> rowListItem = getAllItemList();
+        rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(MainActivity.this);
 
-        RecyclerView rView = (RecyclerView) findViewById(R.id.recycler_view);
+        rView = (RecyclerView) findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
 
-        final RecipeAdapter rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
+        rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
 //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
         FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.add_recipe_button);
@@ -112,18 +117,19 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Recipe> getAllItemList() {
 
-        List<Recipe> allItems = new ArrayList<>();
-        System.out.println("Getting imported recipes");
-        for (int i = 0; i < importedRecipes.size(); i++) {
-            allItems.add(importedRecipes.get(i));
-            System.out.println("Title" + importedRecipes.get(i).getTitle());
-        }
+//        List<Recipe> allItems = new ArrayList<>();
+//        System.out.println("Getting imported recipes");
+//        for (int i = 0; i < importedRecipes.size(); i++) {
+//            allItems.add(importedRecipes.get(i));
+//            System.out.println("Title" + importedRecipes.get(i).getTitle());
+//        }
 
-        return allItems;
+        return importedRecipes;
     }
 
 
     public void createRecipe() {
+        RecyclerViewHolders.edit = false;
         Intent intent = new Intent(this, RecipeCreateActivity.class);
         startActivity(intent);
     }
@@ -149,5 +155,25 @@ public class MainActivity extends AppCompatActivity {
         );*/
 
     }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        //rebuild imported recipes
+        File recipeFolder = new File(this.getFilesDir() + "/recipes/");
+        recipeFolder.mkdir();
+        for (Recipe r: importedRecipes){
+            try {
+                r.save(new File(getFilesDir() + "/recipes/" + r.getTitle() + ".xml"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        importedRecipes = Database.importRecipes(this);
+        rowListItem = importedRecipes;
+        rcAdapter = new RecipeAdapter(MainActivity.this, rowListItem);
+        rView.setAdapter(rcAdapter);
+    }
+
 
 }

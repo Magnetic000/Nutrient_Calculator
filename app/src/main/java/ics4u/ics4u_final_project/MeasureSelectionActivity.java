@@ -298,8 +298,6 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             if (RecipeCreateActivity.recipe.getIngredients().get(0).getID() == -1){
                 RecipeCreateActivity.recipe.getIngredients().remove(0);
             }
-            // TODO: 1/15/2016 update the cards
-//            RecipeCreateActivity.updateAdapter();
             this.finish();
         } else if (id == R.id.action_cancel) {
             this.finish();

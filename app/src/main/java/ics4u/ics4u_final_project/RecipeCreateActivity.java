@@ -124,15 +124,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
-            EditText nameBox = (EditText)findViewById(R.id.recipe_name);
-            recipe.setTitle(nameBox.getText().toString());
-            try {
-                recipe.save(new File(getFilesDir() + "/recipes/" + recipe.getTitle() + ".xml"));
-                Toast t = Toast.makeText(this, "Recipe Saved", Toast.LENGTH_SHORT);
-                t.show();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            saveRecipe();
         }
 
         return super.onOptionsItemSelected(item);
@@ -172,6 +164,31 @@ public class RecipeCreateActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, recipe.getIngredients());
+        rView.setAdapter(rcAdapter);
+        saveRecipe();
+    }
+
+    public void saveRecipe(){
+        EditText nameBox = (EditText)findViewById(R.id.recipe_name);
+        recipe.setTitle(nameBox.getText().toString());
+        if (RecyclerViewHolders.edit){
+            MainActivity.importedRecipes.set(RecyclerViewHolders.location, recipe);
+        } else {
+            MainActivity.importedRecipes.add(recipe);
+            RecyclerViewHolders.location = MainActivity.importedRecipes.size() - 1;
+            RecyclerViewHolders.edit = true;
+        }
+        try {
+            recipe.save(new File(getFilesDir() + "/recipes/" + recipe.getTitle() + ".xml"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }
