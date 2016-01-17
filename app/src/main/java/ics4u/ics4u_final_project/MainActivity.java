@@ -28,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         IngredientSelectionActivity.onIngredient = false;
         Database.importData(this);
         prefs = getSharedPreferences("ics4u.ics4u_final_project", MODE_PRIVATE);
         importedRecipes = Database.importRecipes(this);
-        super.onCreate(savedInstanceState);
+        importedRecipes.get(0).setPhoto(R.drawable.banana);
+        //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
+
+
         setContentView(R.layout.rv_mainactivity);
         setTitle(null);
 
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         rcAdapter = new RecipeAdapter(MainActivity.this, importedRecipes);
         rView.setAdapter(rcAdapter);
-//        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
+        System.out.println("reached");
         FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.add_recipe_button);
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
     public void createRecipe() {
         RecyclerViewHolders.edit = false;
         Intent intent = new Intent(this, RecipeCreateActivity.class);
+        finish();
         startActivity(intent);
     }
 
@@ -148,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
         //rebuild imported recipes
         File recipeFolder = new File(this.getFilesDir() + "/recipes/");
         recipeFolder.mkdir();
+        RecipeCreateActivity.onRecipe = false;
         for (Recipe r: importedRecipes){
             try {
                 r.save(new File(getFilesDir() + "/recipes/" + r.getTitle() + ".xml"));

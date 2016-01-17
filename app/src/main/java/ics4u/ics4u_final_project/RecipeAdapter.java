@@ -22,13 +22,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_mainactivity, null);
-        RecyclerViewHolders rcv = new RecyclerViewHolders(layoutView,context);
-        return rcv;
+        return new RecyclerViewHolders(layoutView,context);
     }
 
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
         holder.recipeName.setText(itemList.get(position).getTitle());
+        System.out.println(itemList.get(position).getPhoto() + "photo");
         holder.recipeIcon.setImageResource(itemList.get(position).getPhoto());
     }
 

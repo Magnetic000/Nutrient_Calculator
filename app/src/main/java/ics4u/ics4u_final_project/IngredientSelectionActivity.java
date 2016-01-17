@@ -39,10 +39,13 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     List<Ingredient> rowListItem;
     RecyclerView rView;
     static boolean onIngredient, searchCompleted;
+    static Activity fa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fa = this;
+        results = new ArrayList<>();
         onIngredient = true;
         searchCompleted = false;
         results.add(new Ingredient(0,"Search for an Ingredient. Use commas to separate keywords."));
@@ -243,11 +246,6 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                 searchCompleted = true;
             }
         }
-    }
-
-    public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 
     /**

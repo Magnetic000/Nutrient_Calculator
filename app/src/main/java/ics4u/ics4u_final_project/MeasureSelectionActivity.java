@@ -299,11 +299,11 @@ public class MeasureSelectionActivity extends AppCompatActivity {
                 RecipeCreateActivity.recipe.getIngredients().remove(0);
             }
             this.finish();
-        } else if (id == R.id.action_cancel) {
-            this.finish();
-            //insert code for what happens after add is pressed
+            IngredientSelectionActivity.onIngredient=false;
         } else if (id == R.id.action_cancel) {
             //insert code for what happens after cancel is pressed
+            this.finish();
+            IngredientSelectionActivity.onIngredient=false;
         }
         return super.onOptionsItemSelected(item);
     }
