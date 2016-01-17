@@ -74,6 +74,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
             }
         } else {
             recipe = new Recipe();
+            recipe.setPhoto(R.drawable.banana);
             rowListItem = getAllItemList();
         }
 

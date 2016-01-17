@@ -285,7 +285,9 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             selected.setUnit(measureType.getSelectedItem().toString());
             selected.setUnitNum(measureType.getSelectedItemPosition());
             selected.setFractionNum(measureSize.getSelectedItemPosition());
-            selected.setFractionName(measureSize.getSelectedItem().toString());
+            if (measureSize.getSelectedItem() != null) {
+                selected.setFractionName(measureSize.getSelectedItem().toString());
+            }
             selected.setFormattedName(ingredient);
             System.out.println(quantity);
             selected.setQuantity(quantity);
