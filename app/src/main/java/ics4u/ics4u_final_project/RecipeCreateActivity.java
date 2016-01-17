@@ -125,6 +125,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
             saveRecipe();
+            recipe.export(new File("/sdcard/Recipes/", recipe.getTitle() + ".pdf"));
             this.finish();
         }
 
