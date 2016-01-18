@@ -1,10 +1,10 @@
 package ics4u.ics4u_final_project;
 
-import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -61,9 +60,12 @@ public class RecipeCreateActivity extends AppCompatActivity {
                 launchIngredients();
             }
         });
+        //list for the cards
         List<Ingredient> rowListItem;
         if (RecyclerViewHolders.edit) {
+            //get the recipe that was clicked on
             recipe = MainActivity.importedRecipes.get(RecyclerViewHolders.location);
+            //set each of the elements to the specified ones in the recipe
             TextView name = (TextView) findViewById(R.id.recipe_name);
             name.setText(recipe.getTitle());
             rowListItem = recipe.getIngredients();
@@ -73,7 +75,9 @@ public class RecipeCreateActivity extends AppCompatActivity {
                 addedIngred = true;
             }
         } else {
+            //create a new recipe
             recipe = new Recipe();
+            //set a default photo
             recipe.setPhoto(R.drawable.banana);
             rowListItem = getAllItemList();
         }
@@ -89,6 +93,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     }
 
     private List<Ingredient> getAllItemList() {
+        //add a default ingredient
         List<Ingredient> allItems = new ArrayList<>();
         allItems.add(new Ingredient(-1, "Add Ingredients"));
         allItems.get(0).setFormattedName("Add Ingredients using the floating button.");
@@ -105,7 +110,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public static void updateAdapter(){
+    //    public static void updateAdapter(){
 //        RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(this.getApplicationContext(), recipe.getIngredients());
 //        rView.setAdapter(rcAdapter);
 //    }
@@ -125,9 +130,14 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_add) {
+            //save the recipe
             saveRecipe();
+            //export to PDF
             recipe.export(new File("/sdcard/Recipes/", recipe.getTitle() + ".pdf"));
-            this.finish();
+            //open the PDF
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setDataAndType(Uri.fromFile(new File("/sdcard/Recipes/" + recipe.getTitle() + ".pdf")), "application/pdf");
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
@@ -170,23 +180,29 @@ public class RecipeCreateActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart(){
+    protected void onRestart() {
+        //update the ingredients
         super.onRestart();
         RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, recipe.getIngredients());
         rView.setAdapter(rcAdapter);
+        //save the recipe
         saveRecipe();
     }
 
-    public void saveRecipe(){
-        EditText nameBox = (EditText)findViewById(R.id.recipe_name);
+    public void saveRecipe() {
+        //get the name of the recipe
+        EditText nameBox = (EditText) findViewById(R.id.recipe_name);
         recipe.setTitle(nameBox.getText().toString());
-        if (RecyclerViewHolders.edit){
+        //save the recipe to the correct spot on the imported recipes
+        if (RecyclerViewHolders.edit) {
             MainActivity.importedRecipes.set(RecyclerViewHolders.location, recipe);
         } else {
+            //add it as a new recipe if it's new, and set the edit to the correct ingredient
             MainActivity.importedRecipes.add(recipe);
             RecyclerViewHolders.location = MainActivity.importedRecipes.size() - 1;
             RecyclerViewHolders.edit = true;
         }
+        //save it
         try {
             recipe.save(new File(getFilesDir() + "/recipes/" + recipe.getTitle() + ".xml"));
         } catch (FileNotFoundException e) {

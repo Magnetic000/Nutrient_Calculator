@@ -41,10 +41,14 @@ public class Database {
      */
     public static void importData(Context c) {
         System.out.println("food Name");
+        //get the file's content as an arraylist
         ArrayList<String> file = readFile(c.getResources().openRawResource(R.raw.food_nm));
+        //count the number of fields
         int fields = getFields(file.get(0));
+        //create arrays for each line
         String[] line = new String[fields];
         Object[] temp = new Object[fields];
+        //get the number of lines
         int fileSize = file.size();
         for (int i = 0; i < fileSize; i++) {
             String s = file.get(i);
@@ -52,11 +56,15 @@ public class Database {
                 line[j] = s.substring(0, s.indexOf(delimiter));//add the field
                 s = s.substring(s.indexOf(delimiter) + 1);//remove it from the string
             }
+            //add the last field to the array
             line[fields - 1] = s;
+            //add the strings to the object array
             temp[0] = Integer.parseInt(line[0]);
             temp[1] = line[1];
+            //add the to the arraylist of the file
             fdName.add(temp.clone());
         }
+        //repeat for each data file
         System.out.println("Conv Fac");
         file = readFile(c.getResources().openRawResource(R.raw.conv_fac));
         fields = getFields(file.get(0));
@@ -133,12 +141,15 @@ public class Database {
     }
 
     public static ArrayList<String> readFile(InputStream filePath) {
+        //create a buffered reader
         BufferedReader br = new BufferedReader(new InputStreamReader(filePath));
-        ArrayList<String> a = new ArrayList<>();
+        //create an arraylist for the file
+        ArrayList<String> file = new ArrayList<>();
         try {
+            //read each line of the file and add it to the arraylist
             String s = br.readLine();
             while (s != null) {
-                a.add(s);
+                file.add(s);
                 s = br.readLine();
             }
         } catch (IOException e) {
@@ -146,7 +157,7 @@ public class Database {
         }
         System.out.println("finish read");
 
-        return a;
+        return file;
     }
 
     public static int getFields(String s) {
@@ -612,29 +623,35 @@ public class Database {
      * @return an array list containing all the recipes in the folder
      */
     public static ArrayList<Recipe> importRecipes(Context c) {
+        //create a list of the recipes
         ArrayList<Recipe> database = new ArrayList<>();
+        //the action changes depending on if its the first run or not
         if (MainActivity.prefs.getBoolean("firstrun", true)) {
+            //set it to not being the first run anymore
             MainActivity.prefs.edit().putBoolean("firstrun", false).commit();
+            //add the provided recipe(s)
             database.add(open(c.getResources().openRawResource(R.raw.banana_lentil_muffins)));
+            //create the recipes folder in the data folder
             File recipeFolder = new File(c.getFilesDir() + "/recipes/");
             recipeFolder.mkdir();
+            //create the folder for the PDFs, if it's not already created
             File pdfFolder = new File("/sdcard/Recipes/");
             if (!pdfFolder.isDirectory()) {
                 pdfFolder.mkdir();
             }
+            //save each of the imported recipes
             try {
-                //System.out.println("NAme" + database.get(0).getServingName());
-                //System.out.println("servings" + database.get(0).getServings());
                 database.get(0).save(new File(c.getFilesDir() + "/recipes/" + database.get(0).getTitle() + ".xml"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         } else {
+            //get a list of the files in the recipes folder
             File folder = new File(c.getFilesDir() + "/recipes/");
             File[] listOfFiles = folder.listFiles();
+            //import each of the recipes
             for (File file : listOfFiles) {
                 if (file.isFile() && file.getName().substring(file.getName().indexOf(".")).equals(".xml")) {
-                    System.out.println("true");
                     try {
                         database.add(open(new FileInputStream(file)));
                     } catch (FileNotFoundException e) {

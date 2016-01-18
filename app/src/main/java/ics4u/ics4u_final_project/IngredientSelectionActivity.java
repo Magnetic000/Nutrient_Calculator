@@ -2,7 +2,6 @@ package ics4u.ics4u_final_project;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class IngredientSelectionActivity extends AppCompatActivity {
     private Toolbar mToolbar;
@@ -36,7 +34,6 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     Spinner ingredientDropdown;
     static IngredientAdapter rcAdapter;
-    List<Ingredient> rowListItem;
     RecyclerView rView;
     static boolean onIngredient, searchCompleted;
     static Activity fa;
@@ -48,27 +45,29 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         results = new ArrayList<>();
         onIngredient = true;
         searchCompleted = false;
-        results.add(new Ingredient(0,"Search for an Ingredient. Use commas to separate keywords."));
+        results.add(new Ingredient(0, "Search for an Ingredient. Use commas to separate keywords."));
         setContentView(R.layout.rv_ingredientselect);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("Create A Recipe");
         setSupportActionBar(mToolbar);
-        rowListItem = getAllItemList();
         lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
 
         rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
         rView.setLayoutManager(lLayoutIngredient);
 
-        rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, rowListItem);
+        rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, results);
 
         AdapterView.OnItemSelectedListener onSpinner = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // get the selected category
                 String selCat = ingredientCategories[position].toString();
-                System.out.println(selCat);
+                //if it's not show all, see which items match the category
                 if (!selCat.equals("Show all") && !selCat.equals("Show All") && !selCat.equals("")) {
+                    //create a clone of the results, so that we cango back without re-searching
                     catResults = (ArrayList<Ingredient>) results.clone();
+                    //look through to see what matches, remove duplicates
                     for (int i = catResults.size() - 1; i >= 0; i--) {
                         if (catResults.get(i).getName().contains(",")) {
                             if (!catResults.get(i).getName().substring(0, catResults.get(i).getName().indexOf(",")).equals(selCat)) {
@@ -78,10 +77,11 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                             catResults.remove(i);
                         }
                     }
+                    //set the results to the cards
                     rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, catResults);
                     rView.setAdapter(rcAdapter);
                 } else {
-                    System.out.println("reset");
+                    //reset the results to all that matched
                     rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, results);
                     rView.setAdapter(rcAdapter);
                 }
@@ -93,7 +93,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         };
         ingredientDropdown = (Spinner) findViewById(R.id.category_combobox);
         ingredientCategories = new String[]{"Show all"};
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
         ingredientDropdown.setPrompt("Please select a category of ingredient");
         ingredientDropdown.setAdapter(adapter);
         ingredientDropdown.setOnItemSelectedListener(onSpinner);
@@ -101,12 +101,8 @@ public class IngredientSelectionActivity extends AppCompatActivity {
 
     }
 
-    private List<Ingredient> getAllItemList() {
 
-        return results;
-    }
-
-    public static ArrayList<Ingredient> getResults(){
+    public static ArrayList<Ingredient> getResults() {
         return catResults;
     }
 
@@ -168,7 +164,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(edtSeach.getWindowToken(), 0);
-                        doSearch(true);
+                        doSearch();
                         return true;
                     }
                     return false;
@@ -190,52 +186,52 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         }
     }
 
-    private void doSearch(boolean fetchCats) {
+    /**
+     * searches the database for foods with matching names
+     */
+    private void doSearch() {
         String searchText = edtSeach.getText().toString();
+        //don't allow the user to do a really broad search
         if (searchText.length() < 2) {
             Toast.makeText(getBaseContext(), "Search keyword too short, please be more specific", Toast.LENGTH_SHORT).show();
         } else {
+            //search the database
             results = Database.search(searchText);
             System.out.println("Search Done");
+            //sort the results
             quickSort(results, 0, results.size() - 1);
-            //TextView t = (TextView) findViewById(R.id.textView);
-            //System.out.println(results.size());
-            //t.setText(results.get(0).getName());
             if (results.isEmpty()) {
                 Toast.makeText(getBaseContext(), "Nothing Found", Toast.LENGTH_SHORT).show();
             } else {
-                if (fetchCats) {
-                    //add the matches to the list model
-                    ArrayList<String> cats = new ArrayList<>();
-                    cats.add("Show All");
-                    for (int i = 0; i < results.size(); i++) {
-                        if (fetchCats) {
-                            if (results.get(i).getName().contains(",")) {
-                                cats.add(results.get(i).getName().substring(0, results.get(i).getName().indexOf(",")));
-                            } else {
-                                cats.add(results.get(i).getName());
-                            }
-                        }
+                //get the categories
+                ArrayList<String> cats = new ArrayList<>();
+                cats.add("Show All");
+                for (int i = 0; i < results.size(); i++) {
+                    if (results.get(i).getName().contains(",")) {
+                        cats.add(results.get(i).getName().substring(0, results.get(i).getName().indexOf(",")));
+                    } else {
+                        cats.add(results.get(i).getName());
                     }
-                    for (int i = 0; i < cats.size(); i++) {
-                        for (int j = i + 1; j < cats.size(); j++) {
-                            if (cats.get(i).equals(cats.get(j))) {
-                                cats.remove(j);
-                                j--;
-                            }
-                        }
-                    }
-                    System.out.println(cats.size());
-                    String[] categories = new String[cats.size()];
-                    for (int i = 0; i < cats.size(); i++) {
-                        categories[i] = cats.get(i);
-                        //System.out.println(categories[i]);
-                    }
-                    quickSort(categories, 1, categories.length - 1);
-                    ingredientCategories = categories;
-                    adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
-                    ingredientDropdown.setAdapter(adapter);
                 }
+                //remove duplciate categories
+                for (int i = 0; i < cats.size(); i++) {
+                    for (int j = i + 1; j < cats.size(); j++) {
+                        if (cats.get(i).equals(cats.get(j))) {
+                            cats.remove(j);
+                            j--;
+                        }
+                    }
+                }
+                //sort the categories as a string array
+                String[] categories = new String[cats.size()];
+                for (int i = 0; i < cats.size(); i++) {
+                    categories[i] = cats.get(i);
+                }
+                quickSort(categories, 1, categories.length - 1);
+                //show the results
+                ingredientCategories = categories;
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
+                ingredientDropdown.setAdapter(adapter);
                 lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
 
                 rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
