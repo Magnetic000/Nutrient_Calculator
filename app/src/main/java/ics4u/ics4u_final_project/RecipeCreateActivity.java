@@ -190,24 +190,38 @@ public class RecipeCreateActivity extends AppCompatActivity {
     }
 
     public void saveRecipe() {
+        // TODO: 1/18/2016 make saving work when the name of the recipe changes
         //get the name of the recipe
         EditText nameBox = (EditText) findViewById(R.id.recipe_name);
         recipe.setTitle(nameBox.getText().toString());
         //save the recipe to the correct spot on the imported recipes
         if (RecyclerViewHolders.edit) {
             MainActivity.importedRecipes.set(RecyclerViewHolders.location, recipe);
+            //rebuild imported recipes
+            File recipeFolder = new File(this.getFilesDir() + "/recipes/");
+            recipeFolder.mkdir();
+            RecipeCreateActivity.onRecipe = false;
+            for (Recipe r: MainActivity.importedRecipes){
+                try {
+                    r.save(new File(getFilesDir() + "/recipes/" + r.getTitle() + ".xml"));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            MainActivity.importedRecipes = Database.importRecipes(this);
         } else {
             //add it as a new recipe if it's new, and set the edit to the correct ingredient
             MainActivity.importedRecipes.add(recipe);
             RecyclerViewHolders.location = MainActivity.importedRecipes.size() - 1;
             RecyclerViewHolders.edit = true;
+            //save it
+            try {
+                recipe.save(new File(getFilesDir() + "/recipes/" + recipe.getTitle() + ".xml"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-        //save it
-        try {
-            recipe.save(new File(getFilesDir() + "/recipes/" + recipe.getTitle() + ".xml"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Override
