@@ -201,7 +201,6 @@ public class RecipeCreateActivity extends AppCompatActivity {
      *
      */
     public void saveRecipe() {
-        // TODO: 1/18/2016 make saving work when the name of the recipe changes
         //get the name of the recipe
         EditText nameBox = (EditText) findViewById(R.id.recipe_name);
         recipe.setTitle(nameBox.getText().toString());
@@ -223,13 +222,14 @@ public class RecipeCreateActivity extends AppCompatActivity {
         }
         //rebuild saves
         //rebuild imported recipes
-        // TODO: 1/18/2016 what about duplicate names?
         // TODO: 1/18/2016 find a way to link this with the duplicate method in the main activity
         File recipeFolder = new File(this.getFilesDir() + "/recipes/");
         File[] listOfFiles = recipeFolder.listFiles();
+        //delete all the files in the folder
         for (File file : listOfFiles) {
             System.out.println(file.delete());
         }
+        //resave all the recipes that are in memory
         for (int i = 0; i < MainActivity.importedRecipes.size(); i++){
             try {
                 MainActivity.importedRecipes.get(i).save(new File(this.getFilesDir() + "/recipes/" + i + ".xml"));
@@ -237,7 +237,6 @@ public class RecipeCreateActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        MainActivity.importedRecipes = Database.importRecipes(this);
     }
 
     @Override
