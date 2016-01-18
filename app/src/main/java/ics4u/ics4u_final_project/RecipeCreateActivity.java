@@ -129,7 +129,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_add) {
+        if (id == R.id.action_print) {
             //save the recipe
             saveRecipe();
             //export to PDF
@@ -187,6 +187,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         rView.setAdapter(rcAdapter);
         //save the recipe
         saveRecipe();
+        onRecipe = true;
     }
 
     public void saveRecipe() {
