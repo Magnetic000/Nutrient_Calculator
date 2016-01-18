@@ -13,4 +13,12 @@ public class InstructionCreator extends AppCompatActivity {
         EditText editor = (EditText) findViewById(R.id.instructionsText);
         editor.setText(RecipeCreateActivity.recipe.getInstructions());
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        //save the ingredients
+        EditText editor = (EditText) findViewById(R.id.instructionsText);
+        RecipeCreateActivity.recipe.setInstructions(editor.getText().toString());
+    }
 }
