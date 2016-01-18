@@ -32,6 +32,8 @@ public class RecipeCreateActivity extends AppCompatActivity {
     static boolean onRecipe, search;
     static RecyclerView rView;
     ImageView iconContextMenu;
+    EditText quanAmt, quanNm;
+    int index = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +64,12 @@ public class RecipeCreateActivity extends AppCompatActivity {
         });
         //list for the cards
         List<Ingredient> rowListItem;
+        quanAmt = (EditText) findViewById(R.id.quantity_amount);
+        quanNm = (EditText) findViewById(R.id.quantity_type);
         if (RecyclerViewHolders.edit) {
+            index = RecyclerViewHolders.location;
             //get the recipe that was clicked on
-            recipe = MainActivity.importedRecipes.get(RecyclerViewHolders.location);
+            recipe = MainActivity.importedRecipes.get(index);
             //set each of the elements to the specified ones in the recipe
             TextView name = (TextView) findViewById(R.id.recipe_name);
             name.setText(recipe.getTitle());
@@ -74,6 +79,8 @@ public class RecipeCreateActivity extends AppCompatActivity {
             if (recipe.getIngredients().size() > 0) {
                 addedIngred = true;
             }
+            quanAmt.setText(String.valueOf(recipe.getServings()));
+            quanNm.setText(recipe.getServingName());
         } else {
             //create a new recipe
             recipe = new Recipe();
@@ -190,43 +197,51 @@ public class RecipeCreateActivity extends AppCompatActivity {
         onRecipe = true;
     }
 
+    /**
+     *
+     */
     public void saveRecipe() {
         // TODO: 1/18/2016 make saving work when the name of the recipe changes
         //get the name of the recipe
         EditText nameBox = (EditText) findViewById(R.id.recipe_name);
         recipe.setTitle(nameBox.getText().toString());
+        recipe.setServings(Integer.parseInt(quanAmt.getText().toString()));
+        recipe.setServingName(quanNm.getText().toString());
         //save the recipe to the correct spot on the imported recipes
-        if (RecyclerViewHolders.edit) {
-            MainActivity.importedRecipes.set(RecyclerViewHolders.location, recipe);
-            //rebuild imported recipes
-            File recipeFolder = new File(this.getFilesDir() + "/recipes/");
-            recipeFolder.mkdir();
-            RecipeCreateActivity.onRecipe = false;
-            for (Recipe r: MainActivity.importedRecipes){
-                try {
-                    r.save(new File(getFilesDir() + "/recipes/" + r.getTitle() + ".xml"));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-            MainActivity.importedRecipes = Database.importRecipes(this);
+        if (index >= 0) {
+            MainActivity.importedRecipes.set(index, recipe);
         } else {
             //add it as a new recipe if it's new, and set the edit to the correct ingredient
             MainActivity.importedRecipes.add(recipe);
-            RecyclerViewHolders.location = MainActivity.importedRecipes.size() - 1;
-            RecyclerViewHolders.edit = true;
-            //save it
+            index = MainActivity.importedRecipes.size() - 1;
+//            //save it
+//            try {
+//                recipe.save(new File(getFilesDir() + "/recipes/" + recipe.getTitle() + ".xml"));
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
+        }
+        //rebuild saves
+        //rebuild imported recipes
+        // TODO: 1/18/2016 what about duplicate names?
+        // TODO: 1/18/2016 find a way to link this with the duplicate method in the main activity
+        File recipeFolder = new File(this.getFilesDir() + "/recipes/");
+        File[] listOfFiles = recipeFolder.listFiles();
+        for (File file : listOfFiles) {
+            System.out.println(file.delete());
+        }
+        for (int i = 0; i < MainActivity.importedRecipes.size(); i++){
             try {
-                recipe.save(new File(getFilesDir() + "/recipes/" + recipe.getTitle() + ".xml"));
+                MainActivity.importedRecipes.get(i).save(new File(this.getFilesDir() + "/recipes/" + i + ".xml"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
-
+        MainActivity.importedRecipes = Database.importRecipes(this);
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         saveRecipe();
     }

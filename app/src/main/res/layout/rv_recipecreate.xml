@@ -73,7 +73,8 @@
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:gravity="center_horizontal"/>
+                android:gravity="center_horizontal"
+                android:text="1"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_recipe"
                 android:layout_width="match_parent"

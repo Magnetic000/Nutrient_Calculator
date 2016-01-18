@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     importedRecipes.remove(position);
+                                    rebuildSaves();
                                     rcAdapter.notifyItemRemoved(position);
                                 }
                                 rcAdapter.notifyDataSetChanged();
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     importedRecipes.remove(position);
+                                    rebuildSaves();
                                     rcAdapter.notifyItemRemoved(position);
                                 }
                                 rcAdapter.notifyDataSetChanged();
@@ -151,13 +153,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestart(){
         super.onRestart();
+        rebuildSaves();
+    }
+
+    public void rebuildSaves(){
         //rebuild imported recipes
         File recipeFolder = new File(this.getFilesDir() + "/recipes/");
-        recipeFolder.mkdir();
-        RecipeCreateActivity.onRecipe = false;
-        for (Recipe r: importedRecipes){
+        File[] listOfFiles = recipeFolder.listFiles();
+        for (File file : listOfFiles) {
+            System.out.println(file.delete());
+        }
+        for (int i = 0; i < importedRecipes.size(); i++){
             try {
-                r.save(new File(getFilesDir() + "/recipes/" + r.getTitle() + ".xml"));
+                importedRecipes.get(i).save(new File(this.getFilesDir() + "/recipes/" + i + ".xml"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
