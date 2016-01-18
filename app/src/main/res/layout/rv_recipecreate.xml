@@ -15,8 +15,8 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:background="@color/divider">
         <RelativeLayout
             android:id="@+id/rLayout"
             android:layout_width="match_parent"
@@ -39,9 +39,9 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginRight="16dp"
+                android:clickable="true"
                 android:padding="10dp"
-                android:src="@drawable/bread"
-                android:clickable="true"/>
+                android:src="@drawable/bread" />
 
             <Button
                 android:id="@+id/instructions_button"
@@ -52,13 +52,35 @@
                 android:text="Click for instructions"
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
+            <EditText
+                android:id="@+id/quantity_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/instructions_button"
+                android:hint="Quantity Type"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"/>
 
+            <EditText
+                android:id="@+id/quantity_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/quantity_type"
+                android:inputType="number"
+                android:hint="Quantity Amount"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_recipe"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/instructions_button"
-                android:scrollbars="vertical" />
+                android:layout_below="@id/quantity_amount"
+                android:scrollbars="vertical"/>
+
 
         </RelativeLayout>
 

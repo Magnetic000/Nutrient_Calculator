@@ -124,7 +124,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_add) {
+        if (id == R.id.action_print) {
             saveRecipe();
             recipe.export(new File("/sdcard/Recipes/", recipe.getTitle() + ".pdf"));
             this.finish();
@@ -175,6 +175,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, recipe.getIngredients());
         rView.setAdapter(rcAdapter);
         saveRecipe();
+        onRecipe = true;
     }
 
     public void saveRecipe(){

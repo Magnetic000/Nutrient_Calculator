@@ -1,5 +1,6 @@
 package ics4u.ics4u_final_project;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public static SharedPreferences prefs = null;
     RecyclerView rView;
     RecipeAdapter rcAdapter;
-
+    static Activity fa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void createRecipe() {
         RecyclerViewHolders.edit = false;
+        System.out.println("clicked the button");
         Intent intent = new Intent(this, RecipeCreateActivity.class);
-        finish();
         startActivity(intent);
     }
 
