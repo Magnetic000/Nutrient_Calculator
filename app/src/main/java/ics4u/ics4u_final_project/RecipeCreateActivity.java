@@ -210,4 +210,10 @@ public class RecipeCreateActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        saveRecipe();
+    }
+
 }
