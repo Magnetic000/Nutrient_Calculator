@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/divider">
+
         <RelativeLayout
             android:id="@+id/rLayout"
             android:layout_width="match_parent"
@@ -32,7 +33,8 @@
                 android:text="Recipe Title"
                 android:textColor="@color/text_primary"
                 android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:imeOptions="actionDone"/>
 
             <ImageView
                 android:id="@+id/recipe_icon"
@@ -52,34 +54,66 @@
                 android:text="Click for instructions"
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/serving_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/recipe_icon"
+                android:layout_below="@id/instructions_button"
+                android:padding="10dp"
+                android:text="Serving:"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
             <EditText
                 android:id="@+id/quantity_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/instructions_button"
-                android:hint="Quantity Type"
+                android:layout_toRightOf="@id/serving_prompt"
+                android:gravity="center_horizontal"
+                android:hint="Enter serving type"
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:gravity="center_horizontal"/>
+                android:imeOptions="actionDone" />
+
+            <TextView
+                android:id="@+id/serving_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/serving_prompt"
+                android:layout_below="@id/quantity_type"
+                android:padding="10dp"
+                android:text="Makes:"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/quantity_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/quantity_type"
+                android:layout_toRightOf="@id/serving_amount"
+                android:gravity="center_horizontal"
+                android:hint="Enter serving amount"
                 android:inputType="number"
-                android:hint="Quantity Amount"
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:gravity="center_horizontal"/>
+                android:imeOptions="actionDone" />
+
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_recipe"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/quantity_amount"
-                android:scrollbars="vertical"/>
+                android:scrollbars="vertical" />
 
 
         </RelativeLayout>
