@@ -19,4 +19,4 @@ Thanks to Cutten for teaching us to code and solving all of our trivial problems
 Our changelog is located in the CHANGELOG file.
 
 **Found an unexpected feature or a happy little quirk? (I don't like bugs)**   
-Submit a bug report on this github page!
+Submit a bug report on the issue tab!
