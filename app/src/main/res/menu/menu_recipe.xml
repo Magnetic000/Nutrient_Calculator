@@ -7,8 +7,14 @@
     <item
         android:id="@+id/action_print"
         android:title="Print"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         android:text="Print"
         android:textStyle="bold"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_undo"
+        android:title="Undo"
+        android:orderInCategory="100"
+        android:src="@drawable/undo"
         app:showAsAction="ifRoom" />
 </menu>
