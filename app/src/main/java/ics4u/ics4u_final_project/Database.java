@@ -1,9 +1,32 @@
 /* Isaac Wismer
  *  Jun 15, 2015
+ *
+ */
+/*
+Copyright (C) 2016  Isaac Wismer & Andrew Xu
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package ics4u.ics4u_final_project;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -632,8 +655,13 @@ public class Database {
             recipeFolder.mkdir();
             //create the folder for the PDFs, if it's not already created
             File pdfFolder = new File("/sdcard/Recipes/");
-            if (!pdfFolder.isDirectory()) {
-                pdfFolder.mkdir();
+            int permissionCheck = ContextCompat.checkSelfPermission(c, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                if (!pdfFolder.isDirectory()) {
+                    pdfFolder.mkdir();
+                }
+            } else {
+                Toast.makeText(c, "Permission denied. Please grant storage permissions", Toast.LENGTH_LONG).show();
             }
             //save each of the imported recipes
             try {
@@ -683,4 +711,6 @@ public class Database {
             return middle;
         }
     }
+
+
 }

@@ -1,10 +1,32 @@
+/*
+Copyright (C) 2016  Isaac Wismer & Andrew Xu
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 package ics4u.ics4u_final_project;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     RecipeAdapter rcAdapter;
     static Activity fa;
     Stack<Recipe> deleted = new Stack<>();
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
         IngredientSelectionActivity.onIngredient = false;
         Database.importData(this);
         prefs = getSharedPreferences("ics4u.ics4u_final_project", MODE_PRIVATE);
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, permissions);
+//        }
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
+            }
+        }
         importedRecipes = Database.importRecipes(this);
         importedRecipes.get(0).setPhoto(R.drawable.banana);
         //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
@@ -188,5 +220,24 @@ public class MainActivity extends AppCompatActivity {
         rView.setAdapter(rcAdapter);
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Permission Granted
+                    File pdfFolder = new File("/sdcard/Recipes/");
+                    if (!pdfFolder.isDirectory()) {
+                        pdfFolder.mkdir();
+                    }
+                    return;
+                } else {
+                    // Permission Denied
+                    Toast.makeText(MainActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
 }

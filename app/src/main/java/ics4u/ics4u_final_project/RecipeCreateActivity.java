@@ -1,9 +1,29 @@
+/*
+Copyright (C) 2016  Isaac Wismer & Andrew Xu
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 package ics4u.ics4u_final_project;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -179,12 +199,23 @@ public class RecipeCreateActivity extends AppCompatActivity {
         if (id == R.id.action_print) {
             //save the recipe
             saveRecipe();
-            //export to PDF
-            recipe.export(new File("/sdcard/Recipes/", recipe.getTitle() + ".pdf"));
-            //open the PDF
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setDataAndType(Uri.fromFile(new File("/sdcard/Recipes/" + recipe.getTitle() + ".pdf")), "application/pdf");
-            startActivity(i);
+            File pdfFolder = new File("/sdcard/Recipes/");
+
+            int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                if (!pdfFolder.isDirectory()) {
+                    pdfFolder.mkdir();
+                }
+                //export to PDF
+                recipe.export(new File("/sdcard/Recipes/", recipe.getTitle() + ".pdf"));
+                //open the PDF
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                System.out.println(getFilesDir().toString());
+                i.setDataAndType(Uri.fromFile(new File("/sdcard/Recipes/" + recipe.getTitle() + ".pdf")), "application/pdf");
+                startActivity(i);
+            } else {
+                Toast.makeText(this, "Permission denied. Please grant storage permissions", Toast.LENGTH_LONG).show();
+            }
         } else if (id == R.id.action_undo){
             if (deleted.isEmpty()){
                 Toast.makeText(this, "No ingredients to restore", Toast.LENGTH_LONG).show();
