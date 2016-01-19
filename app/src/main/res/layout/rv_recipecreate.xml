@@ -43,7 +43,7 @@
                 android:layout_marginRight="16dp"
                 android:clickable="true"
                 android:padding="10dp"
-                android:src="@drawable/bread" />
+                android:src="@drawable/wheat" />
 
             <Button
                 android:id="@+id/instructions_button"
