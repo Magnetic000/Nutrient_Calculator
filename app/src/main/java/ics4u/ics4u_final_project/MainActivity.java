@@ -159,7 +159,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-
+        if (id == R.id.action_unit_conversion){
+            Intent intent = new Intent(this, UnitConverter.class);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 
