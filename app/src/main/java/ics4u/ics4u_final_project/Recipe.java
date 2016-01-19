@@ -430,7 +430,7 @@ public class Recipe {
             ca.setColspan(6);
             ca.setBorderWidthRight(0);
             ca.setBorderWidthTop(2);
-            cb = new PdfPCell(new Phrase("**%", LABEL_NORMAL));
+            cb = new PdfPCell(cb = new PdfPCell(new Phrase(onePer.format(((nutrients[319] + (nutrients[321]/12) + (nutrients[834]/24)) / servings) / 1000), LABEL_NORMAL)));
             cb.setColspan(10);
             cb.setHorizontalAlignment(Element.ALIGN_RIGHT);
             cb.setBorderWidthLeft(0);
