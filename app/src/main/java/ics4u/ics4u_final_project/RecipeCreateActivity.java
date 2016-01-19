@@ -253,6 +253,34 @@ public class RecipeCreateActivity extends AppCompatActivity {
                 iconContextMenu.setImageResource(R.drawable.fish);
                 recipe.setPhoto(R.drawable.fish);
                 return true;
+            case R.id.icon3:
+                iconContextMenu.setImageResource(R.drawable.cake);
+                recipe.setPhoto(R.drawable.cake);
+                return true;
+            case R.id.icon4:
+                iconContextMenu.setImageResource(R.drawable.cookies);
+                recipe.setPhoto(R.drawable.cookies);
+                return true;
+            case R.id.icon5:
+                iconContextMenu.setImageResource(R.drawable.dairy);
+                recipe.setPhoto(R.drawable.dairy);
+                return true;
+            case R.id.icon6:
+                iconContextMenu.setImageResource(R.drawable.muffin);
+                recipe.setPhoto(R.drawable.muffin);
+                return true;
+            case R.id.icon7:
+                iconContextMenu.setImageResource(R.drawable.sandwich);
+                recipe.setPhoto(R.drawable.sandwich);
+                return true;
+            case R.id.icon8:
+                iconContextMenu.setImageResource(R.drawable.soup);
+                recipe.setPhoto(R.drawable.soup);
+                return true;
+            case R.id.icon9:
+                iconContextMenu.setImageResource(R.drawable.wheat);
+                recipe.setPhoto(R.drawable.wheat);
+                return true;
             default:
                 return false;
         }

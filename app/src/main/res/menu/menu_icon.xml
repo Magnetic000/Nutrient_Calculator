@@ -7,4 +7,25 @@
     <item
         android:id="@+id/icon2"
         android:title="Fish"/>
+    <item
+        android:id="@+id/icon3"
+        android:title="Cake"/>
+    <item
+        android:id="@+id/icon4"
+        android:title="Cookies"/>
+    <item
+        android:id="@+id/icon5"
+        android:title="Cheese"/>
+    <item
+        android:id="@+id/icon6"
+        android:title="Muffin"/>
+    <item
+        android:id="@+id/icon7"
+        android:title="Sandwich"/>
+    <item
+        android:id="@+id/icon8"
+        android:title="Soup"/>
+    <item
+        android:id="@+id/icon9"
+        android:title="Wheat"/>
 </menu>
