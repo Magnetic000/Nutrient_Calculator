@@ -167,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart(){
         super.onRestart();
         rebuildSaves();
+        RecipeCreateActivity.onRecipe=false;
     }
 
     public void rebuildSaves(){
