@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -185,7 +186,16 @@ public class RecipeCreateActivity extends AppCompatActivity {
             i.setDataAndType(Uri.fromFile(new File("/sdcard/Recipes/" + recipe.getTitle() + ".pdf")), "application/pdf");
             startActivity(i);
         } else if (id == R.id.action_undo){
-            //UNDO ISACC INSERT CODE HERE
+            if (deleted.isEmpty()){
+                Toast.makeText(this, "No ingredients to restore", Toast.LENGTH_LONG).show();
+            }else {
+                recipe.getIngredients().add(deleted.pop());
+                RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, recipe.getIngredients());
+                rView.setAdapter(rcAdapter);
+                //save the recipe
+                saveRecipe();
+                Toast.makeText(this, "Last deleted ingredient restored", Toast.LENGTH_LONG).show();
+            }
         }
 
         return super.onOptionsItemSelected(item);
