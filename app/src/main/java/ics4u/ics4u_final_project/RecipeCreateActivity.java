@@ -186,6 +186,9 @@ public class RecipeCreateActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * refreshes the ingredients and saves the recipe
+     */
     @Override
     protected void onRestart() {
         //update the ingredients
@@ -198,7 +201,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * deletes all the save files and saves the recies currently in memory
      */
     public void saveRecipe() {
         //get the name of the recipe
@@ -239,9 +242,13 @@ public class RecipeCreateActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * called when the back button is pressed on a recipe
+     */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        //refresh the saves
         saveRecipe();
     }
 
