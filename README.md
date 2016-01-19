@@ -12,5 +12,6 @@ This project was authored by:
 * Isaac (Project Manager, Backend Programming)
 * Andrew (Frontend Programming)
 * Griffin (Graphic Design and Images)
+
 Thanks to Karen for inspiring this whole project and encouraging me when I thought I couldn't make this.   
 Thanks to Cutten for teaching us to code and solving all of our trivial problems.
