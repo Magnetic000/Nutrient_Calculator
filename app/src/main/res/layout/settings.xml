@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/color_primary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Light/Dark Theme"
+            android:id="@+id/theme_switch"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:padding="5dp"/>
+    </RelativeLayout>
+
+</LinearLayout>
