@@ -31,11 +31,13 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
     public void onClick(View view) {
         location = this.getLayoutPosition();
         edit = false;
+        //if the card is on the search screen
         if (IngredientSelectionActivity.onIngredient && IngredientSelectionActivity.searchCompleted) {
             Intent intent = new Intent(this.context, MeasureSelectionActivity.class);
             context.startActivity(intent);
             IngredientSelectionActivity.fa.finish();
             IngredientSelectionActivity.onIngredient=false;
+        //if the card is an ingredient on a recipe
         } else if (RecipeCreateActivity.onRecipe) {
             System.out.println("added " + RecipeCreateActivity.addedIngred);
             if (RecipeCreateActivity.recipe.getIngredients().size() > 0 && RecipeCreateActivity.addedIngred) {
@@ -46,11 +48,11 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
                 Toast t = Toast.makeText(context, "Please create a new ingredient", Toast.LENGTH_LONG);
                 t.show();
             }
+        //if the card clicked is a recipe to be edited
         } else {
             edit = true;
             Intent intent = new Intent(this.context, RecipeCreateActivity.class);
             context.startActivity(intent);
-            //Toast.makeText(view.getContext(), "Clicked Country Position = " + getPosition(), Toast.LENGTH_SHORT).show();
         }
     }
 }

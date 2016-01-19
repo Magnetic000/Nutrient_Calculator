@@ -643,6 +643,7 @@ public class Database {
             //save each of the imported recipes
             try {
                 database.get(0).save(new File(c.getFilesDir() + "/recipes/" + 0 + ".xml"));
+                database.get(1).save(new File(c.getFilesDir() + "/recipes/" + 1 + ".xml"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
