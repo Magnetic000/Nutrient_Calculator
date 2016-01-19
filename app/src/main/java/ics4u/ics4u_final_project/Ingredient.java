@@ -13,7 +13,7 @@ public class Ingredient {
     //food ID number, the cmb number for the fraction, the cmb num for the unit, quantity
     private int id, fractionNum, unitNum, quantity;
     //Short name, what unit is used, Formatted name (with correct quantity in front), the name of the fraction/other unit
-    private String name, unit, formattedName, FractionName;
+    private String name, unit, formattedName, fractionName;
     private ArrayList<Measures> measures = new ArrayList<>();
 
     /**
@@ -119,14 +119,14 @@ public class Ingredient {
      * @return the name of the fraction
      */
     public String getFractionName() {
-        return FractionName;
+        return fractionName;
     }
 
     /**
      * @param FractionName the name of the fraction
      */
     public void setFractionName(String FractionName) {
-        this.FractionName = FractionName;
+        this.fractionName = FractionName;
     }
 
     /**
@@ -232,6 +232,18 @@ public class Ingredient {
             return false;
         }
         return true;
+    }
+    @Override
+    public Ingredient clone(){
+        Ingredient clone = new Ingredient(id, name);
+        clone.setFormattedName(formattedName);
+        clone.setFractionNum(fractionNum);
+        clone.setQuantity(quantity);
+        clone.setUnit(unit);
+        clone.setFractionName(fractionName);
+        clone.setUnitNum(unitNum);
+        clone.setMeasures((ArrayList<Measures>)measures.clone());
+        return clone;
     }
 
 }

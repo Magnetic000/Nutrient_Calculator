@@ -123,7 +123,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "No recipes to restore", Toast.LENGTH_LONG).show();
             }else {
                 importedRecipes.add(deleted.pop());
+                rebuildSaves();
                 Toast.makeText(MainActivity.this, "Last deleted recipe restored", Toast.LENGTH_LONG).show();
+
             }
         }
 

@@ -69,4 +69,11 @@ public class Measures {
         this.name = name;
     }
 
+    @Override
+    public Measures clone(){
+        Measures clone = new Measures(ID, conversion);
+        clone.setName(name);
+        return clone;
+    }
+
 }

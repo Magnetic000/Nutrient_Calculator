@@ -242,12 +242,11 @@ public class Recipe {
 
     @Override
     public Recipe clone(){
-        Recipe clone = null;
-        try {
-            clone = (Recipe) super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        Recipe clone = new Recipe(title, instructions);
+        clone.setPhoto(photo);
+        clone.setServings(servings);
+        clone.setServingName(servingName);
+        clone.setIngredients((ArrayList<Ingredient>) ingredients.clone());
         return clone;
     }
 
