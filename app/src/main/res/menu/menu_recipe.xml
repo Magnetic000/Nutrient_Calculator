@@ -15,6 +15,6 @@
         android:id="@+id/action_undo"
         android:title="Undo"
         android:orderInCategory="100"
-        android:src="@drawable/ic_action_refresh"
+        android:src="@drawable/undo"
         app:showAsAction="ifRoom" />
 </menu>
