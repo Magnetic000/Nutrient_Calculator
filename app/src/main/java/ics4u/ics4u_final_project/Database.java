@@ -631,6 +631,7 @@ public class Database {
             MainActivity.prefs.edit().putBoolean("firstrun", false).commit();
             //add the provided recipe(s)
             database.add(open(c.getResources().openRawResource(R.raw.banana_lentil_muffins)));
+            database.add(open(c.getResources().openRawResource(R.raw.cheddar_lentil_crispies)));
             //create the recipes folder in the data folder
             File recipeFolder = new File(c.getFilesDir() + "/recipes/");
             recipeFolder.mkdir();

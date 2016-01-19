@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipe>
+    <title>Cheddar Lentil Crispies</title>
+    <instructions>Preheat oven to 350F (190C)
+        In a bowl, cut margarine into flour until mixture resembles coarse Oatmeal.
+        Stir in cereal, cheese, and Lentil puree
+        Add egg and mix well
+        Mold into 1 tbsp amounts in finger shapes. Place onto untreated baking sheets 2 inches
+        apart. Bake for 15 minutes or until golden brown
+        Remove and serve
+    </instructions>
+    <servings>30</servings>
+    <servingName>2 Sticks</servingName>
+    <photo>2130837583</photo>
+    <ingredients>
+        <ID>6009</ID>
+        <name>MARGARINE, TUB, CANOLA AND SAFFLOWER OIL (N-HYDRG), BECEL</name>
+        <formattedName>1/2 Cup MARGARINE, TUB, CANOLA AND SAFFLOWER OIL (N-HYDRG), BECEL
+        </formattedName>
+        <unitName>Metric Cooking Measures</unitName>
+        <unitNum>0</unitNum>
+        <fractionName>1/2 Cup</fractionName>
+        <fractionNum>6</fractionNum>
+        <quantity>1</quantity>
+        <measures>
+            <id>341</id>
+            <conversion>0.95943</conversion>
+            <measureName>100ml</measureName>
+        </measures>
+        <measures>
+            <id>385</id>
+            <conversion>0.14797</conversion>
+            <measureName>15ml</measureName>
+        </measures>
+        <measures>
+            <id>415</id>
+            <conversion>2.3985</conversion>
+            <measureName>250ml</measureName>
+        </measures>
+        <measures>
+            <id>439</id>
+            <conversion>0.04797</conversion>
+            <measureName>5ml</measureName>
+        </measures>
+        <measures>
+            <id>1573</id>
+            <conversion>0.1</conversion>
+            <measureName>10g</measureName>
+        </measures>
+    </ingredients>
+    <ingredients>
+        <ID>4501</ID>
+        <name>GRAINS, WHEAT FLOUR, WHITE, ALL PURPOSE, BLEACHED</name>
+        <formattedName>1 Cup GRAINS, WHEAT FLOUR, WHITE, ALL PURPOSE, BLEACHED</formattedName>
+        <unitName>Metric Cooking Measures</unitName>
+        <unitNum>0</unitNum>
+        <fractionName>1 Cup</fractionName>
+        <fractionNum>7</fractionNum>
+        <quantity>1</quantity>
+        <measures>
+            <id>341</id>
+            <conversion>0.52832</conversion>
+            <measureName>100ml</measureName>
+        </measures>
+        <measures>
+            <id>383</id>
+            <conversion>0.6604</conversion>
+            <measureName>125ml</measureName>
+        </measures>
+        <measures>
+            <id>415</id>
+            <conversion>1.32079</conversion>
+            <measureName>250ml</measureName>
+        </measures>
+        <measures>
+            <id>867</id>
+            <conversion>0.2</conversion>
+            <measureName>1 serving</measureName>
+        </measures>
+        <measures>
+            <id>1454</id>
+            <conversion>0.3</conversion>
+            <measureName>30g</measureName>
+        </measures>
+    </ingredients>
+    <ingredients>
+        <ID>1311</ID>
+        <name>CEREAL, READY TO EAT, CRISPY RICE, PRESIDENT'S CHOICE</name>
+        <formattedName>1 Cup CEREAL, READY TO EAT, CRISPY RICE, PRESIDENT'S CHOICE</formattedName>
+        <unitName>Metric Cooking Measures</unitName>
+        <unitNum>0</unitNum>
+        <fractionName>1 Cup</fractionName>
+        <fractionNum>7</fractionNum>
+        <quantity>1</quantity>
+        <measures>
+            <id>341</id>
+            <conversion>0.11412</conversion>
+            <measureName>100ml</measureName>
+        </measures>
+        <measures>
+            <id>415</id>
+            <conversion>0.28529</conversion>
+            <measureName>250ml</measureName>
+        </measures>
+        <measures>
+            <id>1454</id>
+            <conversion>0.3</conversion>
+            <measureName>30g</measureName>
+        </measures>
+    </ingredients>
+    <ingredients>
+        <ID>119</ID>
+        <name>CHEESE, CHEDDAR</name>
+        <formattedName>3/4 Cups CHEESE, CHEDDAR</formattedName>
+        <unitName>Metric Cooking Measures</unitName>
+        <unitNum>0</unitNum>
+        <fractionName>1/4 Cup</fractionName>
+        <fractionNum>4</fractionNum>
+        <quantity>3</quantity>
+        <measures>
+            <id>348</id>
+            <conversion>0.5579</conversion>
+            <measureName>100ml diced</measureName>
+        </measures>
+        <measures>
+            <id>358</id>
+            <conversion>1.03128</conversion>
+            <measureName>100ml melted</measureName>
+        </measures>
+        <measures>
+            <id>368</id>
+            <conversion>0.4776</conversion>
+            <measureName>100ml shredded</measureName>
+        </measures>
+        <measures>
+            <id>990</id>
+            <conversion>0.5</conversion>
+            <measureName>50g</measureName>
+        </measures>
+        <measures>
+            <id>994</id>
+            <conversion>1.39476</conversion>
+            <measureName>250ml, diced</measureName>
+        </measures>
+        <measures>
+            <id>995</id>
+            <conversion>1.194</conversion>
+            <measureName>250ml, shredded</measureName>
+        </measures>
+        <measures>
+            <id>996</id>
+            <conversion>2.57819</conversion>
+            <measureName>250ml, melted</measureName>
+        </measures>
+        <measures>
+            <id>1454</id>
+            <conversion>0.3</conversion>
+            <measureName>30g</measureName>
+        </measures>
+    </ingredients>
+    <ingredients>
+        <ID>3392</ID>
+        <name>LENTILS, RAW</name>
+        <formattedName>3/4 Cups LENTILS, RAW</formattedName>
+        <unitName>Metric Cooking Measures</unitName>
+        <unitNum>0</unitNum>
+        <fractionName>1/4 Cup</fractionName>
+        <fractionNum>4</fractionNum>
+        <quantity>3</quantity>
+        <measures>
+            <id>341</id>
+            <conversion>0.8115</conversion>
+            <measureName>100ml</measureName>
+        </measures>
+        <measures>
+            <id>415</id>
+            <conversion>2.02874</conversion>
+            <measureName>250ml</measureName>
+        </measures>
+        <measures>
+            <id>1455</id>
+            <conversion>1.0</conversion>
+            <measureName>100g</measureName>
+        </measures>
+    </ingredients>
+    <ingredients>
+        <ID>126</ID>
+        <name>EGG, CHICKEN, WHITE, FRESH OR FROZEN, RAW</name>
+        <formattedName>1 large egg EGG, CHICKEN, WHITE, FRESH OR FROZEN, RAW</formattedName>
+        <unitName>Other</unitName>
+        <unitNum>3</unitNum>
+        <fractionName>1 large egg</fractionName>
+        <fractionNum>0</fractionNum>
+        <quantity>1</quantity>
+        <measures>
+            <id>142</id>
+            <conversion>0.33</conversion>
+            <measureName>1 large egg</measureName>
+        </measures>
+        <measures>
+            <id>341</id>
+            <conversion>1.02705</conversion>
+            <measureName>100ml</measureName>
+        </measures>
+        <measures>
+            <id>383</id>
+            <conversion>1.28381</conversion>
+            <measureName>125ml</measureName>
+        </measures>
+        <measures>
+            <id>415</id>
+            <conversion>2.56763</conversion>
+            <measureName>250ml</measureName>
+        </measures>
+        <measures>
+            <id>556</id>
+            <conversion>0.2877</conversion>
+            <measureName>1 small egg</measureName>
+        </measures>
+        <measures>
+            <id>941</id>
+            <conversion>0.3988</conversion>
+            <measureName>1 extra large egg</measureName>
+        </measures>
+        <measures>
+            <id>942</id>
+            <conversion>0.3237</conversion>
+            <measureName>1 medium egg</measureName>
+        </measures>
+        <measures>
+            <id>990</id>
+            <conversion>0.5</conversion>
+            <measureName>50g</measureName>
+        </measures>
+        <measures>
+            <id>992</id>
+            <conversion>0.4626</conversion>
+            <measureName>1 jumbo egg</measureName>
+        </measures>
+        <measures>
+            <id>1608</id>
+            <conversion>0.99</conversion>
+            <measureName>3 egg whites</measureName>
+        </measures>
+        <measures>
+            <id>1672</id>
+            <conversion>0.238</conversion>
+            <measureName>1 pee wee egg</measureName>
+        </measures>
+    </ingredients>
+</recipe>
