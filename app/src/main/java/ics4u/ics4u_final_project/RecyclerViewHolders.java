@@ -37,10 +37,9 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
             IngredientSelectionActivity.fa.finish();
             IngredientSelectionActivity.onIngredient=false;
         } else if (RecipeCreateActivity.onRecipe) {
-            RecipeCreateActivity.onRecipe = false;
-            System.out.println("Called");
-            System.out.println("added" + RecipeCreateActivity.addedIngred);
+            System.out.println("added " + RecipeCreateActivity.addedIngred);
             if (RecipeCreateActivity.recipe.getIngredients().size() > 0 && RecipeCreateActivity.addedIngred) {
+                RecipeCreateActivity.onRecipe = false;
                 Intent intent = new Intent(this.context, MeasureSelectionActivity.class);
                 context.startActivity(intent);
             } else {
