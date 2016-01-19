@@ -13,7 +13,8 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_undo"
-        android:orderInCategory="100"
-        android:src="@drawable/undo"
+        android:title="@string/action_refresh"
+        android:icon="@drawable/undo"
+        android:orderInCategory="200"
         app:showAsAction="ifRoom" />
 </menu>

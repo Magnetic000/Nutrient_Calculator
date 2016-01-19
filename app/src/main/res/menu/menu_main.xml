@@ -8,9 +8,13 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
-
     <item
-        android:id="@+id/action_refresh"
+        android:id="@+id/action_unit_conversion"
+        android:title="Unit Converter"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_undo"
         android:title="@string/action_refresh"
         android:icon="@drawable/undo"
         android:orderInCategory="200"
