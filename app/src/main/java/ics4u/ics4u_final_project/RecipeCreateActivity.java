@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class RecipeCreateActivity extends AppCompatActivity {
     private Toolbar mToolbar;
@@ -35,6 +36,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     EditText quanAmt, quanNm;
     int index = -1;
     RecipeCreateAdapter rcAdapter;
+    Stack<Ingredient> deleted = new Stack<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,6 @@ public class RecipeCreateActivity extends AppCompatActivity {
             //set each of the elements to the specified ones in the recipe
             TextView name = (TextView) findViewById(R.id.recipe_name);
             name.setText(recipe.getTitle());
-            rowListItem = recipe.getIngredients();
             ImageView recipeIcon = (ImageView) findViewById(R.id.recipe_icon);
             recipeIcon.setImageDrawable(getResources().getDrawable(recipe.getPhoto()));
             if (recipe.getIngredients().size() > 0) {
@@ -82,12 +83,15 @@ public class RecipeCreateActivity extends AppCompatActivity {
             }
             quanAmt.setText(String.valueOf(recipe.getServings()));
             quanNm.setText(recipe.getServingName());
+            rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, recipe.getIngredients());
         } else {
             //create a new recipe
             recipe = new Recipe();
             //set a default photo
             recipe.setPhoto(R.drawable.banana);
             rowListItem = getAllItemList();
+            rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
+
         }
 
         lLayoutIngredient = new LinearLayoutManager(RecipeCreateActivity.this);
@@ -95,7 +99,6 @@ public class RecipeCreateActivity extends AppCompatActivity {
         rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
         rView.setLayoutManager(lLayoutIngredient);
 
-        rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
         clickingIcon();
 
@@ -110,8 +113,11 @@ public class RecipeCreateActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    rowListItem.remove(position);
-                                    rcAdapter.notifyItemRemoved(position);
+                                    if (recipe.getIngredients().size() > 0) {
+                                        deleted.push(recipe.getIngredients().get(position));
+                                        recipe.getIngredients().remove(position);
+                                        rcAdapter.notifyItemRemoved(position);
+                                    }
                                 }
                                 rcAdapter.notifyDataSetChanged();
                             }
@@ -119,8 +125,11 @@ public class RecipeCreateActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                    rowListItem.remove(position);
-                                    rcAdapter.notifyItemRemoved(position);
+                                    if (recipe.getIngredients().size() > 0) {
+                                        deleted.push(recipe.getIngredients().get(position));
+                                        recipe.getIngredients().remove(position);
+                                        rcAdapter.notifyItemRemoved(position);
+                                    }
                                 }
                                 rcAdapter.notifyDataSetChanged();
                             }
