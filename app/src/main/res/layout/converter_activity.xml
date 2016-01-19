@@ -18,7 +18,11 @@
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/switch_button"/>
+            android:id="@+id/switch_button"
+            android:padding="5dp"
+            android:textColor="@color/text_primary"
+            android:textSize="24dp"
+            android:textStyle="bold"/>
         <Spinner
             android:id="@+id/input_type"
             android:layout_width="match_parent"

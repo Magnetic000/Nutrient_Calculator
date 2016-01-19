@@ -46,6 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
+        android:layout_below="@id/measurement_amount"
+        android:padding="5dp"
         android:ems="10"
         android:inputType="number"
         android:text="1" />
@@ -56,6 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/ingredient_amount"
+        android:layout_below="@id/measurement_amount"
+        android:padding="5dp"
         android:text="Amount:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
