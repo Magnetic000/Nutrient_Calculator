@@ -34,7 +34,6 @@
             android:layout_alignParentTop="true"
             android:textSize="24sp"
             android:text="@string/recipe_name"
-            android:textColor="@color/text_primary"
             android:textStyle="bold"/>
 
     </RelativeLayout>

@@ -24,7 +24,6 @@
             android:id="@+id/theme_switch"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:textColor="@color/text_primary"
             android:textStyle="bold"
             android:textSize="24dp"
             android:padding="5dp"/>

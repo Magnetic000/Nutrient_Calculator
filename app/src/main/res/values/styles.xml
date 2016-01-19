@@ -5,17 +5,21 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/dark_primary</item>
         <item name="colorAccent">@color/accent_color</item>
+        <item name="background">@color/background</item>
+        <item name="android:textColor">@color/text_primary</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat" />
 
-    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
         <!-- Dark theme base colours -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/dark_primary</item>
         <item name="colorAccent">@color/accent_color</item>
+        <item name="background">@color/text_primary</item>
+        <item name="android:textColor">@color/background</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
