@@ -81,6 +81,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         types = new String[]{"Metric Cooking Measures", "mL", "g", "Other"};
         items = new String[]{"1/4 Teaspoon", "1/2 Teaspoon", "1 Teaspoon", "1 Tablespoon", "1/4 Cup", "1/3 Cup", "1/2 Cup", "1 Cup"};
         edit = (selected.getUnit() != null);
+        System.out.println("Edit: " + edit);
         //remove spinner options if mL is unavailable
         if (!checkMeasuresML(selected.getID())) {
             types = new String[]{"g", "Other"};
@@ -128,7 +129,8 @@ public class MeasureSelectionActivity extends AppCompatActivity {
      */
     public boolean checkMeasuresML(int ID) {
         //get conversion rates
-        getConv(ID);
+        if (!edit)getConv(ID);
+
         //check the conversions for mL measurements
         for (int i = 0; i < selected.getMeasures().size(); i++) {
             int measureID = selected.getSingleMeasureIndex(i).getID();
@@ -309,7 +311,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             selected.setFormattedName(ingredient);
             selected.setQuantity(quantity);
             //add to the recipe
-            if (RecyclerViewHolders.edit) {
+            if (edit) {
                 RecipeCreateActivity.recipe.setSingleIngredient(RecyclerViewHolders.location, selected);
             } else {
                 RecipeCreateActivity.recipe.addIngredient(selected);
@@ -341,7 +343,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             //for some reason it's showing each of the measures twice
             // FIXME: 1/13/2016 this should only be a temp fix.
             //set the spinner items to be the "other measures"
-            items = new String[selected.getMeasures().size() / 2];
+            items = new String[selected.getMeasures().size()];
             for (int i = 0; i < items.length; i++) {
                 items[i] = selected.getSingleMeasureIndex(i).getName();
             }
