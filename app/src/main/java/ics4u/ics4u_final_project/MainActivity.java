@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
         }
-        if (id == R.id.action_refresh) {
+        if (id == R.id.action_undo) {
             if (deleted.isEmpty()) {
                 Toast.makeText(MainActivity.this, "No recipes to restore", Toast.LENGTH_LONG).show();
             } else {
