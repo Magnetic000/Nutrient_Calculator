@@ -340,8 +340,6 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             //enable it
             measureSize.setEnabled(true);
         } else if (types[id].equals("Other")) {
-            //for some reason it's showing each of the measures twice
-            // FIXME: 1/13/2016 this should only be a temp fix.
             //set the spinner items to be the "other measures"
             items = new String[selected.getMeasures().size()];
             for (int i = 0; i < items.length; i++) {
