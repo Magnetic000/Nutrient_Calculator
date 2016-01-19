@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
+import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rView;
     RecipeAdapter rcAdapter;
     static Activity fa;
+    Stack<Recipe> deleted = new Stack<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    deleted.push(importedRecipes.get(position).clone());
                                     importedRecipes.remove(position);
                                     rebuildSaves();
                                     rcAdapter.notifyItemRemoved(position);
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    deleted.push(importedRecipes.get(position).clone());
                                     importedRecipes.remove(position);
                                     rebuildSaves();
                                     rcAdapter.notifyItemRemoved(position);
@@ -114,7 +119,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.action_refresh) {
-            Toast.makeText(MainActivity.this, "Refresh App", Toast.LENGTH_LONG).show();
+            if (deleted.isEmpty()){
+                Toast.makeText(MainActivity.this, "No recipes to restore", Toast.LENGTH_LONG).show();
+            }else {
+                importedRecipes.add(deleted.pop());
+                Toast.makeText(MainActivity.this, "Last deleted recipe restored", Toast.LENGTH_LONG).show();
+            }
         }
 
         return super.onOptionsItemSelected(item);

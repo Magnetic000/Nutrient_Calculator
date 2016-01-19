@@ -190,7 +190,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
      * searches the database for foods with matching names
      */
     private void doSearch() {
-        String searchText = edtSeach.getText().toString();
+        String searchText = edtSeach.getText().toString().trim();
         //don't allow the user to do a really broad search
         if (searchText.length() < 2) {
             Toast.makeText(getBaseContext(), "Search keyword too short, please be more specific", Toast.LENGTH_SHORT).show();

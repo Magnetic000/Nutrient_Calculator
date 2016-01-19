@@ -240,6 +240,17 @@ public class Recipe {
         return photo;
     }
 
+    @Override
+    public Recipe clone(){
+        Recipe clone = null;
+        try {
+            clone = (Recipe) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return clone;
+    }
+
 
     /**
      * @param r another recipe
