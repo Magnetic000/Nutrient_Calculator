@@ -70,7 +70,7 @@ public class Measures {
     }
 
     @Override
-    public Measures clone(){
+    public Measures clone() {
         Measures clone = new Measures(ID, conversion);
         clone.setName(name);
         return clone;

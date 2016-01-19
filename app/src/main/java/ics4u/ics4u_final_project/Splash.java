@@ -1,12 +1,9 @@
 package ics4u.ics4u_final_project;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.VideoView;
 
 public class Splash extends AppCompatActivity {
     /**
@@ -32,7 +29,8 @@ public class Splash extends AppCompatActivity {
             }
         }, displayLength);
     }
-//    public void splashPlayer() {
+
+    //    public void splashPlayer() {
 //        setContentView(R.layout.splash_screen);
 //        VideoView videoHolder = (VideoView)findViewById(R.id.videoView);
 //        Uri video = Uri.parse("android.resource://" + getPackageName() + "/"
@@ -45,7 +43,7 @@ public class Splash extends AppCompatActivity {
 //        });
 //        videoHolder.start();
 //    }
-    public void startProgram(){
+    public void startProgram() {
         Intent intent = new Intent(Splash.this, MainActivity.class);
         Splash.this.startActivity(intent);
         Splash.this.finish();

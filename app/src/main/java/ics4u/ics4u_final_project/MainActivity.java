@@ -17,9 +17,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
-import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     RecipeAdapter rcAdapter;
     static Activity fa;
     Stack<Recipe> deleted = new Stack<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,13 +115,13 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this,Settings.class);
+            Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
         }
         if (id == R.id.action_refresh) {
-            if (deleted.isEmpty()){
+            if (deleted.isEmpty()) {
                 Toast.makeText(MainActivity.this, "No recipes to restore", Toast.LENGTH_LONG).show();
-            }else {
+            } else {
                 importedRecipes.add(deleted.pop());
                 rebuildSaves();
                 Toast.makeText(MainActivity.this, "Last deleted recipe restored", Toast.LENGTH_LONG).show();
@@ -164,20 +163,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart(){
+    protected void onRestart() {
         super.onRestart();
         rebuildSaves();
-        RecipeCreateActivity.onRecipe=false;
+        RecipeCreateActivity.onRecipe = false;
     }
 
-    public void rebuildSaves(){
+    public void rebuildSaves() {
         //rebuild imported recipes
         File recipeFolder = new File(this.getFilesDir() + "/recipes/");
         File[] listOfFiles = recipeFolder.listFiles();
         for (File file : listOfFiles) {
             System.out.println(file.delete());
         }
-        for (int i = 0; i < importedRecipes.size(); i++){
+        for (int i = 0; i < importedRecipes.size(); i++) {
             try {
                 importedRecipes.get(i).save(new File(this.getFilesDir() + "/recipes/" + i + ".xml"));
             } catch (FileNotFoundException e) {

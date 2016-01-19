@@ -106,6 +106,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
 
     /**
      * This method checks if mL is available for this ingredient
+     *
      * @param ID the ID of the measure
      * @return whether or not it can be measured in mL
      */
@@ -280,7 +281,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             } else if (quantity < 1000) {
                 ingredient = quantity + "mL " + selected.getName();
             } else {
-                ingredient = ((double)quantity / 1000.0) + "L " + selected.getName();
+                ingredient = ((double) quantity / 1000.0) + "L " + selected.getName();
             }
             //get the information from the spinners
             selected.setUnit(measureType.getSelectedItem().toString());
@@ -300,10 +301,10 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             //close
             RecipeCreateActivity.addedIngred = true;
             this.finish();
-            IngredientSelectionActivity.onIngredient=false;
+            IngredientSelectionActivity.onIngredient = false;
         } else if (id == R.id.action_cancel) {
             this.finish();
-            IngredientSelectionActivity.onIngredient=false;
+            IngredientSelectionActivity.onIngredient = false;
         }
         return super.onOptionsItemSelected(item);
     }

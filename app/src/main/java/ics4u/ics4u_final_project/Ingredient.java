@@ -233,8 +233,9 @@ public class Ingredient {
         }
         return true;
     }
+
     @Override
-    public Ingredient clone(){
+    public Ingredient clone() {
         Ingredient clone = new Ingredient(id, name);
         clone.setFormattedName(formattedName);
         clone.setFractionNum(fractionNum);
@@ -242,7 +243,7 @@ public class Ingredient {
         clone.setUnit(unit);
         clone.setFractionName(fractionName);
         clone.setUnitNum(unitNum);
-        clone.setMeasures((ArrayList<Measures>)measures.clone());
+        clone.setMeasures((ArrayList<Measures>) measures.clone());
         return clone;
     }
 

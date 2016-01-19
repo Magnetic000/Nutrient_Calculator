@@ -35,6 +35,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     EditText quanAmt, quanNm;
     int index = -1;
     RecipeCreateAdapter rcAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -264,7 +265,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
             System.out.println(file.delete());
         }
         //resave all the recipes that are in memory
-        for (int i = 0; i < MainActivity.importedRecipes.size(); i++){
+        for (int i = 0; i < MainActivity.importedRecipes.size(); i++) {
             try {
                 MainActivity.importedRecipes.get(i).save(new File(this.getFilesDir() + "/recipes/" + i + ".xml"));
             } catch (FileNotFoundException e) {

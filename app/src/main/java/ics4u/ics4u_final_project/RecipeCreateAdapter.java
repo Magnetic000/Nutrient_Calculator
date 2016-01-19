@@ -22,7 +22,7 @@ public class RecipeCreateAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_recipecreate, null);
-        RecyclerViewHolders rcv = new RecyclerViewHolders(layoutView,context);
+        RecyclerViewHolders rcv = new RecyclerViewHolders(layoutView, context);
         return rcv;
     }
 

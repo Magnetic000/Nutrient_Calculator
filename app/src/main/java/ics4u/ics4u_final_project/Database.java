@@ -436,11 +436,6 @@ public class Database {
     }//End createOutput()
 
 
-
-
-
-
-
     /**
      * This method gets the information for each ingredient needed to create the
      * label/output

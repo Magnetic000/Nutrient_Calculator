@@ -22,7 +22,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_mainactivity, null);
-        return new RecyclerViewHolders(layoutView,context);
+        return new RecyclerViewHolders(layoutView, context);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerViewHolders>
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_ingredientselect, null);
-        RecyclerViewHolders rcv2 = new RecyclerViewHolders(layoutView,context);
+        RecyclerViewHolders rcv2 = new RecyclerViewHolders(layoutView, context);
         return rcv2;
     }
 

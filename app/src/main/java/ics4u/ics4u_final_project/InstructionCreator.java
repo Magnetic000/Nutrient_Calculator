@@ -1,7 +1,7 @@
 package ics4u.ics4u_final_project;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 
 public class InstructionCreator extends AppCompatActivity {
@@ -15,7 +15,7 @@ public class InstructionCreator extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         //save the ingredients
         EditText editor = (EditText) findViewById(R.id.instructionsText);
