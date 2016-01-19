@@ -32,12 +32,17 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         location = this.getLayoutPosition();
         edit = false;
         //if the card is on the search screen
-        if (IngredientSelectionActivity.onIngredient && IngredientSelectionActivity.searchCompleted) {
-            Intent intent = new Intent(this.context, MeasureSelectionActivity.class);
-            context.startActivity(intent);
-            IngredientSelectionActivity.fa.finish();
-            IngredientSelectionActivity.onIngredient = false;
-            //if the card is an ingredient on a recipe
+        if (IngredientSelectionActivity.onIngredient){
+            if ( IngredientSelectionActivity.searchCompleted) {
+                Intent intent = new Intent(this.context, MeasureSelectionActivity.class);
+                context.startActivity(intent);
+                IngredientSelectionActivity.fa.finish();
+                IngredientSelectionActivity.onIngredient = false;
+                //if the card is an ingredient on a recipe
+            } else {
+                Toast t = Toast.makeText(context, "Please search for an ingredient", Toast.LENGTH_LONG);
+                t.show();
+            }
         } else if (RecipeCreateActivity.onRecipe) {
             System.out.println("added " + RecipeCreateActivity.addedIngred);
             if (RecipeCreateActivity.recipe.getIngredients().size() > 0 && RecipeCreateActivity.addedIngred) {
