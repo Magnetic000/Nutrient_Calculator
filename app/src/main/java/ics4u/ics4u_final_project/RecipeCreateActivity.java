@@ -34,7 +34,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     ImageView iconContextMenu;
     EditText quanAmt, quanNm;
     int index = -1;
-
+    RecipeCreateAdapter rcAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +63,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
             }
         });
         //list for the cards
-        List<Ingredient> rowListItem;
+        final List<Ingredient> rowListItem;
         quanAmt = (EditText) findViewById(R.id.quantity_amount);
         quanNm = (EditText) findViewById(R.id.quantity_type);
         if (RecyclerViewHolders.edit) {
@@ -94,9 +94,38 @@ public class RecipeCreateActivity extends AppCompatActivity {
         rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
         rView.setLayoutManager(lLayoutIngredient);
 
-        RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
+        rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
         rView.setAdapter(rcAdapter);
         clickingIcon();
+
+        SwipeableRecyclerViewTouchListener swipeTouchListener =
+                new SwipeableRecyclerViewTouchListener(rView,
+                        new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                            @Override
+                            public boolean canSwipe(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    rowListItem.remove(position);
+                                    rcAdapter.notifyItemRemoved(position);
+                                }
+                                rcAdapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+                                    rowListItem.remove(position);
+                                    rcAdapter.notifyItemRemoved(position);
+                                }
+                                rcAdapter.notifyDataSetChanged();
+                            }
+                        });
+
+        rView.addOnItemTouchListener(swipeTouchListener);
     }
 
     private List<Ingredient> getAllItemList() {
@@ -148,6 +177,8 @@ public class RecipeCreateActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+
+
     }
 
     @Override
