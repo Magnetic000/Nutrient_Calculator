@@ -142,12 +142,6 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, Settings.class);
-            startActivity(intent);
-        }
         if (id == R.id.action_undo) {
             if (deleted.isEmpty()) {
                 Toast.makeText(MainActivity.this, "No recipes to restore", Toast.LENGTH_LONG).show();
@@ -158,8 +152,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-        if (id == R.id.action_unit_conversion){
-            Intent intent = new Intent(this, UnitConverter.class);
+        if (id == R.id.action_about){
+            Intent intent = new Intent(this, About.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
