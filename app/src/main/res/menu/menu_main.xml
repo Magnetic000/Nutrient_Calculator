@@ -4,13 +4,8 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_unit_conversion"
-        android:title="Unit Converter"
+        android:id="@+id/action_about"
+        android:title="About"
         android:orderInCategory="100"
         app:showAsAction="never" />
     <item
