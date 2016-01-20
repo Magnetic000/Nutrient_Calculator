@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
-        topToolBar.setLogo(R.drawable.logo);
+        topToolBar.setLogo(R.drawable.logo_updated);
 
         lLayout = new LinearLayoutManager(MainActivity.this);
 

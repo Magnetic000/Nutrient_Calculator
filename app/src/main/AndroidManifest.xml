@@ -37,10 +37,6 @@
         <activity
             android:name=".InstructionCreator"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name="com.example.andrew.myapplication.Settings"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name="com.example.andrew.myapplication.UnitConverter"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".About"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
