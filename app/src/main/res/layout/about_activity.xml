@@ -10,15 +10,17 @@
         android:background="@color/color_primary"
         android:elevation="6dp"
         android:minHeight="?attr/actionBarSize" />
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/about"
-            android:textSize="24dp"
+            android:textSize="16dp"
             android:textColor="@color/text_primary"
-            android:padding="5dp"/>
-    </RelativeLayout>
+            android:padding="5dp"
+            android:scrollbars = "vertical"
+            android:autoLink="web"/>
+    </ScrollView>
 </LinearLayout>

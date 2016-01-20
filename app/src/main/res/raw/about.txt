@@ -1,0 +1,38 @@
+<p><b>ABOUT:</b><br>
+This app was made for our ICS4U Final project<br>
+Isaac Wismer<br>
+Andrew Xu<br>
+Griffin B</p>
+
+<p>The source code is available on github!<br>
+https://github.com/isaactsg/ICS4U-Final-Project</p>
+
+<p><b>HELP:</b><br>
+If you need help with this app please visit the github wiki.</p>
+
+<p>This project is released under the GNU Affero General Public License. The license is available in the LICENSE file (on our github repo), or at https://www.gnu.org/licenses/agpl.html</p>
+
+<p><b>LICENSE:</b>
+
+Copyright (C) 2016 Isaac Wismer & Andrew Xu</p>
+
+<p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/.</p>
+
+<p><b>LIBRARIES:</b><br>
+This project uses the iTextPDF Library. http://itextpdf.com/<br>
+iText is also released under the GNU Affero General Public License.</p>
+
+<p><b>THANKS TO:</b><br>
+Karen for inspiring this whole project and encouraging me when I thought I couldn't make this.<br>
+Cutten for teaching us to code and solving all of our trivial coding problems.</p>
+
+<p><b>BUGS:</b><br>
+Found an unexpected feature or a happy little quirk? Submit a bug report on our github repo, or make a pull request.</p>
+
+<p><b>CHANGELOG:</b><br>
+1.0.0<br>
+Our first release!</p>
