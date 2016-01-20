@@ -39,35 +39,45 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
 
     public RecyclerViewHolders(View itemView, Context context) {
         super(itemView);
+        //Click event when user clicks a card from any of the card views
         itemView.setOnClickListener(this);
         this.context = context;
+        //Find reference locations for all possible items in cards
         recipeName = (TextView) itemView.findViewById(R.id.recipe_name);
         recipeIcon = (ImageView) itemView.findViewById(R.id.recipe_icon);
         ingredientName = (TextView) itemView.findViewById(R.id.ingredient_name);
     }
-
+    //Click event on click
     @Override
     public void onClick(View view) {
+        //Get the location of the card that was clicked
         location = this.getLayoutPosition();
         edit = false;
         //if the card is on the search screen
         if (IngredientSelectionActivity.onIngredient) {
+            //If the search is complete
             if (IngredientSelectionActivity.searchCompleted) {
+                //Launch the measurement selection activity
                 Intent intent = new Intent(this.context, MeasureSelectionActivity.class);
                 context.startActivity(intent);
+                //End the ingredient selection activity
                 IngredientSelectionActivity.fa.finish();
+                //update variable stating user is no longer on ingredient selection
                 IngredientSelectionActivity.onIngredient = false;
                 //if the card is an ingredient on a recipe
             } else {
                 Toast t = Toast.makeText(context, "Please search for an ingredient", Toast.LENGTH_LONG);
                 t.show();
             }
+            //If the user is on the recipe create screen
         } else if (RecipeCreateActivity.onRecipe) {
             System.out.println("added " + RecipeCreateActivity.addedIngred);
+            //If user clicked an existing ingredient in the recipe
             if (RecipeCreateActivity.recipe.getIngredients().size() > 0 && RecipeCreateActivity.addedIngred) {
                 RecipeCreateActivity.onRecipe = false;
                 Intent intent = new Intent(this.context, MeasureSelectionActivity.class);
                 context.startActivity(intent);
+                //Prompt user to add an ingredient
             } else {
                 Toast t = Toast.makeText(context, "Please create a new ingredient", Toast.LENGTH_LONG);
                 t.show();
@@ -75,6 +85,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
             //if the card clicked is a recipe to be edited
         } else {
             edit = true;
+            //Start the recipe creat activity
             Intent intent = new Intent(this.context, RecipeCreateActivity.class);
             context.startActivity(intent);
         }

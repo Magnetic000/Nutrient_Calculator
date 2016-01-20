@@ -61,26 +61,37 @@ public class RecipeCreateActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private LinearLayoutManager lLayoutIngredient;
 
+    /**
+     * Runs when the activity first loads or whenever it reloads from scratch
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Update variable stating user is on recipe creating activity
         onRecipe = true;
+        //Links .java file with the corresponding xml file
         setContentView(R.layout.rv_recipecreate);
+        //Create toolbar with corresponding values
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("Create A Recipe");
         setSupportActionBar(mToolbar);
+        //Update variable stating user isn't adding ingredients yet
         addedIngred = false;
-
-
+        //Find reference location of button
         final Button button = (Button) findViewById(R.id.instructions_button);
+        //checks for button click event
         button.setOnClickListener(
+                //Launch instruction creator activity
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         launchInstructions();
                     }
                 }
         );
+        //FLOATING BUTTON
         FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.add_ingredient_button);
+        //Checks for click event of the floating button
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +101,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         });
         //list for the cards
         final List<Ingredient> rowListItem;
+        //Find reference locations of combo boxes
         quanAmt = (EditText) findViewById(R.id.quantity_amount);
         quanNm = (EditText) findViewById(R.id.quantity_type);
         if (RecyclerViewHolders.edit) {
@@ -116,23 +128,34 @@ public class RecipeCreateActivity extends AppCompatActivity {
             rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
 
         }
+        //LLM for recycler view container
         lLayoutIngredient = new LinearLayoutManager(RecipeCreateActivity.this);
+        //Find reference location of the Rview
         rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
+        //Populate container with data inserted into the adapter
         rView.setLayoutManager(lLayoutIngredient);
         rView.setAdapter(rcAdapter);
+        //Checks to see if user clicked the icon
         clickingIcon();
-
+        //Listener to see when user swipes one of the cards
         SwipeableRecyclerViewTouchListener swipeTouchListener =
                 new SwipeableRecyclerViewTouchListener(rView,
                         new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                            /**
+                             * Allows cards to be swipeable
+                             * @param position
+                             * @return
+                             */
                             @Override
                             public boolean canSwipe(int position) {
                                 return true;
                             }
-
+                            //When user swipes left to dismiss cards
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    //move deleted ingredient to a temporary array
+                                    //Delete ingredient from screen
                                     if (recipe.getIngredients().size() > 0) {
                                         deleted.push(recipe.getIngredients().get(position));
                                         recipe.getIngredients().remove(position);
@@ -141,10 +164,12 @@ public class RecipeCreateActivity extends AppCompatActivity {
                                 }
                                 rcAdapter.notifyDataSetChanged();
                             }
-
+                            //when user swipes right to dismiss cards
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    //move deleted ingredient to a temporary array
+                                    //Delete ingredient from screen
                                     if (recipe.getIngredients().size() > 0) {
                                         deleted.push(recipe.getIngredients().get(position));
                                         recipe.getIngredients().remove(position);
@@ -191,6 +216,12 @@ public class RecipeCreateActivity extends AppCompatActivity {
 //        RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(this.getApplicationContext(), recipe.getIngredients());
 //        rView.setAdapter(rcAdapter);
 //    }
+
+    /**
+     * Instantiates menu and populates it with corresponding items
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -198,6 +229,11 @@ public class RecipeCreateActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * When user clicks an item on the menu
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -206,6 +242,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        //When user clicks print
         if (id == R.id.action_print) {
             //save the recipe
             saveRecipe();
@@ -226,6 +263,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Permission denied. Please grant storage permissions", Toast.LENGTH_LONG).show();
             }
+            //When user clicks undo
         } else if (id == R.id.action_undo) {
             //they haven't deleted anything
             if (deleted.isEmpty()) {
@@ -245,10 +283,19 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Creates context menu to allow user to choose icon
+     * Context menus are the pop up menus
+     * @param menu
+     * @param v
+     * @param menuInfo
+     */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+        //Inflate menu with values in corresponding menu xml file
         MenuInflater inflater = getMenuInflater();
+        //Set header
         menu.setHeaderTitle("Change recipe icon");
         inflater.inflate(R.menu.menu_icon, menu);
     }
@@ -262,6 +309,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         super.onContextItemSelected(item);
+        //Checks to see which photo was selected and update the photo
         switch (item.getItemId()) {
             case R.id.icon1:
                 iconContextMenu.setImageResource(R.drawable.banana);
@@ -304,8 +352,13 @@ public class RecipeCreateActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Checks to see user clicks the recipe icon
+     */
     public void clickingIcon() {
+        //find the reference location
         iconContextMenu = (ImageView) findViewById(R.id.recipe_icon);
+        //Checks for click event, and open the context menu
         iconContextMenu.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -316,6 +369,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     }
 
     /**
+     * Method runs every time the user returns to this activity that is already open
      * refreshes the ingredients and saves the recipe
      */
     @Override
@@ -326,6 +380,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
         rView.setAdapter(rcAdapter);
         //save the recipe
         saveRecipe();
+        //Update variable stating user is on the recipe create activity
         onRecipe = true;
     }
 

@@ -42,9 +42,14 @@ public class MeasureSelectionActivity extends AppCompatActivity {
     Context c = this;
     Spinner measureType, measureSize;
 
+    /**
+     * Runs when the activity is first loaded
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Link .java file with corresponding xml file for visuals
         setContentView(R.layout.measure_selector);
         //check if it's a new ingredient or an edit
         if (RecipeCreateActivity.search) {
@@ -52,33 +57,40 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         } else {
             selected = RecipeCreateActivity.recipe.getSingleIngredientIndex(RecyclerViewHolders.location);
         }
+        //Update variable stating search is over
         RecipeCreateActivity.search = false;
+        //Find reference location of combo boxes
         measureSize = (Spinner) findViewById(R.id.measurement_amount);
         measureType = (Spinner) findViewById(R.id.measurement_type);
+        //Set title and create toolbar
         setTitle("Ingredient Amount");
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
-
+        //Runs the following two listeners to check when user makes changes to the combo boxes
         AdapterView.OnItemSelectedListener onSpinnerType = new AdapterView.OnItemSelectedListener() {
+            //If user selects an option in the measurement type combo box
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 setSizeSpinner((int) id);
             }
-
+            //If user selects nothing
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         };
         AdapterView.OnItemSelectedListener onSpinnerSize = new AdapterView.OnItemSelectedListener() {
+            //If user selects an option in the measure size combo box
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             }
-
+            //If the user selects nothing
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         };
+        //Find reference location of text view
         TextView name = (TextView) findViewById(R.id.ingredient_title);
+        //fill it with the title of the ingredient the user selected
         name.setText(selected.getName());
         //set the spinner lists
         types = new String[]{"Metric Cooking Measures", "mL", "g", "Other"};
@@ -199,6 +211,11 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         }
     }//end getConv
 
+    /**
+     * Instantiates menus and adds corresponding items from the xml file
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -206,10 +223,16 @@ public class MeasureSelectionActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * When user selects an item in the menu
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         EditText quantityBox = (EditText) findViewById(R.id.ingredient_amount);
+        //If user presses add button
         if (id == R.id.action_add) {
             int temp;
             String ingredient = "";
@@ -299,8 +322,10 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             RecipeCreateActivity.addedIngred = true;
             this.finish();
             IngredientSelectionActivity.onIngredient = false;
+            //If user presses the cancel button
         } else if (id == R.id.action_cancel) {
             this.finish();
+            //End the activity and update variable stating user is not selecting ingredient
             IngredientSelectionActivity.onIngredient = false;
         }
         return super.onOptionsItemSelected(item);

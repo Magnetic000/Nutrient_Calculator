@@ -33,6 +33,11 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerViewHolders>
     private List<Ingredient> itemList;
     private Context context;
 
+    /**
+     * Constructor
+     * @param context the context of the app
+     * @param itemList the array list to pass
+     */
     public IngredientAdapter(Context context, List<Ingredient> itemList) {
         this.itemList = itemList;
         this.context = context;
@@ -40,12 +45,17 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerViewHolders>
 
     @Override
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
-
+        //Populate reycle view containers with the card views xml
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_ingredientselect, null);
         RecyclerViewHolders rcv2 = new RecyclerViewHolders(layoutView, context);
         return rcv2;
     }
 
+    /**
+     * Set the textview for ingredient name in the cards
+     * @param holder the recycle view that the card is located in
+     * @param position the position of the card
+     */
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
         holder.ingredientName.setText(itemList.get(position).getName());

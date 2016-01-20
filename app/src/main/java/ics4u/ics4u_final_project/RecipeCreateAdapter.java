@@ -32,6 +32,11 @@ public class RecipeCreateAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     private List<Ingredient> itemList;
     private Context context;
 
+    /**
+     * Constructor for adapter
+     * @param context the context of the app i.e. the window
+     * @param itemList the information to be passed
+     */
     public RecipeCreateAdapter(Context context, List<Ingredient> itemList) {
         this.itemList = itemList;
         this.context = context;
@@ -39,7 +44,8 @@ public class RecipeCreateAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
-
+        //Sets destination for adapter
+        //Links to card view xmls
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_recipecreate, null);
         RecyclerViewHolders rcv = new RecyclerViewHolders(layoutView, context);
         return rcv;
@@ -47,6 +53,7 @@ public class RecipeCreateAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
+        //Push data into items of the cards
         holder.ingredientName.setText(itemList.get(position).getFormattedName());
     }
 

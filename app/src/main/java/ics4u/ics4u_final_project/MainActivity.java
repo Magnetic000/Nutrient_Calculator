@@ -45,17 +45,23 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<Recipe> importedRecipes;
     public static SharedPreferences prefs = null;
-    static Activity fa;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     RecyclerView rView;
     RecipeAdapter rcAdapter;
     Stack<Recipe> deleted = new Stack<>();
     private LinearLayoutManager lLayout;
 
+    /**
+     * When the activity starts
+     * Runs through this method every time the activity is reloaded from scratch
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Store value stating user isn't on ingredient selection activity
         IngredientSelectionActivity.onIngredient = false;
+        //Import data
         Database.importData(this);
         prefs = getSharedPreferences("ics4u.ics4u_final_project", MODE_PRIVATE);
 //        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -75,39 +81,44 @@ public class MainActivity extends AppCompatActivity {
         importedRecipes.get(0).setPhoto(R.drawable.banana);
         //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
 
-
+        //Link .java file with correct xml for visuals
         setContentView(R.layout.rv_mainactivity);
+        //Set title to nothing
         setTitle(null);
-
+        //Find reference location of toolbar
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
+        //Set toolbar with logo
         setSupportActionBar(topToolBar);
         topToolBar.setLogo(R.drawable.logo_updated);
-
+        //Instantiate LLM to store RecyclerView
         lLayout = new LinearLayoutManager(MainActivity.this);
-
+        //Find reference location of recycler view, container for cards
         rView = (RecyclerView) findViewById(R.id.recycler_view);
         rView.setLayoutManager(lLayout);
-
+        //Instantiate adapter, something used to push information to cards
+        //Pass data to be stored
         rcAdapter = new RecipeAdapter(MainActivity.this, importedRecipes);
         rView.setAdapter(rcAdapter);
-        System.out.println("reached");
+        //Floating action button
         FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.add_recipe_button);
+        //Check to see if user clicked the button
+        //Start recipe creating activity
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createRecipe();
             }
         });
-
-
+        //Checks if user has swiped to delete recipe
         SwipeableRecyclerViewTouchListener swipeTouchListener =
                 new SwipeableRecyclerViewTouchListener(rView,
                         new SwipeableRecyclerViewTouchListener.SwipeListener() {
+                            //Allow user to swipe an existing card
                             @Override
                             public boolean canSwipe(int position) {
                                 return true;
                             }
-
+                            //When user swipes left
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
@@ -115,20 +126,23 @@ public class MainActivity extends AppCompatActivity {
                                     deleted.push(importedRecipes.get(position).clone());
                                     //remove it from the list
                                     importedRecipes.remove(position);
+                                    //Update cards
                                     rebuildSaves();
                                     rcAdapter.notifyItemRemoved(position);
                                 }
                                 rcAdapter.notifyDataSetChanged();
                             }
-
+                            //When user swipes right
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
                                     //add deleted to a stack of the deleted recipes
                                     deleted.push(importedRecipes.get(position).clone());
                                     //remove it from the list
+
                                     importedRecipes.remove(position);
                                     rebuildSaves();
+                                    //Update cards
                                     rcAdapter.notifyItemRemoved(position);
                                 }
                                 rcAdapter.notifyDataSetChanged();
@@ -138,6 +152,11 @@ public class MainActivity extends AppCompatActivity {
         rView.addOnItemTouchListener(swipeTouchListener);
     }
 
+    /**
+     * Creating menu
+     * @param menu the toolbar of the activity
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -145,14 +164,21 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Runs this method when the user selects an option on the menu
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        //If user presses the undo button
         if (id == R.id.action_undo) {
-            //if there are no recipes to restore
+
+            //check to see if there are any restorable recipes
             if (deleted.isEmpty()) {
                 Toast.makeText(MainActivity.this, "No recipes to restore", Toast.LENGTH_LONG).show();
             } else {
@@ -165,51 +191,33 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+        //If user pressed the about button
         if (id == R.id.action_about) {
+            //Begin about activity
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * Starts recipe create activity and updates variables
+     */
     public void createRecipe() {
         RecyclerViewHolders.edit = false;
-        System.out.println("clicked the button");
         Intent intent = new Intent(this, RecipeCreateActivity.class);
         startActivity(intent);
     }
 
-    public void buttonCode() {
-        /*final Button button = (Button)findViewById(R.id.button);
-
-        button.setOnClickListener(
-            new Button.OnClickListener(){
-                public void onClick (View v){
-                    button.setText("Clicked");
-                }
-            }
-        );
-
-        button.setOnLongClickListener(
-                new Button.OnLongClickListener() {
-                    public boolean onLongClick(View v) {
-                        button.setText("long");
-                        return false;
-                    }
-                }
-        );*/
-
-    }
-
     /**
-     * called when the main activity comes back into focus
+     * Calls function every time user returns to this activity
      */
     @Override
     protected void onRestart() {
         super.onRestart();
         //update the saved recipes
         rebuildSaves();
+        //updates variables stating user is no longer on recipe creating activity
         RecipeCreateActivity.onRecipe = false;
     }
 

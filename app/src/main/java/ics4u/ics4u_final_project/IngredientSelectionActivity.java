@@ -140,23 +140,29 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //instance of this activity, to be used for closing it outside of this class
         fa = this;
         results = new ArrayList<>();
+        //Update variables stating user is on ingredient selection
         onIngredient = true;
+        //Update variable stating user has not searched
         searchCompleted = false;
+        //Insert prompt into a card
         results.add(new Ingredient(0, "Search for an Ingredient. Use commas to separate keywords."));
+        //Link .java file with xml file
         setContentView(R.layout.rv_ingredientselect);
-
+        //Create the toolbar with title on the left corner
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("Create A Recipe");
         setSupportActionBar(mToolbar);
+        //Create LLM for recycler view
         lLayoutIngredient = new LinearLayoutManager(IngredientSelectionActivity.this);
-
+        //Find the reference location of the RView
         rView = (RecyclerView) findViewById(R.id.recycler_view_ingredient);
         rView.setLayoutManager(lLayoutIngredient);
-
+        //Instantiate adapter to pass information to cards
         rcAdapter = new IngredientAdapter(IngredientSelectionActivity.this, results);
-
+        //When user selects an item in the drop box
         AdapterView.OnItemSelectedListener onSpinner = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -190,6 +196,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         };
+        //Pass information in the spinner
         ingredientDropdown = (Spinner) findViewById(R.id.category_combobox);
         ingredientCategories = new String[]{"Show all"};
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ingredientCategories);
@@ -200,6 +207,11 @@ public class IngredientSelectionActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Populate menu with corresponding items
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -216,9 +228,10 @@ public class IngredientSelectionActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        //If user clicks the search button
         switch (id) {
             case R.id.action_search:
+                //Run search method
                 handleMenuSearch();
                 return true;
         }

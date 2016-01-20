@@ -24,15 +24,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 
 public class InstructionCreator extends AppCompatActivity {
-
+    /**
+     * Runs when the activity is started
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Link .java with corresponding xml value
         setContentView(R.layout.instruction_creator);
+        //Find reference location of text view and populat text file
         EditText editor = (EditText) findViewById(R.id.instructionsText);
         editor.setText(RecipeCreateActivity.recipe.getInstructions());
     }
 
+    /**
+     * When the user presses the back button
+     */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
