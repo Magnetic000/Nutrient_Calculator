@@ -36,6 +36,7 @@ public class Splash extends AppCompatActivity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        //Links .java file with the corresponding xml file
         setContentView(R.layout.splash_screen);
 
         /* New Handler to start the Menu-Activity
@@ -62,6 +63,10 @@ public class Splash extends AppCompatActivity {
 //        });
 //        videoHolder.start();
 //    }
+
+    /**
+     * Starts the main activity after the splash is done loading
+     */
     public void startProgram() {
         Intent intent = new Intent(Splash.this, MainActivity.class);
         Splash.this.startActivity(intent);

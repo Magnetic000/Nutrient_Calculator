@@ -1,5 +1,5 @@
 /*
-This class is for the about about screen
+This class is for the about screen
  */
 /*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
@@ -30,14 +30,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Created by Andrew on 2016-01-19.
- */
 public class About extends AppCompatActivity {
+    /**
+     * Method that runs when the activity is first load
+     * Will run every time activity is loaded from scratch
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Link .java file with the about xml file to load visuals
         setContentView(R.layout.about_activity);
+        //Open stream to about file
         BufferedReader br = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.about)));
         String file = "";
         try {
@@ -50,11 +54,15 @@ public class About extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //Find the reference location of the text view
         TextView about = (TextView) findViewById(R.id.about);
+        //Set text
         about.setText(Html.fromHtml(file));
+        //Set the title of the toolbar
         setTitle("About This App");
-
+        //Find reference location of the toolbar from xml
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
+        //Set toolbar with updated info
         setSupportActionBar(topToolBar);
     }
 }

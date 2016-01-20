@@ -32,6 +32,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
     private List<Recipe> itemList;
     private Context context;
 
+    /**
+     * Constructor for adapter
+     * @param context the context of the activity
+     * @param itemList the array to be passed through the adapter
+     */
     public RecipeAdapter(Context context, List<Recipe> itemList) {
         this.itemList = itemList;
         this.context = context;
@@ -39,15 +44,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
 
     @Override
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
-
+        //Sends data into card containers which are located within the recycler view containers
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_mainactivity, null);
         return new RecyclerViewHolders(layoutView, context);
     }
 
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
+        //Populate card items with corresponding information
         holder.recipeName.setText(itemList.get(position).getTitle());
-        System.out.println(itemList.get(position).getPhoto() + "photo");
         holder.recipeIcon.setImageResource(itemList.get(position).getPhoto());
     }
 
