@@ -1,6 +1,6 @@
 /* Isaac Wismer
  *  Jun 15, 2015
- *
+ * This class contains code to be able to import and process recipes
  */
 /*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
@@ -23,7 +23,6 @@ package ics4u.ics4u_final_project;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
@@ -54,9 +53,9 @@ import javax.xml.parsers.ParserConfigurationException;
 public class Database {
 
     static final DecimalFormat oneDecimal = new DecimalFormat("#,##0.0");
+    static final String delimiter = "#";
     static ArrayList<Object[]> fdName = new ArrayList<>(), msName = new ArrayList<>(), ntName = new ArrayList<>(), convFact = new ArrayList<>(), ntAmt = new ArrayList<>();
     static Recipe recipe = new Recipe();
-    static final String delimiter = "#";
 
     /**
      * Imports the data stored in files to arraylists to faster searching
@@ -164,6 +163,7 @@ public class Database {
 
     /**
      * Reads a data file to an arraylist
+     *
      * @param filePath the path of the file to be read
      * @return the file as an ArrayList<String>
      */
@@ -189,6 +189,7 @@ public class Database {
 
     /**
      * returns the number of fields for the given string
+     *
      * @param s the string to test
      * @return the number of fields
      */

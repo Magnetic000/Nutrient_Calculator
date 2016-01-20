@@ -1,4 +1,7 @@
 /*
+this is that class that holds all the cards
+ */
+/*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
 
     This program is free software: you can redistribute it and/or modify
@@ -27,12 +30,12 @@ import android.widget.Toast;
 
 public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+    public static int location = 0;
+    static boolean edit;
+    private final Context context;
     public TextView recipeName;
     public ImageView recipeIcon;
     public TextView ingredientName;
-    private final Context context;
-    public static int location = 0;
-    static boolean edit;
 
     public RecyclerViewHolders(View itemView, Context context) {
         super(itemView);
@@ -48,8 +51,8 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         location = this.getLayoutPosition();
         edit = false;
         //if the card is on the search screen
-        if (IngredientSelectionActivity.onIngredient){
-            if ( IngredientSelectionActivity.searchCompleted) {
+        if (IngredientSelectionActivity.onIngredient) {
+            if (IngredientSelectionActivity.searchCompleted) {
                 Intent intent = new Intent(this.context, MeasureSelectionActivity.class);
                 context.startActivity(intent);
                 IngredientSelectionActivity.fa.finish();

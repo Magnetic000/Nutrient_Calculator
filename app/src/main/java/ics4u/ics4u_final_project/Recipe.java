@@ -111,17 +111,17 @@ public class Recipe {
     }
 
     /**
-     * @return the number of ingredients
-     */
-    public int size() {
-        return ingredients.size();
-    }
-
-    /**
      * @param instructions instructions for the recipe
      */
     public void setInstructions(String instructions) {
         this.instructions = instructions;
+    }
+
+    /**
+     * @return the number of ingredients
+     */
+    public int size() {
+        return ingredients.size();
     }
 
     /**
@@ -248,12 +248,12 @@ public class Recipe {
         this.nutrients = nutrients;
     }
 
-    public void setPhoto(int photo) {
-        this.photo = photo;
-    }
-
     public int getPhoto() {
         return photo;
+    }
+
+    public void setPhoto(int photo) {
+        this.photo = photo;
     }
 
     @Override

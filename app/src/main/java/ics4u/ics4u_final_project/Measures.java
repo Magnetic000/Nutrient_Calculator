@@ -1,5 +1,6 @@
 /* Isaac Wismer
  *  Jun 17, 2015
+ *  This is a class that represents one possible measurement for a given ingredient
  */
 /*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
@@ -87,6 +88,7 @@ public class Measures {
 
     /**
      * clones this measure object
+     *
      * @return an identical measure object
      */
     @Override

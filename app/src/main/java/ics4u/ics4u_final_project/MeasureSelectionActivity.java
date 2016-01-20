@@ -1,4 +1,7 @@
 /*
+this is the activity where the user selects how much of the selected ingredient they want
+ */
+/*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
 
     This program is free software: you can redistribute it and/or modify
@@ -129,7 +132,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
      */
     public boolean checkMeasuresML(int ID) {
         //get conversion rates
-        if (!edit)getConv(ID);
+        if (!edit) getConv(ID);
 
         //check the conversions for mL measurements
         for (int i = 0; i < selected.getMeasures().size(); i++) {

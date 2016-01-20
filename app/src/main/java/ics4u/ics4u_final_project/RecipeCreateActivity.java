@@ -1,4 +1,7 @@
 /*
+This is the class for the activity that allows the user to make a new or edit an existing recipe
+ */
+/*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
 
     This program is free software: you can redistribute it and/or modify
@@ -46,8 +49,6 @@ import java.util.List;
 import java.util.Stack;
 
 public class RecipeCreateActivity extends AppCompatActivity {
-    private Toolbar mToolbar;
-    private LinearLayoutManager lLayoutIngredient;
     static Recipe recipe;
     static boolean addedIngred;
     static boolean onRecipe, search;
@@ -57,6 +58,8 @@ public class RecipeCreateActivity extends AppCompatActivity {
     int index = -1;
     RecipeCreateAdapter rcAdapter;
     Stack<Ingredient> deleted = new Stack<>();
+    private Toolbar mToolbar;
+    private LinearLayoutManager lLayoutIngredient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +160,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
     /**
      * creates a default card in the list to promt the user
+     *
      * @return the list with the default card
      */
     private List<Ingredient> getAllItemList() {

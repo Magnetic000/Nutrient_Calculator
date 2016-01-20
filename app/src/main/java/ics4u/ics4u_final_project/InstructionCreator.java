@@ -1,4 +1,7 @@
 /*
+This class is that activity that allows the user to add ingredients to their recipe
+ */
+/*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
 
     This program is free software: you can redistribute it and/or modify

@@ -1,5 +1,5 @@
 /* Isaac Wismer
- *
+ * This class is for an ingredient object. I holds all the data needed for 1 ingredient in a recipe
  */
 /*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
@@ -55,31 +55,17 @@ public class Ingredient {
     }
 
     /**
-     * @return the name of the ingredient
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @return the quantity of the the ingredient
-     */
-    public int getQuantity() {
-        return quantity;
-    }
-
-    /**
-     * @return the unit used for the ingredient
-     */
-    public String getUnit() {
-        return unit;
-    }
-
-    /**
      * @param i the ID of the ingredient
      */
     public void setID(int i) {
         id = i;
+    }
+
+    /**
+     * @return the name of the ingredient
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -90,10 +76,24 @@ public class Ingredient {
     }
 
     /**
+     * @return the quantity of the the ingredient
+     */
+    public int getQuantity() {
+        return quantity;
+    }
+
+    /**
      * @param q the quantity of the ingredient
      */
     public void setQuantity(int q) {
         quantity = q;
+    }
+
+    /**
+     * @return the unit used for the ingredient
+     */
+    public String getUnit() {
+        return unit;
     }
 
     /**
