@@ -19,6 +19,7 @@ package ics4u.ics4u_final_project;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,5 +52,9 @@ public class About extends AppCompatActivity {
         }
         TextView about = (TextView) findViewById(R.id.about);
         about.setText(Html.fromHtml(file));
+        setTitle("About This App");
+
+        Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(topToolBar);
     }
 }
