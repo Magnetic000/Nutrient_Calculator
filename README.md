@@ -8,6 +8,8 @@ Their license is availavle at: http://itextpdf.com/AGPL
 
 This project is released under the GNU Affero General Public License. The license is available in the LICENSE file, or at [https://www.gnu.org/licenses/agpl.html](https://www.gnu.org/licenses/agpl.html)
 
+This app uses the Canadian Nutrient File (http://webprod3.hc-sc.gc.ca/cnf-fce/index-eng.jsp)
+
 This project was authored by:
 * Isaac (Project Manager, Backend Programming)
 * Andrew (Frontend Programming)
