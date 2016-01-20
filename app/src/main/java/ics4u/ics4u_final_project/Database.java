@@ -703,7 +703,6 @@ public class Database {
             return -1;
         }
         int middle = (top + bottom) / 2;
-        //System.out.println("Middle " + (Integer) list.get(middle)[0] + "\nLine: " + middle);
         if (id < (Integer) list.get(middle)[0]) {
             return binarySearch(list, id, bottom, middle - 1);
         } else if (id > (Integer) list.get(middle)[0]) {
