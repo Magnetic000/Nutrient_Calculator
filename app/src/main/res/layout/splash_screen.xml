@@ -7,7 +7,26 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:src="@drawable/splash" />
-
+        android:layout_height="300dp"
+        android:src="@drawable/food"
+        android:id="@+id/splash_image"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nutrition Calculator"
+        android:textColor="@color/color_primary"
+        android:textSize="24dp"
+        android:id="@+id/app_name"
+        android:layout_below="@id/splash_image"
+        android:padding="50dp"
+        android:gravity="center"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Loading..."
+        android:layout_below="@id/app_name"
+        android:textColor="@color/text_secondary"
+        android:textSize="16dp"
+        android:gravity="center"/>
 </RelativeLayout>
