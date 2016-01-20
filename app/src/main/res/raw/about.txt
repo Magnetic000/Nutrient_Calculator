@@ -13,7 +13,7 @@ If you need help with this app please visit the github wiki.</p>
 
 <p>This project is released under the GNU Affero General Public License. The license is available in the LICENSE file (on our github repo), or at https://www.gnu.org/licenses/agpl.html</p>
 
-<p><b>LICENSE:</b>
+<p><b>LICENSE:</b><br>
 
 Copyright (C) 2016 Isaac Wismer & Andrew Xu</p>
 
