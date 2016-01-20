@@ -1,4 +1,4 @@
-# ICS4U-Final-Project
+# ICS4U-Final-Project - Nutrient Calculator
 An android app to calculate the nutrient value of a recipe
 
 This was created for the final project for ICS4U. It may be available on the Play Store at some point.
