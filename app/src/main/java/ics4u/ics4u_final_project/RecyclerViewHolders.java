@@ -47,6 +47,7 @@ public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View
         recipeIcon = (ImageView) itemView.findViewById(R.id.recipe_icon);
         ingredientName = (TextView) itemView.findViewById(R.id.ingredient_name);
     }
+
     //Click event on click
     @Override
     public void onClick(View view) {

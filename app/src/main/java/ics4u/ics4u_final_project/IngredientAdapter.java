@@ -35,7 +35,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerViewHolders>
 
     /**
      * Constructor
-     * @param context the context of the app
+     *
+     * @param context  the context of the app
      * @param itemList the array list to pass
      */
     public IngredientAdapter(Context context, List<Ingredient> itemList) {
@@ -53,7 +54,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<RecyclerViewHolders>
 
     /**
      * Set the textview for ingredient name in the cards
-     * @param holder the recycle view that the card is located in
+     *
+     * @param holder   the recycle view that the card is located in
      * @param position the position of the card
      */
     @Override

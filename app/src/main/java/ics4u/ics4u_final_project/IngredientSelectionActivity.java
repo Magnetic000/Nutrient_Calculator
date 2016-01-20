@@ -209,6 +209,7 @@ public class IngredientSelectionActivity extends AppCompatActivity {
 
     /**
      * Populate menu with corresponding items
+     *
      * @param menu
      * @return
      */

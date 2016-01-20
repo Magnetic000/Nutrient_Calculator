@@ -26,6 +26,7 @@ import android.widget.EditText;
 public class InstructionCreator extends AppCompatActivity {
     /**
      * Runs when the activity is started
+     *
      * @param savedInstanceState
      */
     @Override

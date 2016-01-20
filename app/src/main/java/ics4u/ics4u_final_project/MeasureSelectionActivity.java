@@ -44,6 +44,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
 
     /**
      * Runs when the activity is first loaded
+     *
      * @param savedInstanceState
      */
     @Override
@@ -73,6 +74,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 setSizeSpinner((int) id);
             }
+
             //If user selects nothing
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -83,6 +85,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             }
+
             //If the user selects nothing
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -213,6 +216,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
 
     /**
      * Instantiates menus and adds corresponding items from the xml file
+     *
      * @param menu
      * @return
      */
@@ -225,6 +229,7 @@ public class MeasureSelectionActivity extends AppCompatActivity {
 
     /**
      * When user selects an item in the menu
+     *
      * @param item
      * @return
      */

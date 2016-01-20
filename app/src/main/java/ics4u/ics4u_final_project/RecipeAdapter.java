@@ -34,7 +34,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerViewHolders> {
 
     /**
      * Constructor for adapter
-     * @param context the context of the activity
+     *
+     * @param context  the context of the activity
      * @param itemList the array to be passed through the adapter
      */
     public RecipeAdapter(Context context, List<Recipe> itemList) {

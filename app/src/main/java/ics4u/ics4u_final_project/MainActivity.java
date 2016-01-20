@@ -20,7 +20,6 @@ Copyright (C) 2016 Isaac Wismer & Andrew Xu
 package ics4u.ics4u_final_project;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -54,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * When the activity starts
      * Runs through this method every time the activity is reloaded from scratch
+     *
      * @param savedInstanceState
      */
     @Override
@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                             public boolean canSwipe(int position) {
                                 return true;
                             }
+
                             //When user swipes left
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
@@ -132,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 rcAdapter.notifyDataSetChanged();
                             }
+
                             //When user swipes right
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
@@ -154,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Creating menu
+     *
      * @param menu the toolbar of the activity
      * @return
      */
@@ -166,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Runs this method when the user selects an option on the menu
+     *
      * @param item
      * @return
      */
@@ -247,8 +251,9 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * called when the user accepts/rejects a permission request
-     * @param requestCode what I was asking the user
-     * @param permissions The permissions asked for
+     *
+     * @param requestCode  what I was asking the user
+     * @param permissions  The permissions asked for
      * @param grantResults whether or not they were granted
      */
     @Override

@@ -34,6 +34,7 @@ public class About extends AppCompatActivity {
     /**
      * Method that runs when the activity is first load
      * Will run every time activity is loaded from scratch
+     *
      * @param savedInstanceState
      */
     @Override

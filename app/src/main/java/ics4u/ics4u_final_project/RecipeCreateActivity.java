@@ -63,6 +63,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
     /**
      * Runs when the activity first loads or whenever it reloads from scratch
+     *
      * @param savedInstanceState
      */
     @Override
@@ -150,6 +151,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
                             public boolean canSwipe(int position) {
                                 return true;
                             }
+
                             //When user swipes left to dismiss cards
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
@@ -164,6 +166,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
                                 }
                                 rcAdapter.notifyDataSetChanged();
                             }
+
                             //when user swipes right to dismiss cards
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
@@ -219,6 +222,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
     /**
      * Instantiates menu and populates it with corresponding items
+     *
      * @param menu
      * @return
      */
@@ -231,6 +235,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
 
     /**
      * When user clicks an item on the menu
+     *
      * @param item
      * @return
      */
@@ -286,6 +291,7 @@ public class RecipeCreateActivity extends AppCompatActivity {
     /**
      * Creates context menu to allow user to choose icon
      * Context menus are the pop up menus
+     *
      * @param menu
      * @param v
      * @param menuInfo

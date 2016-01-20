@@ -34,7 +34,8 @@ public class RecipeCreateAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     /**
      * Constructor for adapter
-     * @param context the context of the app i.e. the window
+     *
+     * @param context  the context of the app i.e. the window
      * @param itemList the information to be passed
      */
     public RecipeCreateAdapter(Context context, List<Ingredient> itemList) {
