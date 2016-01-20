@@ -113,12 +113,9 @@ public class RecipeCreateActivity extends AppCompatActivity {
             rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, rowListItem);
 
         }
-
         lLayoutIngredient = new LinearLayoutManager(RecipeCreateActivity.this);
-
         rView = (RecyclerView) findViewById(R.id.recycler_view_recipe);
         rView.setLayoutManager(lLayoutIngredient);
-
         rView.setAdapter(rcAdapter);
         clickingIcon();
 
@@ -158,6 +155,10 @@ public class RecipeCreateActivity extends AppCompatActivity {
         rView.addOnItemTouchListener(swipeTouchListener);
     }
 
+    /**
+     * creates a default card in the list to promt the user
+     * @return the list with the default card
+     */
     private List<Ingredient> getAllItemList() {
         //add a default ingredient
         List<Ingredient> allItems = new ArrayList<>();
@@ -166,11 +167,17 @@ public class RecipeCreateActivity extends AppCompatActivity {
         return allItems;
     }
 
+    /**
+     * launches the instructions activity
+     */
     public void launchInstructions() {
         Intent intent = new Intent(this, InstructionCreator.class);
         startActivity(intent);
     }
 
+    /**
+     * launches the ingredient selection activity
+     */
     public void launchIngredients() {
         Intent intent = new Intent(this, IngredientSelectionActivity.class);
         startActivity(intent);
@@ -215,10 +222,11 @@ public class RecipeCreateActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Permission denied. Please grant storage permissions", Toast.LENGTH_LONG).show();
             }
-        } else if (id == R.id.action_undo){
-            if (deleted.isEmpty()){
+        } else if (id == R.id.action_undo) {
+            //they haven't deleted anything
+            if (deleted.isEmpty()) {
                 Toast.makeText(this, "No ingredients to restore", Toast.LENGTH_LONG).show();
-            }else {
+            } else {
                 recipe.getIngredients().add(deleted.pop());
                 RecipeCreateAdapter rcAdapter = new RecipeCreateAdapter(RecipeCreateActivity.this, recipe.getIngredients());
                 rView.setAdapter(rcAdapter);
@@ -241,6 +249,12 @@ public class RecipeCreateActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_icon, menu);
     }
 
+    /**
+     * Called when an item on the photo menu is selected
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         super.onContextItemSelected(item);

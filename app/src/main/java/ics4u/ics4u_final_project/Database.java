@@ -162,6 +162,11 @@ public class Database {
         }
     }
 
+    /**
+     * Reads a data file to an arraylist
+     * @param filePath the path of the file to be read
+     * @return the file as an ArrayList<String>
+     */
     public static ArrayList<String> readFile(InputStream filePath) {
         //create a buffered reader
         BufferedReader br = new BufferedReader(new InputStreamReader(filePath));
@@ -182,6 +187,11 @@ public class Database {
         return file;
     }
 
+    /**
+     * returns the number of fields for the given string
+     * @param s the string to test
+     * @return the number of fields
+     */
     public static int getFields(String s) {
         int fields = 1;
         //minimum of one field
@@ -247,7 +257,7 @@ public class Database {
      * data
      *
      * @param file The file path
-     * @return
+     * @return the recipe that was opened
      */
     public static Recipe open(InputStream file) {
         System.out.println(file);
@@ -341,7 +351,7 @@ public class Database {
      *
      * @param recipe          The entire recipe with all ingredient and measure
      *                        information
-     * @param recipeNutrients
+     * @param recipeNutrients the nutrients of the recipe
      * @param label           whether or not to print the information as a label
      * @return a string with the formatted output
      */
@@ -710,6 +720,4 @@ public class Database {
             return middle;
         }
     }
-
-
 }

@@ -85,6 +85,10 @@ public class Measures {
         this.name = name;
     }
 
+    /**
+     * clones this measure object
+     * @return an identical measure object
+     */
     @Override
     public Measures clone() {
         Measures clone = new Measures(ID, conversion);
