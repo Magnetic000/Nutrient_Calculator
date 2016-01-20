@@ -256,6 +256,10 @@ public class Recipe {
         this.photo = photo;
     }
 
+    /**
+     * makes a clone of this recipe object
+     * @return and identical recipe object the this one
+     */
     @Override
     public Recipe clone() {
         Recipe clone = new Recipe(title, instructions);

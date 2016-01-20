@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && hasWriteContactsPermission == PackageManager.PERMISSION_DENIED) {
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
             }
         }
@@ -107,7 +107,9 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeLeft(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    //add deleted to a stack of the deleted recipes
                                     deleted.push(importedRecipes.get(position).clone());
+                                    //remove it from the list
                                     importedRecipes.remove(position);
                                     rebuildSaves();
                                     rcAdapter.notifyItemRemoved(position);
@@ -118,7 +120,9 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDismissedBySwipeRight(RecyclerView recyclerView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
+                                    //add deleted to a stack of the deleted recipes
                                     deleted.push(importedRecipes.get(position).clone());
+                                    //remove it from the list
                                     importedRecipes.remove(position);
                                     rebuildSaves();
                                     rcAdapter.notifyItemRemoved(position);
@@ -190,9 +194,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * called when the main activity comes back into focus
+     */
     @Override
     protected void onRestart() {
         super.onRestart();
+        //update the saved recipes
         rebuildSaves();
         RecipeCreateActivity.onRecipe = false;
     }
