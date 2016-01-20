@@ -182,12 +182,6 @@ public class MeasureSelectionActivity extends AppCompatActivity {
                 selected.addMeasure((int) Database.convFact.get(i)[1], (Double) Database.convFact.get(i)[2]);
             }
         }
-//        for (int i = 0; i < convFact.size(); i++) {
-//            //get the measure conversion factor and measure ID
-//            if (ID == (int) convFact.get(i)[0] && (int) convFact.get(i)[1] != 1572) {
-//                GUI.recipe.getSingleIngredientID(ID).addMeasure((int) convFact.get(i)[1], (Double) convFact.get(i)[2]);
-//            }
-//        }
         //loop through the ingredients
         for (int i = 0; i < selected.getMeasures().size(); i++) {
             //get the id of the measure
@@ -203,24 +197,6 @@ public class MeasureSelectionActivity extends AppCompatActivity {
                 selected.getSingleMeasureIndex(i).setName(Database.msName.get(Database.binarySearch(Database.msName, measureID, 0, Database.msName.size() - 1))[1].toString());
             }
         }
-//        counter = 0;
-//        for (int i = 0; i < msName.size(); i++) {
-//            if (GUI.recipe.getSingleIngredientID(ID).getMeasures().size() == counter) {
-//                break;
-//            }
-//            //get the measure name
-//            //temp = Double.parseDouble(conversionRates.get(counter)[0].toString());
-//            int measureID = GUI.recipe.getSingleIngredientID(ID).getSingleMeasureIndex(counter).getID();
-//            if (measureID == (Integer) msName.get(i)[0] && measureID != 1572) {
-//                // conversionRates.get(counter)[2] = aobj[1];//Add measure Name
-//                GUI.recipe.getSingleIngredientID(ID).getSingleMeasureID((Integer) msName.get(i)[0]).setName(msName.get(i)[1].toString());
-//                counter++;
-//                //dont allow no measure specified
-//            } else if (measureID == 1572) {
-//                //conversionRates.remove(counter);
-//                GUI.recipe.getSingleIngredientID(ID).removeSingleMeasure(counter);
-//            }
-//        }
     }//end getConv
 
     @Override

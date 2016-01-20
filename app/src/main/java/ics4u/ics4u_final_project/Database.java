@@ -229,7 +229,6 @@ public class Database {
         }
         //add the remaining part of the string to the queries
         query.add(keyword);
-        //System.out.println(keyword);
         //read from the nutrients to check if they match the queries
         //read from the file
         //read each line and check if it matched the search terms
@@ -245,7 +244,6 @@ public class Database {
             }
             //if it does add it to the list of matches
             if (matches) {
-                //System.out.println(fdName.get(i)[1]);
                 match.add(new Ingredient((Integer) fdName.get(i)[0], (String) fdName.get(i)[1]));
             }
         }
@@ -303,7 +301,6 @@ public class Database {
             } else {
                 opened.setPhoto(Integer.parseInt(eElement.getTextContent()));
             }
-            //System.out.println(GUI.recipe.getInstructions());
             //ingredients
             nList = doc.getElementsByTagName("ingredients");
             for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -349,6 +346,7 @@ public class Database {
 
     /**
      * This method creates the output that will be displayed for the user
+     * This method is not used ever right now
      *
      * @param recipe          The entire recipe with all ingredient and measure
      *                        information
@@ -635,13 +633,6 @@ public class Database {
         for (int i = begin; (int) ntAmt.get(i)[0] == ID; i++) {
             nutrients[(int) ntAmt.get(i)[1]] = (double) ntAmt.get(i)[2];
         }
-//        for (int i = 0; i < ntAmt.size(); i++) {
-//            //check if the food on the line matches the ID of the target
-//            if (ID == (int) ntAmt.get(i)[0]) {
-//                //if it does get the nutrent amount and add it to the array
-//                nutrients[(int) ntAmt.get(i)[1]] = (double) ntAmt.get(i)[2];
-//            }
-//        }
         return nutrients;
     }//End getData()
 
