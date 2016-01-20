@@ -533,6 +533,7 @@ public class Database {
                     }
                 }
             }
+            //set the conversion based on the available measures
             if (recipe.getSingleIngredientIndex(i).getUnit().equals("Metric Cooking Measures") || recipe.getSingleIngredientIndex(i).getUnit().equals("mL")) {
                 for (int j = 0; j < recipe.getSingleIngredientIndex(i).getMeasures().size(); j++) {
                     int ID = recipe.getSingleIngredientIndex(i).getSingleMeasureIndex(j).getID();

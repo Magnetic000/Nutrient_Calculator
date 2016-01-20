@@ -61,12 +61,16 @@ public class MainActivity extends AppCompatActivity {
 //        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 //            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, permissions);
 //        }
+        //Checking if the app is running on marshmallow
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            //check if we have write permissions
             int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            //if we don't ask for it
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && hasWriteContactsPermission == PackageManager.PERMISSION_DENIED) {
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
             }
         }
+        //begin importing the saved recipes
         importedRecipes = Database.importRecipes(this);
         importedRecipes.get(0).setPhoto(R.drawable.banana);
         //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
@@ -148,11 +152,15 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_undo) {
+            //if there are no recipes to restore
             if (deleted.isEmpty()) {
                 Toast.makeText(MainActivity.this, "No recipes to restore", Toast.LENGTH_LONG).show();
             } else {
+                //add the last deleted back to the list of recipes
                 importedRecipes.add(deleted.pop());
+                //refresh the saves
                 rebuildSaves();
+                //notify user
                 Toast.makeText(MainActivity.this, "Last deleted recipe restored", Toast.LENGTH_LONG).show();
 
             }
@@ -207,11 +215,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void rebuildSaves() {
         //rebuild imported recipes
+        //go through the files in the save directory
         File recipeFolder = new File(this.getFilesDir() + "/recipes/");
         File[] listOfFiles = recipeFolder.listFiles();
+        //delete them all
         for (File file : listOfFiles) {
             System.out.println(file.delete());
         }
+        //resave each of the recipes
         for (int i = 0; i < importedRecipes.size(); i++) {
             try {
                 importedRecipes.get(i).save(new File(this.getFilesDir() + "/recipes/" + i + ".xml"));
@@ -219,17 +230,27 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        //reimport the recipes
         importedRecipes = Database.importRecipes(this);
+        //refresh the list
         rcAdapter = new RecipeAdapter(MainActivity.this, importedRecipes);
         rView.setAdapter(rcAdapter);
     }
 
+    /**
+     * called when the user accepts/rejects a permission request
+     * @param requestCode what I was asking the user
+     * @param permissions The permissions asked for
+     * @param grantResults whether or not they were granted
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CODE_ASK_PERMISSIONS:
+                //if they granted
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     //Permission Granted
+                    //try and make a folder
                     File pdfFolder = new File("/sdcard/Recipes/");
                     if (!pdfFolder.isDirectory()) {
                         pdfFolder.mkdir();
@@ -237,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 } else {
                     // Permission Denied
+                    //tell them what they have done
                     Toast.makeText(MainActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
                 }
                 break;
