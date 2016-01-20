@@ -1,4 +1,7 @@
 /*
+This class is for the about about screen
+ */
+/*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
 
     This program is free software: you can redistribute it and/or modify
@@ -19,11 +22,9 @@ package ics4u.ics4u_final_project;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,5 +52,9 @@ public class About extends AppCompatActivity {
         }
         TextView about = (TextView) findViewById(R.id.about);
         about.setText(Html.fromHtml(file));
+        setTitle("About This App");
+
+        Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(topToolBar);
     }
 }

@@ -1,4 +1,7 @@
 /*
+This class is for any card that contains the information for a recipe
+ */
+/*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
 
     This program is free software: you can redistribute it and/or modify

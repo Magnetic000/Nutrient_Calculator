@@ -1,4 +1,7 @@
 /*
+The main activity in the app. It launches first (after the splash screen)
+ */
+/*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
 
     This program is free software: you can redistribute it and/or modify
@@ -24,8 +27,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,15 +43,14 @@ import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LinearLayoutManager lLayout;
     public static ArrayList<Recipe> importedRecipes;
     public static SharedPreferences prefs = null;
+    static Activity fa;
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     RecyclerView rView;
     RecipeAdapter rcAdapter;
-    static Activity fa;
     Stack<Recipe> deleted = new Stack<>();
-    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
-
+    private LinearLayoutManager lLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
 //            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, permissions);
 //        }
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_ASK_PERMISSIONS);
             }
         }
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
-        topToolBar.setLogo(R.drawable.logo);
+        topToolBar.setLogo(R.drawable.logo_updated);
 
         lLayout = new LinearLayoutManager(MainActivity.this);
 
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-        if (id == R.id.action_about){
+        if (id == R.id.action_about) {
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
         }

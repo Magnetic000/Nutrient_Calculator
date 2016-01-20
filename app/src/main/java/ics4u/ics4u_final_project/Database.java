@@ -1,6 +1,6 @@
 /* Isaac Wismer
  *  Jun 15, 2015
- *
+ * This class contains code to be able to import and process recipes
  */
 /*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
@@ -23,7 +23,6 @@ package ics4u.ics4u_final_project;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
@@ -54,9 +53,9 @@ import javax.xml.parsers.ParserConfigurationException;
 public class Database {
 
     static final DecimalFormat oneDecimal = new DecimalFormat("#,##0.0");
+    static final String delimiter = "#";
     static ArrayList<Object[]> fdName = new ArrayList<>(), msName = new ArrayList<>(), ntName = new ArrayList<>(), convFact = new ArrayList<>(), ntAmt = new ArrayList<>();
     static Recipe recipe = new Recipe();
-    static final String delimiter = "#";
 
     /**
      * Imports the data stored in files to arraylists to faster searching
@@ -164,6 +163,7 @@ public class Database {
 
     /**
      * Reads a data file to an arraylist
+     *
      * @param filePath the path of the file to be read
      * @return the file as an ArrayList<String>
      */
@@ -189,6 +189,7 @@ public class Database {
 
     /**
      * returns the number of fields for the given string
+     *
      * @param s the string to test
      * @return the number of fields
      */
@@ -228,7 +229,6 @@ public class Database {
         }
         //add the remaining part of the string to the queries
         query.add(keyword);
-        //System.out.println(keyword);
         //read from the nutrients to check if they match the queries
         //read from the file
         //read each line and check if it matched the search terms
@@ -244,7 +244,6 @@ public class Database {
             }
             //if it does add it to the list of matches
             if (matches) {
-                //System.out.println(fdName.get(i)[1]);
                 match.add(new Ingredient((Integer) fdName.get(i)[0], (String) fdName.get(i)[1]));
             }
         }
@@ -302,7 +301,6 @@ public class Database {
             } else {
                 opened.setPhoto(Integer.parseInt(eElement.getTextContent()));
             }
-            //System.out.println(GUI.recipe.getInstructions());
             //ingredients
             nList = doc.getElementsByTagName("ingredients");
             for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -348,6 +346,7 @@ public class Database {
 
     /**
      * This method creates the output that will be displayed for the user
+     * This method is not used ever right now
      *
      * @param recipe          The entire recipe with all ingredient and measure
      *                        information
@@ -634,13 +633,6 @@ public class Database {
         for (int i = begin; (int) ntAmt.get(i)[0] == ID; i++) {
             nutrients[(int) ntAmt.get(i)[1]] = (double) ntAmt.get(i)[2];
         }
-//        for (int i = 0; i < ntAmt.size(); i++) {
-//            //check if the food on the line matches the ID of the target
-//            if (ID == (int) ntAmt.get(i)[0]) {
-//                //if it does get the nutrent amount and add it to the array
-//                nutrients[(int) ntAmt.get(i)[1]] = (double) ntAmt.get(i)[2];
-//            }
-//        }
         return nutrients;
     }//End getData()
 
@@ -711,7 +703,6 @@ public class Database {
             return -1;
         }
         int middle = (top + bottom) / 2;
-        //System.out.println("Middle " + (Integer) list.get(middle)[0] + "\nLine: " + middle);
         if (id < (Integer) list.get(middle)[0]) {
             return binarySearch(list, id, bottom, middle - 1);
         } else if (id > (Integer) list.get(middle)[0]) {

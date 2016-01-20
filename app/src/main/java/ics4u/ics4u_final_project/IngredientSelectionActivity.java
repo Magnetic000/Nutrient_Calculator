@@ -1,4 +1,7 @@
 /*
+This class is the activity used to search for an ingredient
+ */
+/*
 Copyright (C) 2016 Isaac Wismer & Andrew Xu
 
     This program is free software: you can redistribute it and/or modify
@@ -40,19 +43,99 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class IngredientSelectionActivity extends AppCompatActivity {
+    public static ArrayList<Ingredient> results = new ArrayList<>(), catResults = new ArrayList<>();
+    static IngredientAdapter rcAdapter;
+    static boolean onIngredient, searchCompleted;
+    static Activity fa;
+    String[] ingredientCategories;
+    ArrayAdapter<String> adapter;
+    Spinner ingredientDropdown;
+    RecyclerView rView;
     private Toolbar mToolbar;
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
     private LinearLayoutManager lLayoutIngredient;
-    public static ArrayList<Ingredient> results = new ArrayList<>(), catResults = new ArrayList<>();
-    String[] ingredientCategories;
-    ArrayAdapter<String> adapter;
-    Spinner ingredientDropdown;
-    static IngredientAdapter rcAdapter;
-    RecyclerView rView;
-    static boolean onIngredient, searchCompleted;
-    static Activity fa;
+
+    public static ArrayList<Ingredient> getResults() {
+        return catResults;
+    }
+
+    /**
+     * This method sorts an array of strings in ascending lexicographical order
+     *
+     * @param list the list to sort
+     * @param low  the low index of the list to sort
+     * @param high the high index of the list to sort
+     */
+    public static void quickSort(String[] list, int low, int high) {
+        //only do this while the size of the array is at least 1
+        if (low < high) {
+            //set the pivot to the middle, the left to the low index, right to the high index
+            int l = low, r = high;
+            String pivot = list[(high + low) / 2];
+            //loop while the left and right have not passed each other
+            while (l <= r) {
+                //decrement the right index until it finds a number out of place
+                while (list[r].compareToIgnoreCase(pivot) > 0) {
+                    r--;
+                }
+                //increment the left index until it finds a number out of place
+                while (list[l].compareToIgnoreCase(pivot) < 0) {
+                    l++;
+                }
+                //if the left and right don't overlap, swap l and r
+                if (l <= r) {
+                    String temp = list[l];
+                    list[l] = list[r];
+                    list[r] = temp;
+                    l++;
+                    r--;
+                }
+            }
+            //do the preceding process on the left and right sides of the partition
+            quickSort(list, low, r);
+            quickSort(list, l, high);
+        }
+    }
+
+    /**
+     * This method sorts an array of strings in ascending lexicographical order
+     *
+     * @param list the list to sort
+     * @param low  the low index of the list to sort
+     * @param high the high index of the list to sort
+     */
+    public static void quickSort(ArrayList<Ingredient> list, int low, int high) {
+        //only do this while the size of the array is at least 1
+        if (low < high) {
+            //set the pivot to the middle, the left to the low index, right to the high index
+            int l = low, r = high;
+            String pivot = list.get((high + low) / 2).getName();
+            //loop while the left and right have not passed each other
+            while (l <= r) {
+                //decrement the right index until it finds a number out of place
+                while (list.get(r).getName().compareToIgnoreCase(pivot) > 0) {
+                    r--;
+                }
+                //increment the left index until it finds a number out of place
+                while (list.get(l).getName().compareToIgnoreCase(pivot) < 0) {
+                    l++;
+                }
+                //if the left and right don't overlap, swap l and r
+                if (l <= r) {
+                    Ingredient temp = list.get(l);
+                    list.set(l, list.get(r));
+                    list.set(r, temp);
+                    l++;
+                    r--;
+                }
+            }
+            //do the preceding process on the left and right sides of the partition
+            quickSort(list, low, r);
+            quickSort(list, l, high);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,11 +198,6 @@ public class IngredientSelectionActivity extends AppCompatActivity {
         ingredientDropdown.setOnItemSelectedListener(onSpinner);
 
 
-    }
-
-
-    public static ArrayList<Ingredient> getResults() {
-        return catResults;
     }
 
     @Override
@@ -257,82 +335,6 @@ public class IngredientSelectionActivity extends AppCompatActivity {
                 rView.setAdapter(rcAdapter);
                 searchCompleted = true;
             }
-        }
-    }
-
-    /**
-     * This method sorts an array of strings in ascending lexicographical order
-     *
-     * @param list the list to sort
-     * @param low  the low index of the list to sort
-     * @param high the high index of the list to sort
-     */
-    public static void quickSort(String[] list, int low, int high) {
-        //only do this while the size of the array is at least 1
-        if (low < high) {
-            //set the pivot to the middle, the left to the low index, right to the high index
-            int l = low, r = high;
-            String pivot = list[(high + low) / 2];
-            //loop while the left and right have not passed each other
-            while (l <= r) {
-                //decrement the right index until it finds a number out of place
-                while (list[r].compareToIgnoreCase(pivot) > 0) {
-                    r--;
-                }
-                //increment the left index until it finds a number out of place
-                while (list[l].compareToIgnoreCase(pivot) < 0) {
-                    l++;
-                }
-                //if the left and right don't overlap, swap l and r
-                if (l <= r) {
-                    String temp = list[l];
-                    list[l] = list[r];
-                    list[r] = temp;
-                    l++;
-                    r--;
-                }
-            }
-            //do the preceding process on the left and right sides of the partition
-            quickSort(list, low, r);
-            quickSort(list, l, high);
-        }
-    }
-
-    /**
-     * This method sorts an array of strings in ascending lexicographical order
-     *
-     * @param list the list to sort
-     * @param low  the low index of the list to sort
-     * @param high the high index of the list to sort
-     */
-    public static void quickSort(ArrayList<Ingredient> list, int low, int high) {
-        //only do this while the size of the array is at least 1
-        if (low < high) {
-            //set the pivot to the middle, the left to the low index, right to the high index
-            int l = low, r = high;
-            String pivot = list.get((high + low) / 2).getName();
-            //loop while the left and right have not passed each other
-            while (l <= r) {
-                //decrement the right index until it finds a number out of place
-                while (list.get(r).getName().compareToIgnoreCase(pivot) > 0) {
-                    r--;
-                }
-                //increment the left index until it finds a number out of place
-                while (list.get(l).getName().compareToIgnoreCase(pivot) < 0) {
-                    l++;
-                }
-                //if the left and right don't overlap, swap l and r
-                if (l <= r) {
-                    Ingredient temp = list.get(l);
-                    list.set(l, list.get(r));
-                    list.set(r, temp);
-                    l++;
-                    r--;
-                }
-            }
-            //do the preceding process on the left and right sides of the partition
-            quickSort(list, low, r);
-            quickSort(list, l, high);
         }
     }
 

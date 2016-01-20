@@ -5,7 +5,8 @@ Andrew Xu<br>
 Griffin B</p>
 
 <p>The source code is available on github!<br>
-https://github.com/isaactsg/ICS4U-Final-Project</p>
+https://github.com/isaactsg/ICS4U-Final-Project<br>
+This app uses the Canadian Nutrient File (http://webprod3.hc-sc.gc.ca/cnf-fce/index-eng.jsp)</p>
 
 <p><b>HELP:</b><br>
 If you need help with this app please visit the github wiki.</p>
