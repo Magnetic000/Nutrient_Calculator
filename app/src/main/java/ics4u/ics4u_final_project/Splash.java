@@ -19,6 +19,7 @@ Copyright (C) 2016 Isaac Wismer & Andrew Xu
  */
 package ics4u.ics4u_final_project;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,7 +30,7 @@ public class Splash extends AppCompatActivity {
      * Duration of wait
      **/
     private final int displayLength = 3000;
-
+    public static Activity fa;
     /**
      * Called when the activity is first created
      */
@@ -38,16 +39,18 @@ public class Splash extends AppCompatActivity {
         super.onCreate(icicle);
         //Links .java file with the corresponding xml file
         setContentView(R.layout.splash_screen);
-
+        fa = this;
+        ImportData im = new ImportData(this);
+        im.execute("Import");
         /* New Handler to start the Menu-Activity
         and close this Splash-Screen after some seconds.*/
 
-        new Handler().postDelayed(new Runnable() {
+        /*new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 startProgram();
             }
-        }, displayLength);
+        }, displayLength);*/
     }
 
     //    public void splashPlayer() {
