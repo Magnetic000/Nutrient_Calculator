@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.ProgressBar;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,9 +19,13 @@ public class ImportData extends AsyncTask<String, Integer, Boolean> {
     static ArrayList<Object[]> fdName = new ArrayList<>(), msName = new ArrayList<>(), ntName = new ArrayList<>(), convFact = new ArrayList<>(), ntAmt = new ArrayList<>();
     static final String delimiter = "#";
     Context c;
+    static ProgressBar p;
+    static double perProgress = 0.0;
 
-    public ImportData(Context c) {
+    public ImportData(Context c, ProgressBar p) {
         this.c = c;
+        this.p = p;
+        p.setMax(100);
     }
 
     @Override
@@ -146,8 +151,8 @@ public class ImportData extends AsyncTask<String, Integer, Boolean> {
     }
     public static void endSplash(){
         Splash.fa.finish();
-        Intent intent = new Intent(Splash.fa.context, MainActivity.class);
-        Splash.fa.context.startActivity(intent);
+        Intent intent = new Intent(Splash.c, MainActivity.class);
+        Splash.fa.startActivity(intent);
     }
     /**
      * Reads a data file to an arraylist
@@ -166,6 +171,8 @@ public class ImportData extends AsyncTask<String, Integer, Boolean> {
             while (s != null) {
                 file.add(s);
                 s = br.readLine();
+                //perProgress += 1.0/525268.0;
+                //setProgress((int) perProgress);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -191,5 +198,9 @@ public class ImportData extends AsyncTask<String, Integer, Boolean> {
             }
         }
         return fields;
+    }
+
+    public static void setProgress(int progress){
+        p.setProgress(progress);
     }
 }

@@ -20,10 +20,12 @@ Copyright (C) 2016 Isaac Wismer & Andrew Xu
 package ics4u.ics4u_final_project;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ProgressBar;
 
 public class Splash extends AppCompatActivity {
     /**
@@ -31,6 +33,7 @@ public class Splash extends AppCompatActivity {
      **/
     private final int displayLength = 3000;
     public static Activity fa;
+    public static Context c;
     /**
      * Called when the activity is first created
      */
@@ -40,7 +43,8 @@ public class Splash extends AppCompatActivity {
         //Links .java file with the corresponding xml file
         setContentView(R.layout.splash_screen);
         fa = this;
-        ImportData im = new ImportData(this);
+        c = this;
+        ImportData im = new ImportData(this, (ProgressBar) findViewById(R.id.progress_bar));
         im.execute("Import");
         /* New Handler to start the Menu-Activity
         and close this Splash-Screen after some seconds.*/
@@ -74,5 +78,9 @@ public class Splash extends AppCompatActivity {
         Intent intent = new Intent(Splash.this, MainActivity.class);
         Splash.this.startActivity(intent);
         Splash.this.finish();
+    }
+
+    public void progress(int p){
+        ((ProgressBar)findViewById(R.id.progress_bar)).setProgress(p);
     }
 }

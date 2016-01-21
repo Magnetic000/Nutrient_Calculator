@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //begin importing the saved recipes
         importedRecipes = Database.importRecipes(this);
-        importedRecipes.get(0).setPhoto(R.drawable.banana);
+        //importedRecipes.get(0).setPhoto(R.drawable.banana);
         //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
 
         //Link .java file with correct xml for visuals
