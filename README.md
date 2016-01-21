@@ -22,3 +22,15 @@ Our changelog is located in the CHANGELOG file.
 
 **Found an unexpected feature or a happy little quirk? (I don't like bugs)**   
 Submit a bug report on the issue tab!
+
+**Possible Future Features
+* Tutorial for first time users
+* More Icons
+* Better search algoithm
+* Faster startup
+* Unit converter
+* Recipe import
+* Recipe multiplier
+* Shopping list creator
+* Recipe categories
+* More provided recipes
