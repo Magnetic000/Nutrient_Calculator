@@ -62,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
         //Store value stating user isn't on ingredient selection activity
         IngredientSelectionActivity.onIngredient = false;
         //Import data
-        Database.importData(this);
+        //Database.importData(this);
+//        ImportData im = new ImportData(this);
+//        im.execute("Import");
         prefs = getSharedPreferences("ics4u.ics4u_final_project", MODE_PRIVATE);
 //        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 //            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, permissions);
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //begin importing the saved recipes
         importedRecipes = Database.importRecipes(this);
-        importedRecipes.get(0).setPhoto(R.drawable.banana);
+        //importedRecipes.get(0).setPhoto(R.drawable.banana);
         //        importedRecipes.get(0).export(new File("/sdcard/Recipes/", importedRecipes.get(0).getTitle() + ".pdf"));
 
         //Link .java file with correct xml for visuals
