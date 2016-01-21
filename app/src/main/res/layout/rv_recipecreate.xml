@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/recipe_name"
                 android:layout_below="@+id/recipe_name"
-                android:text="Click for instructions"
+                android:text="Add/Edit instructions"
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp" />
 

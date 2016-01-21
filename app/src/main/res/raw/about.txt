@@ -2,14 +2,14 @@
 This app was made for our ICS4U Final project<br>
 Isaac Wismer<br>
 Andrew Xu<br>
-Griffin B</p>
+Griffin Baird</p>
 
 <p>The source code is available on github!<br>
-https://github.com/isaactsg/ICS4U-Final-Project<br>
+https://github.com/isaactsg/Nutrient-Calculator<br>
 This app uses the Canadian Nutrient File (http://webprod3.hc-sc.gc.ca/cnf-fce/index-eng.jsp)</p>
 
 <p><b>HELP:</b><br>
-If you need help with this app please visit the github wiki. https://github.com/isaactsg/ICS4U-Final-Project/wiki</p>
+If you need help with this app please visit the github wiki. https://github.com/isaactsg/Nutrient-Calculator/wiki</p>
 
 <p>This project is released under the GNU Affero General Public License. The license is available in the LICENSE file (on our github repo), or at https://www.gnu.org/licenses/agpl.html</p>
 
@@ -35,7 +35,10 @@ Cutten for teaching us to code and solving all of our trivial coding problems.</
 Found an unexpected feature or a happy little quirk? Submit a bug report on our github repo, or make a pull request.</p>
 
 <p><b>CHANGELOG:</b><br>
-1.0.1<br>
+1.0.2<br>
+Edited the about file<br>
+Changed Text on the instructions button</p>
+<p>1.0.1<br>
 Added link to the wiki in the about menu<br>
 Changed the text on the splash screen<br>
 Fix permissions request</p>
